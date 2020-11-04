@@ -1,0 +1,35 @@
+.flex {
+    display: flex;
+}
+
+.just-center {
+    justify-content: center;
+}
+
+.al-center {
+    align-items: center;
+}
+
+.s-between {
+    justify-content: space-between;
+}
+
+.s-around {
+    justify-content: space-around;
+}
+
+.s-evenly {
+    justify-content: space-evenly;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.shrink{
+    height: 0;
+}
+
+.hide{
+    display: none;
+}
