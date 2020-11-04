@@ -5,9 +5,7 @@ export default {
     template:`
     <section class="vid-note">
         <h3>{{info.title}}</h3>
-        <video>
-            <source :src="info.url">
-        </video>
+        <iframe :src="info.url" referrerpolicy="no-referrer"></iframe>
     </section>
     `,
     created(){

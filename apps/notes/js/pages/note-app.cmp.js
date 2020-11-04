@@ -27,7 +27,7 @@ export default {
         }
     },
     created() {
-        noteService.getNotes()
+        noteService.query()
             .then(notes => this.notes = notes)
     },
     components: {

@@ -1,0 +1,27 @@
+.todos-note{
+    min-width: 200px;
+    padding: 10px 0;
+    position: relative;
+}
+
+.todos-note h3{
+    text-align: center;
+}
+.todos-note ul{
+    list-style: none;
+    padding: 0;
+}
+
+.todos-note li{
+    padding-inline-start: 10px;
+    padding-block-end: 5px;
+    border-bottom: 1px solid rgba(161, 161, 161, 0.5);
+}
+
+.todos-note i{
+    position: absolute;
+    bottom:-7px;
+    left:-5px;
+    font-size: 1rem;
+    opacity: 0.5;
+}

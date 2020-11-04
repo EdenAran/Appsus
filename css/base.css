@@ -7,6 +7,8 @@
 @import './apps/notes/note-preview.css';
 @import './apps/notes/text-note.css';
 @import './apps/notes/img-note.css';
+@import './apps/notes/todos-note.css';
+@import './apps/notes/note-controlls.css';
 
 *{
     box-sizing: border-box;
