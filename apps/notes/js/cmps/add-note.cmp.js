@@ -32,7 +32,7 @@ export default {
         saveNote(){
             const inputField = this.saveInputTo();
             this.note.info[inputField] = this.noteInput;
-            noteService.saveNote(this.note)
+            noteService.saveNote(JSON.parse(JSON.stringify(this.note)))
             this.noteInput = '';
         },
         saveInputTo(){

@@ -3,7 +3,8 @@ import { utilService } from '../../../../js/services/util-service.js'
 export const noteService = {
     getBlankNoteInfo,
     saveNote,
-    getNotes
+    query,
+    deleteNote
 }
 
 const STORAGE_KEY = 'notes'
@@ -59,19 +60,36 @@ var gBlankNote = [
 var gNotes = _createNotes();
 
 function getBlankNoteInfo(noteType) {
-    return Promise.resolve(gBlankNote.find(note => note.type === noteType));
+    const note = gBlankNote.find(note => note.type === noteType);
+    note.id = utilService.makeId();
+    return Promise.resolve(note);
 }
 
 function saveNote(note) {
     gNotes.unshift(note);
     utilService.saveToStorage(STORAGE_KEY, gNotes);
-    console.log(gNotes)
+    console.log(gNotes);
+    return Promise.resolve();
 }
 
-function getNotes(){
-    return Promise.resolve(gNotes)
+function query(){
+    return Promise.resolve(gNotes);
 }
 
+function getNoteById(id){
+    const note = gNotes.find(note => note.id === id)
+    if(!note) return Promise.reject(`Couldn't find note with id ${id}`)
+    return Promise.resolve(note)
+}
+
+
+
+function deleteNote(id){
+    const idx = gNotes.findIndex(note => note.id === id);
+    if(idx !== -1) gNotes.splice(idx, 1);
+    utilService.saveToStorage(STORAGE_KEY, gNotes);
+    return Promise.resolve('Note deleted');
+}
 
 function _createNotes() {
     var notes = utilService.loadFromStorage(STORAGE_KEY);
