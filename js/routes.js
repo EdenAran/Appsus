@@ -12,10 +12,10 @@ const routes = [
         path: '/about',
         component: aboutPage
     },
-//     {
-//         path: '/email',
-//         component: emailApp
-//     },
+    // {
+    //     path: '/email',
+    //     component: emailApp
+    // },
     {
         path: '/note',
         component: noteApp

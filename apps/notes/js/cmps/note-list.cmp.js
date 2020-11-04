@@ -3,7 +3,7 @@
 
 export default {
     template:`
-    <section class="note-container">
+    <section class="note-list">
         <!-- <pinned-notes /> -->
         <div class="container">
             
