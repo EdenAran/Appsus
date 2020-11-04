@@ -1,5 +1,6 @@
-import homePage from './pages/home.cmp.js'
-import aboutPage from './pages/about.cmp.js'
+import homePage from './pages/home.cmp.js';
+import aboutPage from './pages/about.cmp.js';
+import noteApp from '../apps/notes/js/pages/note-app.component.js'
 
 
 const routes = [
@@ -15,10 +16,10 @@ const routes = [
 //         path: '/email',
 //         component: emailApp
 //     },
-//     {
-//         path: '/note',
-//         component: noteApp
-//     },
+    {
+        path: '/note',
+        component: noteApp
+    },
 //     {
 //         path: '/book',
 //         component: bookApp

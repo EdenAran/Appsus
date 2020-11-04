@@ -1,7 +1,7 @@
 @import './fonts.css';
 @import './helpers.css';
 @import './app-header.css';
-
+@import '../apps/notes/css/note-header.css';
 
 *{
     box-sizing: border-box;
