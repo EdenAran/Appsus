@@ -1,6 +1,8 @@
 'use strict';
 
 import { emailService } from '../services/email.service.js';
+import emailFilter from '../cmps/amail-filter.cmp.js';
+import emailFilter from '../cmps/amail-filter.cmp.js';
 
 export default {
     template: `
