@@ -10,10 +10,11 @@
     font-size: 0.8em;
     border: none;
     outline: none;
+    width:65%;
 }
 
 .add-note .options{
-    width: 40%;
+    width: 35%;
 }
 
 .add-note i{

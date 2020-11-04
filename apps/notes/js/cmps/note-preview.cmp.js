@@ -5,33 +5,33 @@ import vidNote from './vid-note.cmp.js'
 import noteControlls from './note-controlls.cmp.js'
 
 export default {
-    props: ['noteInfo','type'],
+    props: ['id','noteInfo','type','bgColor'],
     template: `
     <section class="note-preview" :style="noteStyle">
         <text-note :info="noteInfo" v-if="type === 'noteTxt'"></text-note>
         <img-note :info="noteInfo" v-if="type === 'noteImg'"></img-note>
         <todos-note :info="noteInfo" v-if="type === 'noteTodos'"></todos-note>
         <vid-note :info="noteInfo" v-if="type === 'noteVideo'"></vid-note>
-        <note-controlls @delete="emitDelete" @changeBgc="changeBgc"/>
+        <note-controlls @delete="emitDelete" @changeBgc="emitChangeBgc"/>
     </section>
     `,
     data(){
         return{
-            bgc:'#fff5be'
+
         }
     },
     methods:{
         emitDelete(){
             this.$emit('delete')
         },
-        changeBgc(color){
-            this.bgc = color;
+        emitChangeBgc(color){
+            this.$emit('changeBgc', color, this.id)
         }
     },
     computed:{
         noteStyle(){
             return{
-                backgroundColor: this.bgc
+                backgroundColor: this.bgColor
             }
         }
     },

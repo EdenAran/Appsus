@@ -4,7 +4,8 @@ export const noteService = {
     getBlankNoteInfo,
     saveNote,
     query,
-    deleteNote
+    deleteNote,
+    getNoteById
 }
 
 const STORAGE_KEY = 'notes'
@@ -14,10 +15,11 @@ var gBlankNote = [
         type: 'noteTxt',
         isPinned: false,
         info: {
+            title: 'My Note',
             txt: ''
         },
         style: {
-            backgroundColor: '#fff'
+            backgroundColor: '#fff5be'
         }
     },
     {
@@ -28,7 +30,7 @@ var gBlankNote = [
             url: ''
         },
         style: {
-            backgroundColor: '#fff'
+            backgroundColor: '#fff5be'
         }
     },
     {
@@ -36,13 +38,13 @@ var gBlankNote = [
         isPinned: false,
         info: {
             title: 'My Todos',
-            input:'',
+            input: '',
             todos: [
                 { txt: '', doneAt: null },
             ]
         },
         style: {
-            backgroundColor: '#fff'
+            backgroundColor: '#fff5be'
         }
     },
     {
@@ -53,7 +55,7 @@ var gBlankNote = [
             url: ''
         },
         style: {
-            backgroundColor: '#fff'
+            backgroundColor: '#fff5be'
         }
     },
 ]
@@ -66,27 +68,28 @@ function getBlankNoteInfo(noteType) {
 }
 
 function saveNote(note) {
-    gNotes.unshift(note);
+    const noteIdx = gNotes.findIndex(currNote => currNote.id === note.id);
+    if (noteIdx === -1) gNotes.unshift(note);
+    else gNotes.splice(noteIdx, 1, note);
     utilService.saveToStorage(STORAGE_KEY, gNotes);
-    console.log(gNotes);
     return Promise.resolve();
 }
 
-function query(){
+function query() {
     return Promise.resolve(gNotes);
 }
 
-function getNoteById(id){
+function getNoteById(id) {
     const note = gNotes.find(note => note.id === id)
-    if(!note) return Promise.reject(`Couldn't find note with id ${id}`)
+    if (!note) return Promise.reject(`Couldn't find note with id ${id}`)
     return Promise.resolve(note)
 }
 
 
 
-function deleteNote(id){
+function deleteNote(id) {
     const idx = gNotes.findIndex(note => note.id === id);
-    if(idx !== -1) gNotes.splice(idx, 1);
+    if (idx !== -1) gNotes.splice(idx, 1);
     utilService.saveToStorage(STORAGE_KEY, gNotes);
     return Promise.resolve('Note deleted');
 }

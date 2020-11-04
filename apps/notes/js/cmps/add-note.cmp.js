@@ -1,3 +1,4 @@
+import { utilService } from '../../../../js/services/util-service.js';
 import { noteService } from '../services/note.service.js';
 
 
@@ -7,10 +8,10 @@ export default {
     <form class="flex a-center s-between" @submit.prevent="saveNote">
         <input type="text" :placeholder="textToShow" v-model="noteInput" />
         <div class="options flex s-evenly">
-            <i class="fas fa-font pointer" @click="getBlankNote('Txt')" :class="inputClass('noteTxt')"></i>
-            <i class="fas fa-image pointer" @click="getBlankNote('Img')" :class="inputClass('noteImg')"></i>
-            <i class="fab fa-youtube pointer" @click="getBlankNote('Video')" :class="inputClass('noteVideo')"></i>
-            <i class="fas fa-list-ul pointer" @click="getBlankNote('Todos')" :class="inputClass('noteTodos')"></i>
+            <i class="fas fa-font pointer" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
+            <i class="fas fa-image pointer" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
+            <i class="fab fa-youtube pointer" @click="getBlankNote('noteVideo')" :class="inputClass('noteVideo')"></i>
+            <i class="fas fa-list-ul pointer" @click="getBlankNote('noteTodos')" :class="inputClass('noteTodos')"></i>
         </div>
     </form>
     </section>
@@ -23,16 +24,16 @@ export default {
     },
     methods: {
         getBlankNote(noteType) {
-            noteService.getBlankNoteInfo('note' + noteType)
+            noteService.getBlankNoteInfo(noteType)
                 .then(note => {
-                    this.note = note
-                    console.log(note.type)
+                    this.note = utilService.deepCopy(note)
                 })
         },
         saveNote(){
             const inputField = this.saveInputTo();
             this.note.info[inputField] = this.noteInput;
-            noteService.saveNote(JSON.parse(JSON.stringify(this.note)))
+            noteService.saveNote(this.note)
+            this.getBlankNote(this.note.type)
             this.noteInput = '';
         },
         saveInputTo(){
@@ -68,7 +69,7 @@ export default {
     created() {
         noteService.getBlankNoteInfo('noteTxt')
             .then(note => {
-                this.note = note
+                this.note = utilService.deepCopy(note)
             })
     }
 }

@@ -1,4 +1,4 @@
-.note-controlls{
+.note-controlls {
     font-size: 0.8em;
     position: absolute;
     bottom: 5px;
@@ -6,57 +6,63 @@
     display: none;
 }
 
-.note-controlls i{
-    opacity:0.6;
-    
+.note-controlls i {
+    opacity: 0.6;
+
 }
 
-.note-preview:hover .note-controlls{
+.note-preview:hover .note-controlls {
     display: block;
 }
 
-.note-controlls i{
+.note-controlls i {
     margin: 0 3px;
     cursor: pointer;
 }
 
-.note-controlls i:hover{
-    opacity:1;
+.note-controlls i:hover {
+    opacity: 1;
 }
 
-.color-picker{
+.color-picker {
     position: absolute;
     bottom: -20px;
-    right:-10px;
-    width:200px
+    right: -10px;
+    width: 200px
 }
 
-.color-picker .color-option{
+.color-picker .color-option {
     border-radius: 50%;
-    width:20px;
-    height:20px;
-    background-color: transparent;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
-    outline:none;
+    outline: none;
 }
-.color-option.color-1{
+
+.color-option.color-1 {
     background-color: #fefefe;
 }
-.color-option.color-2{
+
+.color-option.color-2 {
     background-color: #fff5be;
 }
-.color-option.color-3{
+
+.color-option.color-3 {
     background-color: #ffbebe;
 }
-.color-option.color-4{
+
+.color-option.color-4 {
     background-color: #c6ffbe;
 }
-.color-option.color-5{
+
+.color-option.color-5 {
     background-color: #bef7ff;
 }
-.color-option.color-6{
+
+.color-option.color-6 {
     background-color: #c2beff;
 }
-.color-option.color-7{
+
+.color-option.color-7 {
     background-color: #ff7b7b;
 }

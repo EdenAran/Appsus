@@ -20,7 +20,6 @@ export default {
     },
     computed:{
         todosToDisplay(){
-            console.log('this.info.input.split(','):', this.info.input.split(','))
             return this.info.input.split(',')
         }
     },

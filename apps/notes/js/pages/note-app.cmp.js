@@ -19,6 +19,7 @@ export default {
     data() {
         return {
             notes: null,
+            filterBy: ''
         }
     },
     computed:{

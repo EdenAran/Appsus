@@ -1,5 +1,5 @@
 .note-header {
-    padding: 35px;
+    padding: 35px 60px;
     background-color: #F3CECE;
     position: relative;
     font-size: 2rem;
@@ -8,12 +8,9 @@
 .note-header input {
     padding: 5px 10px;
     width: 400px;
-    position: absolute;
-    right: calc(40% - 200px);
     font-size: 0.6em;
 }
 
 .note-header h3 {
-    position: absolute;
-    left: 30%
+
 }
