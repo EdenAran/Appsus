@@ -1,4 +1,5 @@
 import emailPreview from './email-preview.cmp.js';
+import emailStatus from './email-status.cmp.js';
 
 export default {
     props: ['emails'],
@@ -12,6 +13,7 @@ export default {
         </section>
     `,
     components: {
-        emailPreview
+        emailPreview,
+        emailStatus
     }
 }

@@ -21,6 +21,7 @@ export default {
     methods: {
         emitFilter() {
             this.$emit('filtered', JSON.parse(JSON.stringify(this.filterBy)));
+            this.filterBy = { byTxt: '', byRead: 'all' };
         }
     }
 };

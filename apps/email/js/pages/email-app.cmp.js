@@ -6,9 +6,10 @@ import emailList from '../cmps/email-list.cmp.js';
 export default {
     template: `
         <section class="email-app">
-            <h2>Email App</h2>
             <email-compose />
             <email-filter @filtered="setFilter" />
+
+            <!-- <router-view /> -->
             <email-list v-if="emails.length" :emails="emailsToShow" />
         </section>
     `,
@@ -20,7 +21,16 @@ export default {
     },
     computed: {
         emailsToShow() {
-            return this.emails;
+            if (!this.filterBy) return this.emails;
+            const filterTxt = this.filterBy.byTxt.toLowerCase();
+            const readStatus = this.filterBy.byRead;
+            return this.emails.filter(email => {
+                return email.subject.toLowerCase().includes(filterTxt) &&
+                    (
+                        ((readStatus === 'all' || readStatus === 'read') && email.isRead) ||
+                        ((readStatus === 'all' || readStatus === 'unread') && !email.isRead)
+                    )
+            });
         }
     },
     methods: {
@@ -28,9 +38,12 @@ export default {
             this.filterBy = filterBy;
         }
     },
-    crested() {
+    created() {
         emailService.query()
-            .then(emails => this.emails = emails);
+            .then(emails => {
+                console.log('emails:', emails)
+                this.emails = emails
+            });
     },
     components: {
         emailCompose,
