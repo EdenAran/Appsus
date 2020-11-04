@@ -1,5 +1,3 @@
-'use starict';
-
 export default {
     props: ['txt'],
     template: `

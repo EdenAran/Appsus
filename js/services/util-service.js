@@ -3,6 +3,7 @@
 export const utilService = {
     makeId,
     makeLorem,
+    makeRandomDate,
     getRandomIntInclusive,
     saveToStorage,
     loadFromStorage
@@ -18,13 +19,19 @@ function makeId(length = 11) {
 }
 
 function makeLorem(size = 20) {
-    const words = ['The sky', 'above', 'the port', 'was', 'the color of television', 'tuned', 'to', 'a dead channel', 'All', 'this happened', 'more or less', '.', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', 'It', 'was', 'a pleasure', 'to', 'burn'];
+    const words = ['The sky', 'above', 'the port', 'was', 'the color of television', 'tuned', 'to', 'a dead channel', 'All', 'this happened', 'more or less', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', 'It', 'was', 'a pleasure', 'to', 'burn'];
     let txt = '';
     while (size > 0) {
         size--;
         txt += words[Math.floor(Math.random() * words.length)] + ' ';
     }
     return txt;
+}
+
+function makeRandomDate() {
+    const start = new Date(2020, 0, 1);
+    const end = new Date();
+    return (new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))).getTime();
 }
 
 function getRandomIntInclusive(min, max) {

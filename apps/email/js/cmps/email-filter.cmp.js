@@ -1,23 +1,25 @@
-'use strict';
-
 export default {
     template: `
         <section class="email-filter">
             <h2>Email Filter</h2>
-            <form @submit.prevent="setFilter">
+            <form @submit.prevent="emitFilter">
                 <input type="text" placeholder="Email Subject" v-model="filterBy.byTxt" />
-                <!-- <input type="checkbox" value="" v-model="filterBy.byRead"> -->
+                <select v-model="filerBy.byRead">
+                    <option value="all">All</option>
+                    <option value="read">Read</option>
+                    <option value="unread">Unread</option>
+                </select>
                 <button>Filter</button>
             </form>
         </section>
     `,
     data() {
         return {
-            filterBy: {byTxt: '', byRead: 'all'}
+            filterBy: { byTxt: '', byRead: 'all' }
         };
     },
     methods: {
-        setFilter() {
+        emitFilter() {
             this.$emit('filtered', JSON.parse(JSON.stringify(this.filterBy)));
         }
     }

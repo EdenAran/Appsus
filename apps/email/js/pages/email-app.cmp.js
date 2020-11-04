@@ -1,5 +1,3 @@
-'use strict';
-
 import { emailService } from '../services/email.service.js';
 import emailFilter from '../cmps/amail-filter.cmp.js';
 import emailList from '../cmps/amail-list.cmp.js';
@@ -8,18 +6,25 @@ export default {
     template: `
         <section class="email-app">
             <h2>Email App</h2>
-            <email-filter />
+            <email-compose />
+            <email-filter @filtered="setFilter" />
             <email-list v-if="emails.length" :emails="emailsToShow" />
         </section>
     `,
     data() {
         return {
-            emails: []
+            emails: [],
+            filterBy: null
         };
     },
     computed: {
         emailsToShow() {
             return this.emails;
+        }
+    },
+    methods: {
+        setFilter(filterBy) {
+            this.filterBy = filterBy;
         }
     },
     crested() {

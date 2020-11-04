@@ -1,5 +1,3 @@
-'use strict';
-
 import { emailService } from '../services/email.service.js';
 import longText from '../../../../cmps/long-text.util-cmp.js';
 

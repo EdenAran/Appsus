@@ -1,5 +1,3 @@
-'use strict';
-
 import longText from '../../../../js/cmps/long-text.util-cmp.js';
 
 export default {

@@ -1,5 +1,3 @@
-'use strict';
-
 import { emailService } from '../../services/email.service.js';
 
 export default {
