@@ -1,0 +1,18 @@
+
+.add-note{
+    font-size: 1.4rem;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 20px auto;
+}
+
+.add-note input{
+    font-size: 0.8em;
+    border: none;
+    outline: none;
+}
+
+.add-note .options{
+    width: 40%;
+}

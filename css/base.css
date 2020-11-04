@@ -1,7 +1,9 @@
 @import './fonts.css';
 @import './helpers.css';
 @import './app-header.css';
-@import '../apps/notes/css/note-header.css';
+@import './apps/notes/note-header.css';
+@import './apps/notes/note-app.css';
+@import './apps/notes/add-note.css';
 
 *{
     box-sizing: border-box;
@@ -13,6 +15,7 @@ html {
 
 body{
     margin: 0;
+    background-color: #F4F4F6;
 }
 
 h1,h2,h3,h4,h5,h6{
