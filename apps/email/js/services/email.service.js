@@ -7,7 +7,8 @@ export const emailService = {
     removeEmail,
     saveEmail,
     getNumOfRead,
-    getEmailById
+    getEmailById,
+    getEmptyEmail
 };
 
 const gEmails = _createEmails();
@@ -43,11 +44,20 @@ function getEmailById(emailId) {
     return Promise.resolve(gEmails.find(email => email.id === emailId));
 }
 
+function getEmptyEmail() {
+    return _createEmail('', '');
+}
+
 function _createEmails() {
     let emails = utilService.loadFromStorage('emailsDb');
     if (!emails || !emails.length) {
         emails = [];
-        emails.push(_createEmail('', ''));
+        emails.push(_createEmail('aaa', 'aaa aaa aaa'));
+        emails.push(_createEmail('bbb', 'bbb bbb bbb'));
+        emails.push(_createEmail('ccc', 'ccc ccc ccc'));
+        emails.push(_createEmail('ddd', 'ddd ddd ddd'));
+        emails.push(_createEmail('eee', 'eee eee eee'));
+        emails.push(_createEmail('fff', 'fff fff fff'));
         utilService.saveToStorage('emailsDb', emails);
     }
     return emails;
@@ -55,6 +65,7 @@ function _createEmails() {
 
 function _createEmail(subject, body) {
     return {
+        id: utilService.makeId(),
         subject,
         body,
         isRead: Math.random() > 0.5,

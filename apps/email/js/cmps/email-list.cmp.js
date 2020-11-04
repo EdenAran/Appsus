@@ -1,4 +1,5 @@
 import emailPreview from './email-preview.cmp.js';
+import emailStatus from './email-status.cmp.js';
 
 export default {
     props: ['emails'],
@@ -7,11 +8,14 @@ export default {
             <h2>Email List</h2>
             <email-status />
             <ul v-for="email in emails" :key="email.id">
-                <email-preview :email="email" />
+                <li>
+                    <email-preview :email="email" />
+                </li>
             </ul>
         </section>
     `,
     components: {
-        emailPreview
+        emailPreview,
+        emailStatus
     }
 }
