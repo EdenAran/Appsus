@@ -38,10 +38,7 @@ var gBlankNote = [
         isPinned: false,
         info: {
             title: 'My Todos',
-            input: '',
-            todos: [
-                { txt: '', doneAt: null },
-            ]
+            todos: []
         },
         style: {
             backgroundColor: '#fff5be'

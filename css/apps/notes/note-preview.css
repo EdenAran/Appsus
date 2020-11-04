@@ -4,13 +4,46 @@
     margin: 10px;
     background-color: #fff5be;
     box-shadow: inset 0 0 1px 0 black, 0 0 1px 0 black;
-    padding: 10px;
+    padding: 20px;
     position: relative;
     min-width:200px;
     max-width:350px;
+    text-align: center;
+    word-wrap: break-word;
 }
 
 .note-preview:hover{
     box-shadow:  0 0 5px 0 black;
 }
 
+.note-preview h3{
+    margin-bottom: 15px;
+}
+
+.note-preview i.icon{
+    position: absolute;
+    bottom:5px;
+    left:5px;
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+.note-preview img{
+    border-radius: 5px;
+    width:100%;
+    height: 100%;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.note-preview ul{
+    list-style: none;
+    padding: 0;
+}
+
+.note-preview li{
+    text-align: left;
+    padding-inline-start: 10px;
+    padding-block-end: 5px;
+    border-bottom: 1px solid rgba(161, 161, 161, 0.5);
+}

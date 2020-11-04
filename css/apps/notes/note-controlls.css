@@ -1,7 +1,7 @@
 .note-controlls {
     font-size: 0.8em;
     position: absolute;
-    bottom: 5px;
+    bottom: 3px;
     right: 5px;
     display: none;
 }
@@ -26,7 +26,7 @@
 
 .color-picker {
     position: absolute;
-    bottom: -20px;
+    bottom: -22px;
     right: -10px;
     width: 200px
 }

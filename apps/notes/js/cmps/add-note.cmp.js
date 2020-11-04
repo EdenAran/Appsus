@@ -29,15 +29,22 @@ export default {
                     this.note = utilService.deepCopy(note)
                 })
         },
-        saveNote(){
+        saveNote() {
             const inputField = this.saveInputTo();
             this.note.info[inputField] = this.noteInput;
+            if (this.note.type === 'noteTodos') {
+                const todos = this.noteInput.split(',')
+                for (let i = 0; i < todos.length; i++) {
+                    this.note.info.todos.push({ txt: todos[i], isDone: false })
+                }
+                console.log(this.note.info)
+            }
             noteService.saveNote(this.note)
             this.getBlankNote(this.note.type)
             this.noteInput = '';
         },
-        saveInputTo(){
-            switch(this.note.type) {
+        saveInputTo() {
+            switch (this.note.type) {
                 case 'noteTxt':
                     return 'txt'
                 case 'noteImg':
@@ -48,8 +55,8 @@ export default {
                     return 'url'
             }
         },
-        inputClass(type){
-        return {active: this.note.type === type }   
+        inputClass(type) {
+            return { active: this.note.type === type }
         }
     },
     computed: {
