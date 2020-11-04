@@ -1,21 +1,24 @@
-import { noteService } from '../services/note.service.js'
+import { noteService } from '../services/note.service.js';
 
 
 export default {
     template: `
-    <section class="add-note flex a-center s-between" v-if="note">
-        <input type="text" :placeholder="textToShow">
+    <section class="add-note " v-if="note">
+    <form class="flex a-center s-between" @submit.prevent="saveNote">
+        <input type="text" :placeholder="textToShow" v-model="noteInput" />
         <div class="options flex s-evenly">
-            <i class="fas fa-font" @click="getBlankNote('Txt')"></i>
-            <i class="fas fa-image" @click="getBlankNote('Img')"></i>
-            <i class="fab fa-youtube" @click="getBlankNote('Video')"></i>
-            <i class="fas fa-list-ul" @click="getBlankNote('Todos')"></i>
+            <i class="fas fa-font pointer" @click="getBlankNote('Txt')" :class="inputClass('noteTxt')"></i>
+            <i class="fas fa-image pointer" @click="getBlankNote('Img')" :class="inputClass('noteImg')"></i>
+            <i class="fab fa-youtube pointer" @click="getBlankNote('Video')" :class="inputClass('noteVideo')"></i>
+            <i class="fas fa-list-ul pointer" @click="getBlankNote('Todos')" :class="inputClass('noteTodos')"></i>
         </div>
+    </form>
     </section>
     `,
     data() {
         return {
-            note: null
+            note: null,
+            noteInput: ''
         }
     },
     methods: {
@@ -23,7 +26,29 @@ export default {
             noteService.getBlankNoteInfo('note' + noteType)
                 .then(note => {
                     this.note = note
+                    console.log(note.type)
                 })
+        },
+        saveNote(){
+            const inputField = this.saveInputTo();
+            this.note.info[inputField] = this.noteInput;
+            noteService.saveNote(this.note)
+            this.noteInput = '';
+        },
+        saveInputTo(){
+            switch(this.note.type) {
+                case 'noteTxt':
+                    return 'txt'
+                case 'noteImg':
+                    return 'url'
+                case 'noteTodos':
+                    return 'input'
+                case 'noteVideo':
+                    return 'url'
+            }
+        },
+        inputClass(type){
+        return {active: this.note.type === type }   
         }
     },
     computed: {

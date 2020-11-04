@@ -1,0 +1,13 @@
+.text-note{
+    width: 200px;
+    height: 150px;
+    position: relative;
+}
+
+.text-note i{
+    position: absolute;
+    bottom:-8px;
+    left:-6px;
+    font-size: 1rem;
+    opacity: 0.5;
+}

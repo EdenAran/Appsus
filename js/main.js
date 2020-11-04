@@ -1,5 +1,5 @@
 import { myRouter } from './routes.js';
-import appHeader from './cmps/app-header.component.js';
+import appHeader from './cmps/app-header.cmp.js';
 
 
 const options = {

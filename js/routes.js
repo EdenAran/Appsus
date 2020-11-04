@@ -1,6 +1,6 @@
 import homePage from './pages/home.cmp.js';
 import aboutPage from './pages/about.cmp.js';
-import noteApp from '../apps/notes/js/pages/note-app.component.js'
+import noteApp from '../apps/notes/js/pages/note-app.cmp.js'
 
 
 const routes = [

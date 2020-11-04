@@ -22,6 +22,10 @@
     justify-content: space-evenly;
 }
 
+.wrap{
+    flex-wrap: wrap;
+}
+
 .pointer{
     cursor: pointer;
 }
