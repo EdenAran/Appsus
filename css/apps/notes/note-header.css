@@ -1,6 +1,5 @@
 .note-header {
-    /* height: 60px; */
-    padding: 30px;
+    padding: 35px;
     background-color: #F3CECE;
     position: relative;
     font-size: 2rem;
@@ -10,7 +9,7 @@
     padding: 5px 10px;
     width: 400px;
     position: absolute;
-    right: calc(30% - 200px);
+    right: calc(40% - 200px);
     font-size: 0.6em;
 }
 

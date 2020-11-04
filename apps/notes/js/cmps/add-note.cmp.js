@@ -7,10 +7,10 @@ export default {
     <form class="flex a-center s-between" @submit.prevent="saveNote">
         <input type="text" :placeholder="textToShow" v-model="noteInput" />
         <div class="options flex s-evenly">
-            <i class="fas fa-font pointer" @click="getBlankNote('Txt')"></i>
-            <i class="fas fa-image pointer" @click="getBlankNote('Img')"></i>
-            <i class="fab fa-youtube pointer" @click="getBlankNote('Video')"></i>
-            <i class="fas fa-list-ul pointer" @click="getBlankNote('Todos')"></i>
+            <i class="fas fa-font pointer" @click="getBlankNote('Txt')" :class="inputClass('noteTxt')"></i>
+            <i class="fas fa-image pointer" @click="getBlankNote('Img')" :class="inputClass('noteImg')"></i>
+            <i class="fab fa-youtube pointer" @click="getBlankNote('Video')" :class="inputClass('noteVideo')"></i>
+            <i class="fas fa-list-ul pointer" @click="getBlankNote('Todos')" :class="inputClass('noteTodos')"></i>
         </div>
     </form>
     </section>
@@ -26,6 +26,7 @@ export default {
             noteService.getBlankNoteInfo('note' + noteType)
                 .then(note => {
                     this.note = note
+                    console.log(note.type)
                 })
         },
         saveNote(){
@@ -45,6 +46,9 @@ export default {
                 case 'noteVideo':
                     return 'url'
             }
+        },
+        inputClass(type){
+        return {active: this.note.type === type }   
         }
     },
     computed: {

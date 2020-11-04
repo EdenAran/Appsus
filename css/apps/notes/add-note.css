@@ -15,3 +15,11 @@
 .add-note .options{
     width: 40%;
 }
+
+.add-note i{
+    opacity:0.5;
+}
+
+.add-note i.active{
+opacity:1;
+}

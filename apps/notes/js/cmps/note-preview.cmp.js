@@ -10,7 +10,7 @@ export default {
         <text-note :info="noteInfo" v-if="type === 'noteTxt'"></text-note>
         <img-note :info="noteInfo" v-if="type === 'noteImg'"></img-note>
         <todos-note :info="noteInfo" v-if="type === 'noteTodos'"></todos-note>
-        <vid-note :info="noteInfo" v-if="type === 'noteVid'"></vid-note>
+        <vid-note :info="noteInfo" v-if="type === 'noteVideo'"></vid-note>
     </section>
     `,
     components: {
