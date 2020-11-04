@@ -1,7 +1,20 @@
-
-
-.note-header{
-    height: 60px;
+.note-header {
+    /* height: 60px; */
+    padding: 30px;
     background-color: #F3CECE;
+    position: relative;
+    font-size: 2rem;
 }
 
+.note-header input {
+    padding: 5px 10px;
+    width: 400px;
+    position: absolute;
+    right: calc(30% - 200px);
+    font-size: 0.6em;
+}
+
+.note-header h3 {
+    position: absolute;
+    left: 30%
+}

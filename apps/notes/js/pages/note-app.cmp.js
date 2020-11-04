@@ -1,6 +1,7 @@
-import noteHeader from '../cmps/note-header.component.js'
-import noteContainer from '../cmps/note-container.component.js'
-import addNote from '../cmps/add-note.component.js'
+import { noteService } from '../services/note.service.js';
+import noteHeader from '../cmps/note-header.cmp.js';
+import noteList from '../cmps/note-list.cmp.js';
+import addNote from '../cmps/add-note.cmp.js';
 
 
 export default {
@@ -11,14 +12,27 @@ export default {
         </header>
         <main>
             <add-note />
-            <note-container />
+            <note-list :notes="notesToShow" />
         </main>
     </section>
     `,
+    data() {
+        return {
+            notes: null,
+        }
+    },
+    computed:{
+        notesToShow(){
+            return this.notes;
+        }
+    },
+    created() {
+        noteService.getNotes()
+            .then(notes => this.notes = notes)
+    },
     components: {
         noteHeader,
-        noteContainer,
+        noteList,
         addNote
     }
-
 }
