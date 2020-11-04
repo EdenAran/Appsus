@@ -3,16 +3,16 @@ import { emailService } from '../services/email.service.js';
 export default {
     template: `
         <section class="email-status">
-            <h3 v-if="numOfRead">Num of read: {{numOfRead}}</h3>
+            <h3 v-if="numOfUnread">Num of unread: {{numOfUnread}}</h3>
         </section>
     `,
     data() {
         return {
-            numOfRead: null
+            numOfUnread: null
         };
     },
     created() {
-        emailService.getNumOfRead()
-            .then(num => this.numOfRead = num);
+        emailService.getNumOfUnread()
+            .then(num => this.numOfUnread = num);
     }
 };

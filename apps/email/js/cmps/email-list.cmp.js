@@ -5,10 +5,9 @@ export default {
     props: ['emails'],
     template: `
         <section class="email-list">
-            <h2>Email List</h2>
             <email-status />
-            <ul v-for="email in emails" :key="email.id">
-                <li>
+            <ul class="clean-list">
+                <li v-for="email in emails" :key="email.id">
                     <email-preview :email="email" />
                 </li>
             </ul>

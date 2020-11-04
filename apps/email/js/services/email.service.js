@@ -6,7 +6,7 @@ export const emailService = {
     query,
     removeEmail,
     saveEmail,
-    getNumOfRead,
+    getNumOfUnread,
     getEmailById,
     getEmptyEmail
 };
@@ -32,12 +32,12 @@ function saveEmail(email) {
     return Promise.resolve(email);
 }
 
-function getNumOfRead() {
-    const numOfRead = gEmails.reduce((acc, email) => {
-        if (email.isRead) acc++;
+function getNumOfUnread() {
+    const numOfUnread = gEmails.reduce((acc, email) => {
+        if (!email.isRead) acc++;
         return acc;
     }, 0);
-    return Promise.resolve(numOfRead);
+    return Promise.resolve(numOfUnread);
 }
 
 function getEmailById(emailId) {

@@ -4,9 +4,11 @@ import longText from '../../../../js/cmps/long-text.util-cmp.js';
 export default {
     template: `
         <section class="email-details">
-            <h2>Email Details</h2>
-            <h3 v-if="email">Subject: {{email.subject}}</h3>
-            <button @click="remove">Delete this email</button>
+            <template v-if="email">
+                <h3>Subject: {{email.subject}}</h3>
+                <p>Body: {{email.body}}</p>
+                <button @click="remove">Delete this email</button>
+            </template>
             <button @click="back">Back To The List</button>
         </section>
     `,
@@ -25,7 +27,8 @@ export default {
                 .then(console.log('Deleted'));
         },
         back() {
-            this.$router.push('/email/list');
+            // this.$router.push('/email/list');
+            this.$router.push('/email');
         }
     },
     created() {

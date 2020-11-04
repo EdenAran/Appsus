@@ -9,8 +9,8 @@ export default {
             <email-compose />
             <email-filter @filtered="setFilter" />
 
-            <router-view />
-            <!-- <email-list v-if="emails.length" :emails="emailsToShow" /> -->
+            <!-- <router-view /> -->
+            <email-list v-if="emails.length" :emails="emailsToShow" />
         </section>
     `,
     data() {
