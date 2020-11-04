@@ -8,7 +8,9 @@ export default {
             <h2>Email List</h2>
             <email-status />
             <ul v-for="email in emails" :key="email.id">
-                <email-preview :email="email" />
+                <li>
+                    <email-preview :email="email" />
+                </li>
             </ul>
         </section>
     `,

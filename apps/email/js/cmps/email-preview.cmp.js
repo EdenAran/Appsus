@@ -3,12 +3,17 @@ import longText from '../../../../js/cmps/long-text.util-cmp.js';
 export default {
     props: ['email'],
     template: `
-        <section class="email-preview" @click>
+        <section class="email-preview" @click="showDetails">
             <h2>Email Preview</h2>
             <h3>Subject: {{email.subject}}</h3>
             <router-link :to="'/email/' + email.id">Details</router-link>
         </section>
     `,
+    methods: {
+        showDetails() {
+            this.$router.push(`/email/${this.email.id}`);
+        }
+    },
     components: {
         longText
     }

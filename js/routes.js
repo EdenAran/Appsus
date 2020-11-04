@@ -21,13 +21,13 @@ const routes = [
         component: emailApp,
         children: [
             {
+                path: ':emailId',
+                component: emailDetails
+            },
+            {
                 path: 'list',
                 component: emailList
             },
-            {
-                path: 'deatails/emailId',
-                component: emailDetails
-            }
         ]
     },
     {

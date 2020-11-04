@@ -65,6 +65,7 @@ function _createEmails() {
 
 function _createEmail(subject, body) {
     return {
+        id: utilService.makeId(),
         subject,
         body,
         isRead: Math.random() > 0.5,
