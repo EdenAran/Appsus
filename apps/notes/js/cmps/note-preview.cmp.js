@@ -12,7 +12,7 @@ export default {
         <img-note :info="noteInfo" v-if="type === 'noteImg'"></img-note>
         <todos-note :info="noteInfo" v-if="type === 'noteTodos'"></todos-note>
         <vid-note :info="noteInfo" v-if="type === 'noteVideo'"></vid-note>
-        <note-controlls @delete="emitDelete" />
+        <note-controlls @delete="emitDelete" @changeBgc="changeBgc"/>
     </section>
     `,
     data(){
@@ -24,8 +24,8 @@ export default {
         emitDelete(){
             this.$emit('delete')
         },
-        changeBgc(){
-
+        changeBgc(color){
+            this.bgc = color;
         }
     },
     computed:{
