@@ -4,7 +4,7 @@ export default {
             <h2>Email Filter</h2>
             <form @submit.prevent="emitFilter">
                 <input type="text" placeholder="Email Subject" v-model="filterBy.byTxt" />
-                <select v-model="filerBy.byRead">
+                <select v-model="filterBy.byRead">
                     <option value="all">All</option>
                     <option value="read">Read</option>
                     <option value="unread">Unread</option>

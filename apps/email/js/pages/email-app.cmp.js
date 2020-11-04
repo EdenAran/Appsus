@@ -1,6 +1,7 @@
 import { emailService } from '../services/email.service.js';
-import emailFilter from '../cmps/amail-filter.cmp.js';
-import emailList from '../cmps/amail-list.cmp.js';
+import emailCompose from '../cmps/email-compose.cmp.js';
+import emailFilter from '../cmps/email-filter.cmp.js';
+import emailList from '../cmps/email-list.cmp.js';
 
 export default {
     template: `
@@ -32,6 +33,7 @@ export default {
             .then(emails => this.emails = emails);
     },
     components: {
+        emailCompose,
         emailFilter,
         emailList
     }
