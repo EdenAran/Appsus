@@ -10,32 +10,7 @@ export default {
     props: ['note'],
     template: `
     <section class="note-preview" :style="noteStyle">
-        <component :is="note.type" :info="note.info" :isEdit="false"/>
-        <!-- <h3>{{note.info.title}}</h3> -->
-        <!-- <template v-if="note.type === 'noteImg'">
-            <img :src="note.info.url" alt="" >
-            <i class="icon fas fa-image pointer"></i>
-        </template>
-
-        <template v-if="note.type === 'noteVideo'">
-            <iframe :src="note.info.url"></iframe>
-            <i class="icon fab fa-youtube"></i>
-        </template>
-
-        <template v-if="note.type === 'noteTxt'">
-            <p>{{note.info.txt}}</p>
-            <i class="icon fas fa-font pointer"></i>
-        </template>
-
-        <template v-if="note.type === 'noteTodos'">
-            <ul>
-                <li  v-for="todo in todosToDisplay">
-                    {{todo.txt}}
-                </li>
-                <i class="icon fas fa-list-ul pointer"></i>
-            </ul>
-        </template> -->
-
+        <component :is="note.type" :info="note.info" :isEdit="false" />
         <note-controlls @delete="deleteNote" @changeBgc="changeBgc" @edit="emitEdit"/>
 
     </section>
@@ -53,7 +28,7 @@ export default {
             noteService.deleteNote(this.note.id);
         },
         emitEdit() {
-            this.$emit('edit', this.note)
+            this.$emit('edit', this.note);
         }
 
     },
@@ -64,7 +39,7 @@ export default {
             }
         },
         todosToDisplay() {
-            return this.note.info.todos.slice(0, 5)
+            return this.note.info.todos.slice(0, 5);
         },
     },
     components: {

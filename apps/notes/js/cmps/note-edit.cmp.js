@@ -6,8 +6,8 @@ import noteControlls from './note-controlls.cmp.js'
 import { noteService } from '../services/note.service.js'
 
 export default {
-    props:['note'],
-    template:`
+    props: ['note'],
+    template: `
         <section class="note-edit" :style="noteStyle">
             <form @submit.prevent="saveEdit">
                 <component :is="note.type" :info="note.info" :isEdit="true" @addTodo="addTodo"/>
@@ -15,19 +15,19 @@ export default {
             </form>
         </section>
     `,
-    methods:{
-        saveEdit(){
+    methods: {
+        saveEdit() {
             noteService.saveNote(this.note)
             this.emitClose();
         },
-        emitClose(){
+        emitClose() {
             this.$emit('close')
         },
-        addTodo(){
+        addTodo() {
             this.note.info.todos.unshift({ txt: '', isDone: false });
         }
     },
-    computed:{
+    computed: {
         todosToDisplay() {
             return this.note.info.todos
         },

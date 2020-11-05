@@ -96,4 +96,3 @@ function _createNotes() {
     if (!notes) notes = [];
     return notes;
 }
-

@@ -12,8 +12,7 @@ export default {
             <input class="title" type="text" v-model="info.title">
             <input type="text" v-model="info.url">
         </template>
-        <iframe :src="info.url" referrerpolicy="no-referrer"></iframe>
-    
+        <iframe :src="info.url"></iframe>    
     </section>
     `
 }

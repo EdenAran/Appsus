@@ -4,17 +4,17 @@ import { noteService } from '../services/note.service.js';
 
 export default {
     template: `
-    <section class="add-note " v-if="note">
-    <form class="flex a-center s-between" @submit.prevent="saveNote">
-        <input type="text" :placeholder="textToShow" v-model="noteInput" />
-        <div class="options flex s-evenly">
-            <i class="fas fa-font pointer" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
-            <i class="fas fa-image pointer" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
-            <i class="fab fa-youtube pointer" @click="getBlankNote('noteVideo')" :class="inputClass('noteVideo')"></i>
-            <i class="fas fa-list-ul pointer" @click="getBlankNote('noteTodos')" :class="inputClass('noteTodos')"></i>
-        </div>
-    </form>
-    </section>
+        <section class="add-note " v-if="note">
+            <form class="flex a-center s-between" @submit.prevent="saveNote">
+                <input type="text" :placeholder="textToShow" v-model="noteInput" />
+                <div class="options flex s-evenly">
+                    <i class="fas fa-font pointer" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
+                    <i class="fas fa-image pointer" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
+                    <i class="fab fa-youtube pointer" @click="getBlankNote('noteVideo')" :class="inputClass('noteVideo')"></i>
+                    <i class="fas fa-list-ul pointer" @click="getBlankNote('noteTodos')" :class="inputClass('noteTodos')"></i>
+                </div>
+            </form>
+        </section>
     `,
     data() {
         return {
