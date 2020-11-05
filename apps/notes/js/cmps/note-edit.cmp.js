@@ -24,7 +24,7 @@ export default {
             this.$emit('close')
         },
         addTodo() {
-            this.note.info.todos.unshift({ txt: '', isDone: false });
+            this.note.info.todos.unshift({ txt: '', isDone: false, id: utilService.makeId });
         },
         deleteLine(idx){
             this.note.info.todos.splice(idx, 1)

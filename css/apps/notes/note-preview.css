@@ -1,7 +1,4 @@
 .note-preview{
-    grid-column: span 2;
-    /* grid-row: span 3; */
-    border-radius: 1px;
     font-size: 1.5rem;
     margin: 10px;
     background-color: #fff5be;
@@ -12,10 +9,12 @@
     max-height: 400px;
     width:250px;
     text-align: center;
-    text-overflow: ellipsis;
     word-wrap: break-word;
 }
 
+.note-preview p{
+    text-overflow: ellipsis;
+}
 .note-preview:hover{
     box-shadow:  0 0 5px 0 black;
 }

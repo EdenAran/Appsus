@@ -7,7 +7,7 @@ export default {
         <section class="add-note " v-if="note">
             <form class="flex a-center s-between" @submit.prevent="saveNote">
                 <input type="text" :placeholder="textToShow" v-model="noteInput" />
-                <div class="options flex s-evenly">
+                <div class="options flex s-between">
                     <i class="fas fa-font pointer" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
                     <i class="fas fa-image pointer" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
                     <i class="fab fa-youtube pointer" @click="getBlankNote('noteVideo')" :class="inputClass('noteVideo')"></i>
@@ -35,7 +35,7 @@ export default {
             if (this.note.type === 'noteTodos') {
                 const todos = this.noteInput.split(',')
                 for (let i = 0; i < todos.length; i++) {
-                    this.note.info.todos.push({ txt: todos[i], isDone: false })
+                    this.note.info.todos.push({ txt: todos[i], isDone: false, id: utilService.makeId })
                 }
                 console.log(this.note.info)
             }

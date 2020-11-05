@@ -29,6 +29,7 @@ export default {
         },
         togglePinNote(){
             this.note.isPinned = !this.note.isPinned;
+            noteService.saveNote(this.note)
         },
         emitEdit() {
             this.$emit('edit', this.note);
