@@ -18,6 +18,7 @@
 @import './apps/emails/email-filter.css';
 @import './apps/emails/email-status.css';
 @import './apps/emails/email-compose.css';
+@import './apps/emails/email-details.css';
 
 *{
     box-sizing: border-box;

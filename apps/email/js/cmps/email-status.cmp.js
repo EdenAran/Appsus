@@ -3,8 +3,9 @@ import { emailService } from '../services/email.service.js';
 
 export default {
     template: `
-        <section class="email-status">
-            <h3 >inbox <span v-if="numOfUnread">({{numOfUnread}})</span></h3>
+        <section class="email-status flex s-around">
+            <h3 class="pointer" @click="move('inbox')">inbox <span v-if="numOfUnread">({{numOfUnread}})</span></h3>
+            <h3 class="pointer" @click="move('sent')">sent</h3>
             <h3 v-if="numOfSelect">
                 <i class="fas fa-trash" @click="removeSelected"></i>
             </h3>
@@ -29,6 +30,9 @@ export default {
                     eventBus.$on('selectChanged', () => this.loadNumOf());
                     console.log('All selected emails have been successfully deleted!');
                 });
+        },
+        move(to) {
+            this.$router.push(`/email/${to}`);
         }
     },
     mounted() {
