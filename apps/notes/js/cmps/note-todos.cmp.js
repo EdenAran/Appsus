@@ -19,6 +19,7 @@ export default {
                 <input class="title" type="text" v-model="info.title">
                 <i class="far fa-plus-square" @click="emitAddTodo"></i>
                 <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" >
+                <i class="fas fa-trash"></i>
                 <i class="far fa-check-square" @click="markDoneTodo(idx)"></i>
                     <input type="text" v-model="todo.txt">
                 </li>
@@ -71,7 +72,7 @@ export default {
 
             this.toggleIsDone(idx)
         },
-        emitAddTodo(){
+        emitAddTodo() {
             this.$emit('addTodo')
         }
     },
