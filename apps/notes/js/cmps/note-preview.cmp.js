@@ -10,8 +10,8 @@ export default {
     props: ['note'],
     template: `
     <section class="note-preview" :style="noteStyle">
+        <component :is="note.type" :info="note.info" :isEdit="false"/>
         <!-- <h3>{{note.info.title}}</h3> -->
-        <component :is="note.type" :info="note.info"/>
         <!-- <template v-if="note.type === 'noteImg'">
             <img :src="note.info.url" alt="" >
             <i class="icon fas fa-image pointer"></i>

@@ -1,7 +1,49 @@
 .note-edit{
     position: absolute;
     width:500px;
-    height:800px;
+    height:600px;
     background-color: #ffffff;
-    top: calc(50% - 400px);
+    top: calc(50% - 300px);
+    padding: 25px;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 5px 0 black, inset 0 0 2px 0 black;
+    border-radius: 5px;
+}
+
+.note-edit button{
+    margin: 20px;
+    font-size: 1em
+}
+
+.note-edit input{
+    width:100%;
+    padding: 10px;
+    font-size: 1em;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.note-edit input.title{
+    width:100%;
+    font-size: 1.3em;
+}
+
+.note-edit textarea{
+    padding: 10px;
+    font-size:1em;
+}
+
+.note-edit iframe{
+    width: 400px;
+    height: 250px;
+}
+
+.note-edit ul input{
+    font-size: unset;
+    padding: 5px;
+    border: none;
+    margin: 0;
+    background-color: transparent;
+    text-align: unset;
 }

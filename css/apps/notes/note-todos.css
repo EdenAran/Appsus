@@ -1,0 +1,47 @@
+.note-todos{
+}
+
+.note-todos ul{
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 500px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.note-todos li{
+    position: relative;
+    text-align: left;
+    padding-inline-start: 10px;
+    padding-block-end: 10px;
+    margin: 5px 0;
+    border-bottom: 1px solid rgba(126, 126, 126, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+.note-todos li:hover{
+   background-color: rgba(105, 105, 105, 0.13)
+}
+
+.note-todos li i{
+    font-size: 0.8em;
+    margin-inline-end: 10px;
+}
+
+.note-todos .done,
+.note-todos .done input{
+    color: rgb(153, 153, 153);
+}
+
+.note-todos hr{
+    margin: 25px -20px;
+    border-color: black;
+}
+
+.note-todos .done span{
+    color: unset;
+    position: absolute;
+    right: 10px;
+}

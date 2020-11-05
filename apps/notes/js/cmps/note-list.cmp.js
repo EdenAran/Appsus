@@ -21,7 +21,6 @@ export default {
     },
     methods: {
         editNote(note){
-            console.log(note);
             this.noteToEdit = note;
         },
         closeEdit(){
