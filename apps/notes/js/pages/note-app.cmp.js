@@ -8,7 +8,7 @@ export default {
     template: `
     <section class="note-app">
         <header>
-            <note-header />
+            <note-header @search="updateFilter"/>
         </header>
         <main>
             <add-note />
@@ -22,9 +22,15 @@ export default {
             filterBy: ''
         }
     },
-    computed:{
-        notesToShow(){
-            return this.notes;
+    computed: {
+        notesToShow() {
+            if (!this.filterBy) return this.notes;
+            return this.notes.filter(note =>note.info.title.toLowerCase().includes(this.filterBy));
+        }
+    },
+    methods: {
+        updateFilter(searchTerm) {
+            this.filterBy = searchTerm.toLowerCase();
         }
     },
     created() {
