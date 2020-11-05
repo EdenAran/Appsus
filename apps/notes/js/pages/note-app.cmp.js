@@ -6,18 +6,19 @@ import addNote from '../cmps/add-note.cmp.js';
 
 export default {
     template: `
-    <section class="note-app">
-        <header>
-            <note-header @search="updateFilter"/>
-        </header>
-        <main>
-            <add-note />
-            <note-list :notes="notesToShow" />
-        </main>
-    </section>
+        <section class="note-app">
+            <header>
+                <note-header @search="updateFilter"/>
+            </header>
+            <main>
+                <add-note />
+                <note-list :notes="notesToShow" />
+            </main>
+        </section>
     `,
     data() {
         return {
+            sentData: null,
             notes: null,
             filterBy: ''
         }
@@ -25,7 +26,7 @@ export default {
     computed: {
         notesToShow() {
             if (!this.filterBy) return this.notes;
-            return this.notes.filter(note =>note.info.title.toLowerCase().includes(this.filterBy));
+            return this.notes.filter(note => note.info.title.toLowerCase().includes(this.filterBy));
         }
     },
     methods: {
@@ -36,6 +37,8 @@ export default {
     created() {
         noteService.query()
             .then(notes => this.notes = notes)
+        // const noteData = this.$route.params;
+        // console.log(noteData)  //add support for income mail
     },
     components: {
         noteHeader,

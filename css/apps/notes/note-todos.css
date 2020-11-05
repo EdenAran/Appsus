@@ -32,6 +32,10 @@
     color: rgb(153, 153, 153);
 }
 
+.note-todos .done input{
+    width:65%
+}
+
 .note-todos hr{
     margin: 25px -20px;
     border-color: black;

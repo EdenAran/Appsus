@@ -2,8 +2,7 @@
 export default {
     template: `
         <section class="note-controlls">
-            <i class="fas fa-thumbtack"></i>
-            <i class="fas fa-check"></i>
+            <i class="fas fa-thumbtack" @click="emitPinned"></i>
             <i class="fas fa-palette" @click="toggleBgcSelect">
                 <div v-show="showBgc" class="color-picker">
                     <button @click="emitChangeBgc('#fefefe')" class="color-option color-1"></button>
@@ -17,6 +16,7 @@ export default {
             </i>
             <i class="fas fa-edit" @click="emitEdit"></i>
             <i class="fas fa-trash-alt" @click="emitDelete"></i>
+            <i class="far fa-envelope"></i>
         </section>
     `,
     data() {
@@ -33,6 +33,9 @@ export default {
         },
         emitEdit(){
             this.$emit('edit')
+        },
+        emitPinned(){
+            this.$emit('pinned')
         },
         toggleBgcSelect() {
             this.showBgc = !this.showBgc;

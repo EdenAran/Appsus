@@ -5,6 +5,7 @@
 @import './apps/notes/note-header.css';
 @import './apps/notes/note-app.css';
 @import './apps/notes/add-note.css';
+@import './apps/notes/note-list.css';
 @import './apps/notes/note-preview.css';
 @import './apps/notes/note-img.css';
 @import './apps/notes/note-todos.css';

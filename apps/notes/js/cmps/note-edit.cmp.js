@@ -10,7 +10,7 @@ export default {
     template: `
         <section class="note-edit" :style="noteStyle">
             <form @submit.prevent="saveEdit">
-                <component :is="note.type" :info="note.info" :isEdit="true" @addTodo="addTodo"/>
+                <component :is="note.type" :info="note.info" :isEdit="true" @addTodo="addTodo" @deleteLine="deleteLine"/>
                 <button class="pointer" >Save and Close</button>
             </form>
         </section>
@@ -25,6 +25,9 @@ export default {
         },
         addTodo() {
             this.note.info.todos.unshift({ txt: '', isDone: false });
+        },
+        deleteLine(idx){
+            this.note.info.todos.splice(idx, 1)
         }
     },
     computed: {
