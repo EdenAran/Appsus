@@ -4,17 +4,9 @@ export default {
     <section class="main-header flex s-between al-center">
         <h1>
            <router-link to="/">Logo</router-link>
-<<<<<<< HEAD
-       </h1>
-        <nav class="main-nav">
-            <router-link to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
-            <router-link to="/note">Notes</router-link>
-            <router-link to="/email/inbox">Emails</router-link>
-=======
         </h1>
-        <i class="toggle-menu fas fa-bars" :class="toggleClass" @click="toggleMenu"></i>
         <nav class="main-nav flex" :class="menuClass">
+            <i class="toggle-menu fas fa-bars" :class="toggleClass" @click="toggleMenu"></i>
             <router-link to="/"  v-show="showMenu">Home</router-link>
             <router-link to="/about"  v-show="showMenu">About</router-link>
             <a class="app-nav-container pointer" @click="toggleShowApps"  v-show="showMenu">Apps
@@ -24,7 +16,6 @@ export default {
                 </div>
             </a>
             <!-- <router-link to="/email/list">Emails</router-link> -->
->>>>>>> 829f5e596e7c6377a4ee115e5d7a7854f7cbda4b
         </nav>
     </section>
     `,
