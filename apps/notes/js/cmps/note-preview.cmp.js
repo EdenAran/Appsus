@@ -9,11 +9,11 @@ import { noteService } from '../services/note.service.js'
 export default {
     props: ['note'],
     template: `
-    <section class="note-preview" :style="noteStyle">
-        <component :is="note.type" :info="note.info" :isEdit="false" />
-        <note-controlls @delete="deleteNote" @changeBgc="changeBgc" @edit="emitEdit"/>
-
-    </section>
+        <section class="note-preview" :style="noteStyle">
+            <i class="pinIcon fas fa-thumbtack" v-if="note.isPinned" @click="togglePinNote"></i>
+            <component :is="note.type" :info="note.info" :isEdit="false" />
+            <note-controlls @delete="deleteNote" @changeBgc="changeBgc" @edit="emitEdit" @pinned="togglePinNote"/>
+        </section>
     `,
     data() {
         return {
@@ -26,6 +26,9 @@ export default {
         },
         deleteNote() {
             noteService.deleteNote(this.note.id);
+        },
+        togglePinNote(){
+            this.note.isPinned = !this.note.isPinned;
         },
         emitEdit() {
             this.$emit('edit', this.note);
