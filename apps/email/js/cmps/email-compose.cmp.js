@@ -7,8 +7,7 @@ export default {
                 <input type="text" placeholder="Email Subject" v-model="newEmail.subject" />
                 <textarea v-model="newEmail.body" placeholder="Enter your email content..."></textarea>
                 <button>Send</button>
-            </form>
-            
+            </form>            
             <button @click="back">Back</button>
         </section>
     `,
@@ -27,11 +26,11 @@ export default {
                 })
                 .catch(() => {
                     console.log('Failed to send email!');
-                    // this.$router.push('/email');
+                    this.$router.push('/email/inbox');
                 });
         },
         back() {
-            this.$emit('back');
+            this.$router.go(-1);
         }
     },
     created() {

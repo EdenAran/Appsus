@@ -18,8 +18,17 @@ i {
     color: rgb(143, 139, 126);
 }
 
-table {
+.email-info {
     width: 700px;
+}
+
+.expand {
+    display: flex;
+    flex-direction: column;
+}
+
+.expand > div {
+    padding: 10px;
 }
 
 .email-from, .marks i {

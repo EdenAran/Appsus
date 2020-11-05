@@ -10,17 +10,15 @@ export default {
                 <i :class="isSelectIcon" @click="updateProperty('isSelect')"></i>
                 <i :class="isStarIcon" @click="updateProperty('isStar')"></i>
             </div>
-            <table>
-                <tr>
-                    <td class="email-from"><h3>{{email.from}}</h3></td>
-                    <td class="email-text">
-                        <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
-                    </td>
-                    <td class="email-send-at"><h3>{{sendAtToDisplay}}</h3></td>
-                </tr>
-            </table>
+            <section class="email-info" :class="{flex: !isExpand, expand: isExpand}">
+                <div class="email-from"><h3>{{email.from}}</h3></div>
+                <div class="email-text">
+                    <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
+                </div>
+                <div class="email-send-at"><h3>{{sendAtToDisplay}}</h3></div>
+            </section>
             <div class="actions">
-                <i class="fas fa-expand" @click="emitExpand"></i>
+                <i class="fas fa-expand" @click.stop="expand"></i>
                 <i class="fas fa-trash" @click="removeEmail"></i>
                 <i :class="isReadIcon" @click="updateProperty('isRead')"></i>
                 <i class="fas fa-sticky-note"></i>
@@ -55,9 +53,8 @@ export default {
         }
     },
     methods: {
-        emitExpand() {
-            // this.$router.push(`/email/${this.email.id}`);
-            this.$emit('expand');
+        expand() {
+            this.$router.push(`details/${this.email.id}`);
         },
         updateProperty(property) {
             emailService.updateProperty(this.email.id, property)

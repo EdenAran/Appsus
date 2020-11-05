@@ -1,18 +1,18 @@
 .email-list {
-    background-color: rgba(255, 255, 255, .6);
+    background-color: rgb(209, 206, 214, .6);
     max-width: 1000px;
     margin: 0 auto;
     padding-top: 10px;
 }
 
 .email-list li:first-of-type {
-    border-top: 5px solid #F3CECE;
+    border-top: 5px solid #F4F4F6;
 }
 
-.email-list li:not(:last-of-type) {
-    border-bottom: 1px solid #DDDDE3;
+.email-list .email-preview:not(:last-of-type) {
+    border-bottom: 10px solid #DDDDE3;
 }
 
 .email-list .unread {
-    background-color: rgba(255, 255, 255, .6);
+    background-color: rgb(209, 206, 214);
 }

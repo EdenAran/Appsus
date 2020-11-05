@@ -5,15 +5,14 @@ import emailStatus from './email-status.cmp.js';
 import emailDetails from './email-details.cmp.js';
 
 export default {
-    // props: ['emails'],
     template: `
         <section class="email-list">
             <email-filter @filtered="setFilter" />
             <email-status />
             <ul class="clean-list">
-                <li v-for="email in emails" :key="email.id">
-                    <email-preview v-if="!email.isExpand" :email="email" :isExpand="false" @expand="updateProperty(email.id, 'isExpand')" />
-                    <email-preview v-else :email="email" :isExpand="true" @expand="updateProperty(email.id, 'isExpand')" />
+                <li v-for="email in emails" :key="email.id" class="pointer">
+                    <email-preview v-if="!email.isExpand" :email="email" :isExpand="false" @click.native="updateProperty(email.id, 'isExpand')" />
+                    <email-preview v-else :email="email" :isExpand="true" @click.native="updateProperty(email.id, 'isExpand')" />
                     <!-- <email-details v-else :email="email" :isExpand="true" @expand="updateProperty(email.id, 'isExpand')" /> -->
                 </li>
             </ul>
