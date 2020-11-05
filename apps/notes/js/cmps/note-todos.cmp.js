@@ -19,13 +19,14 @@ export default {
                 <input class="title" type="text" v-model="info.title">
                 <i class="far fa-plus-square" @click="emitAddTodo"></i>
                 <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" >
-                <i class="fas fa-trash"></i>
-                <i class="far fa-check-square" @click="markDoneTodo(idx)"></i>
+                    <i class="fas fa-trash" @click="emitDelete"></i>
+                    <i class="far fa-check-square" @click="markDoneTodo(idx)"></i>
                     <input type="text" v-model="todo.txt">
                 </li>
-                <!-- <p class="seperator"></p> -->
-                <hr><div></div>
+            <!-- <p class="seperator"></p> -->
+                <hr>
                 <li class="done" v-for="(todo, idx) in this.info.todos" v-if="isTodoDone(idx)" >
+                    <i class="fas fa-trash" @click="emitDelete"></i>
                     <i class="fas fa-check-square" @click="toggleIsDone(idx)"></i>
                     <input type="text" v-model="todo.txt">
                     <span class="doneAt">{{doneDateToDisplay(idx)}}</span>
@@ -74,6 +75,9 @@ export default {
         },
         emitAddTodo() {
             this.$emit('addTodo')
+        },
+        emitDelete(){
+            this.$emit('delete')
         }
     },
     created() {
