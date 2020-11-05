@@ -9,10 +9,16 @@ export default {
             <ul class="clean-list">
                 <li v-for="email in emails" :key="email.id">
                     <email-preview :email="email" />
+                    <!-- <email-preview :email="email" @updateUnread="updateEmailStatus" /> -->
                 </li>
             </ul>
         </section>
     `,
+    // methoda: {
+    //     updateEmailStatus() {
+
+    //     }
+    // },
     components: {
         emailPreview,
         emailStatus

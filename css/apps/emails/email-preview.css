@@ -1,0 +1,63 @@
+i {
+    cursor: pointer;
+}
+
+.email-preview {
+    padding: 10px 20px;
+}
+
+.marks, .actions {
+    padding: 0 20px;
+}
+
+.marks i, .actions i {
+    margin: 0 5px;
+}
+
+.actions i {
+    color: rgb(143, 139, 126);
+}
+
+table {
+    width: 700px;
+}
+
+.email-from, .marks i {
+    width: 25%;
+    color: #39393a;
+}
+
+/* ? */
+.star {
+    color: #ffe58e;
+}
+
+.unread .email-from h3 {
+    font-weight: 600;
+}
+
+.email-text {
+    width: 67%;
+    font-size: .9em;
+}
+
+.email-text .email-subject {
+    color: #202124;
+}
+
+.unread .email-subject {
+    font-weight: 500;
+}
+.email-text .email-body {
+    color: #62666a;
+}
+
+.email-send-at {
+    width: 8%;
+    font-size: .7em;
+    color: rgb(143, 139, 126);
+}
+
+.unread .email-send-at h3 {
+    color: #39393a;
+}

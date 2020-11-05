@@ -4,6 +4,7 @@ export const utilService = {
     makeId,
     makeLorem,
     makeRandomDate,
+    getName,
     getRandomIntInclusive,
     saveToStorage,
     loadFromStorage,
@@ -33,6 +34,11 @@ function makeRandomDate() {
     const start = new Date(2020, 0, 1);
     const end = new Date();
     return (new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))).getTime();
+}
+
+function getName() {
+    const names = ['Bonnie Joyner', 'Vicky Kaspar', 'Dung Bert', 'Kingi Lenz', 'Kerrissa Burkhardt', 'Mairan Erica', 'Gautam Bradley', 'Mitchell Osborne', 'Rene Mergel', 'Jayashree Najanick'];
+    return names[getRandomIntInclusive(0, 9)];
 }
 
 function getRandomIntInclusive(min, max) {

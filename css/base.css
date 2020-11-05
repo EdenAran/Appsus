@@ -1,6 +1,7 @@
 @import './fonts.css';
 @import './helpers.css';
 @import './app-header.css';
+/* notes */
 @import './apps/notes/note-header.css';
 @import './apps/notes/note-app.css';
 @import './apps/notes/add-note.css';
@@ -9,6 +10,12 @@
 @import './apps/notes/img-note.css';
 @import './apps/notes/todos-note.css';
 @import './apps/notes/note-controlls.css';
+/* email */
+@import './apps/emails/email-app.css';
+@import './apps/emails/email-preview.css';
+@import './apps/emails/email-list.css';
+@import './apps/emails/email-filter.css';
+@import './apps/emails/email-status.css';
 
 *{
     box-sizing: border-box;
@@ -25,4 +32,5 @@ body{
 
 h1,h2,h3,h4,h5,h6{
     margin:0;
+    font-weight: 400;
 }

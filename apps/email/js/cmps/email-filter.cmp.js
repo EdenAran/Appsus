@@ -1,9 +1,9 @@
 export default {
     template: `
-        <section class="email-filter">
-            <h2>Email Filter</h2>
+        <section class="email-filter flex just-center a-center">
             <form @submit.prevent="emitFilter">
-                <input type="text" placeholder="Email Subject" v-model="filterBy.byTxt" />
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search mail" v-model="filterBy.byTxt" />
                 <select v-model="filterBy.byRead">
                     <option value="all">All</option>
                     <option value="read">Read</option>
