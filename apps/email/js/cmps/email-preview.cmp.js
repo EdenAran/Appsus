@@ -22,7 +22,7 @@ export default {
                 <i class="fas fa-expand" @click.stop="expand"></i>
                 <i class="fas fa-trash" @click="removeEmail"></i>
                 <i :class="isReadIcon" @click="updateProperty('isRead')"></i>
-                <i class="fas fa-sticky-note"></i>
+                <i class="fas fa-sticky-note" @click="sendToNote"></i>
             </div>
         </section>
     `,
@@ -72,6 +72,11 @@ export default {
                     eventBus.$emit('unreadChanged', 'selectChanged');
                     console.log('Email deleted successfully');
                 });
+        },
+        sendToNote(){
+            const title = this.email.subject;
+            const txt = this.email.body;
+            this.$router.push(`/note/${title}/${txt}`);
         }
     }
 };

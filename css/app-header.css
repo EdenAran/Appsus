@@ -21,6 +21,10 @@
     padding: 80px 0 0;
 }
 
+.main-nav.shrink{
+    position: absolute;
+}
+
 
 .main-nav a{
     color: inherit;
@@ -58,7 +62,6 @@
 
 .app-nav a:hover{
     opacity: 1;
-    
 }
 
 .toggle-menu{

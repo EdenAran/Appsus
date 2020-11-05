@@ -34,5 +34,12 @@ export default {
     },
     created() {
         this.newEmail = emailService.getEmptyEmail();
+    },
+    watch: {
+        '$route.params'(emailInfo) {
+            this.newEmail = emailService.getEmptyEmail()
+            this.newEmail.subject = emailInfo.emailTitle;
+            this.newEmail.body = emailInfo.emailTxt;
+        }
     }
 };

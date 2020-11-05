@@ -4,6 +4,7 @@
     bottom: 3px;
     right: 5px;
     display: none;
+    z-index: 3;
 }
 
 .note-controlls i {

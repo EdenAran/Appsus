@@ -12,7 +12,7 @@ export default {
         <section class="note-preview" :style="noteStyle">
             <i class="pinIcon fas fa-thumbtack" v-if="note.isPinned" @click="togglePinNote"></i>
             <component :is="note.type" :info="note.info" :isEdit="false" />
-            <note-controlls @delete="deleteNote" @changeBgc="changeBgc" @edit="emitEdit" @pinned="togglePinNote"/>
+            <note-controlls @delete="deleteNote" @changeBgc="changeBgc" @edit="emitEdit" @pinned="togglePinNote" @send="sendAsEmail"/>
         </section>
     `,
     data() {
@@ -27,9 +27,14 @@ export default {
         deleteNote() {
             noteService.deleteNote(this.note.id);
         },
-        togglePinNote(){
+        togglePinNote() {
             this.note.isPinned = !this.note.isPinned;
             noteService.saveNote(this.note)
+        },
+        sendAsEmail() {
+            const title = this.note.info.title;
+            const txt = this.note.info.txt;
+            this.$router.push(`/email/compose/${title}/${txt}`);
         },
         emitEdit() {
             this.$emit('edit', this.note);

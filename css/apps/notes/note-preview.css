@@ -10,10 +10,12 @@
     width:250px;
     text-align: center;
     word-wrap: break-word;
+    overflow: hidden;
 }
 
 .note-preview p{
-    text-overflow: ellipsis;
+    height:100%;
+    overflow: hidden;
 }
 .note-preview:hover{
     box-shadow:  0 0 5px 0 black;

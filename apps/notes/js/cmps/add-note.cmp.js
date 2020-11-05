@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         getBlankNote(noteType) {
-            noteService.getBlankNoteInfo(noteType)
+            noteService.getBlankNote(noteType)
                 .then(note => {
                     this.note = utilService.deepCopy(note)
                 })
@@ -74,7 +74,7 @@ export default {
         }
     },
     created() {
-        noteService.getBlankNoteInfo('noteTxt')
+        noteService.getBlankNote('noteTxt')
             .then(note => {
                 this.note = utilService.deepCopy(note)
                 
