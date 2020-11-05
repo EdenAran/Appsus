@@ -31,11 +31,7 @@ export default {
         },
         toggleMenu() {
             this.showMenu = !this.showMenu;
-            console.log(this.showMenu)
-            console.log(this.showApps)
-            if(this.showApps) {
-                console.log('this.showApps:', this.showApps)
-                this.showApps = false;}
+            if(this.showApps) this.showApps = false;
         },
         closeMenus() {
             this.showApps = false;
