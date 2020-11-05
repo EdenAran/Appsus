@@ -3,43 +3,75 @@ import imgNote from './img-note.cmp.js'
 import todosNote from './todos-note.cmp.js'
 import vidNote from './vid-note.cmp.js'
 import noteControlls from './note-controlls.cmp.js'
+import { noteService } from '../services/note.service.js'
+
 
 export default {
-    props: ['id','noteInfo','type','bgColor'],
+    props: ['note'],
     template: `
     <section class="note-preview" :style="noteStyle">
-        <text-note :info="noteInfo" v-if="type === 'noteTxt'"></text-note>
-        <img-note :info="noteInfo" v-if="type === 'noteImg'"></img-note>
-        <todos-note :info="noteInfo" v-if="type === 'noteTodos'"></todos-note>
-        <vid-note :info="noteInfo" v-if="type === 'noteVideo'"></vid-note>
-        <note-controlls @delete="emitDelete" @changeBgc="emitChangeBgc"/>
+        <h3>{{note.info.title}}</h3>
+
+        <template v-if="note.type === 'noteImg'">
+            <img :src="note.info.url" alt="" >
+            <i class="icon fas fa-image pointer"></i>
+        </template>
+
+        <template v-if="note.type === 'noteVideo'">
+            <iframe :src="note.info.url"></iframe>
+            <i class="icon fab fa-youtube"></i>
+        </template>
+
+        <template v-if="note.type === 'noteTxt'">
+            <p>{{note.info.txt}}</p>
+            <i class="icon fas fa-font pointer"></i>
+        </template>
+
+        <template v-if="note.type === 'noteTodos'">
+            <ul>
+                <li  v-for="todo in todosToDisplay">
+                    {{todo.txt}}
+                </li>
+                <i class="icon fas fa-list-ul pointer"></i>
+            </ul>
+        </template>
+
+        <note-controlls @delete="deleteNote" @changeBgc="changeBgc" @edit="emitEdit"/>
+
     </section>
     `,
-    data(){
-        return{
-
+    data() {
+        return {
         }
     },
-    methods:{
-        emitDelete(){
-            this.$emit('delete')
+    methods: {
+        changeBgc(color) {
+            this.note.style.backgroundColor = color
+            noteService.saveNote(this.note)
         },
-        emitChangeBgc(color){
-            this.$emit('changeBgc', color, this.id)
+        deleteNote() {
+            noteService.deleteNote(this.note.id);
+        },
+        emitEdit() {
+            this.$emit('edit', this.note)
         }
+
     },
-    computed:{
-        noteStyle(){
-            return{
-                backgroundColor: this.bgColor
+    computed: {
+        noteStyle() {
+            return {
+                backgroundColor: this.note.style.backgroundColor
             }
-        }
+        },
+        todosToDisplay() {
+            return this.note.info.todos.slice(0,5)
+        },
     },
     components: {
         textNote,
         imgNote,
         todosNote,
         vidNote,
-        noteControlls
+        noteControlls,
     }
 }

@@ -10,6 +10,7 @@
 @import './apps/notes/img-note.css';
 @import './apps/notes/todos-note.css';
 @import './apps/notes/note-controlls.css';
+@import './apps/notes/note-edit.css';
 /* email */
 @import './apps/emails/email-app.css';
 @import './apps/emails/email-preview.css';
