@@ -10,15 +10,16 @@ export default {
             <email-status />
             <ul class="clean-list">
                 <li v-for="email in emails" :key="email.id">
-                    <email-preview v-if="!email.isClick" :email="email" @click="updateProperty(email.id, 'isClick')" />
-                    <email-details v-else :email="email" @expand="updateProperty(email.id, 'isClick')" />
+                    <email-preview v-if="!email.isExpand" :email="email" :isExpand="false" @expand="updateProperty(email.id, 'isExpand')" />
+                    <email-preview v-else :email="email" :isExpand="true" @expand="updateProperty(email.id, 'isExpand')" />
+                    <!-- <email-details v-else :email="email" :isExpand="true" @expand="updateProperty(email.id, 'isExpand')" /> -->
                 </li>
             </ul>
         </section>
     `,
     data() {
         return {
-            isClick: false
+            isExpand: false
         };
     },
     methods: {

@@ -6,7 +6,7 @@
 }
 
 .email-list li:first-of-type {
-    border-top: 5px solid #F4C4C3;
+    border-top: 5px solid #F3CECE;
 }
 
 .email-list li:not(:last-of-type) {

@@ -3,7 +3,7 @@ import { eventBus } from '../../../../js/services/event-bus.service.js';
 import longText from '../../../../js/cmps/long-text.util-cmp.js';
 
 export default {
-    props: ['email'],
+    props: ['email', 'isExpand'],
     template: `
         <section class="email-preview flex s-between" :class="{ unread: !email.isRead }">
             <div class="marks">
@@ -20,7 +20,7 @@ export default {
                 </tr>
             </table>
             <div class="actions">
-                <i class="fas fa-expand" @click="emitClick"></i>
+                <i class="fas fa-expand" @click="emitExpand"></i>
                 <i class="fas fa-trash" @click="removeEmail"></i>
                 <i :class="isReadIcon" @click="updateProperty('isRead')"></i>
                 <i class="fas fa-sticky-note"></i>
@@ -38,15 +38,15 @@ export default {
             return this.email.isSelect ? 'fas fa-check-square' : 'far fa-square';
         },
         bodyToDisplay() {
-            if (this.email.body.length > 55) return `${this.email.body.substr(0, 55)}...`;
+            if (!this.isExpand && this.email.body.length > 55) return `${this.email.body.substr(0, 55)}...`;
             return this.email.body;
         },
         sendAtToDisplay() {
             const d = new Date(this.email.sendAt);
             if (d.getFullYear() === new Date().getFullYear() && d.getMonth() === new Date().getMonth() && d.getDate() === new Date().getDate()) {
-                const hours = (d.getHours() + '').padStart(2, 0);
-                const minutes = (d.getMinutes() + '').padStart(2, 0);
-                const ampm = (d.getHours() >= 12) ? "PM" : "AM";
+                const hours = (`${d.getHours()}`).padStart(2, 0);
+                const minutes = (`${d.getMinutes()}`).padStart(2, 0);
+                const ampm = (d.getHours() >= 12) ? 'PM' : 'AM';
                 return `${hours}:${minutes} ${ampm}`;
             } else {
                 const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -55,9 +55,9 @@ export default {
         }
     },
     methods: {
-        emitClick() {
+        emitExpand() {
             // this.$router.push(`/email/${this.email.id}`);
-            this.$emit('click');
+            this.$emit('expand');
         },
         updateProperty(property) {
             emailService.updateProperty(this.email.id, property)

@@ -1,5 +1,14 @@
 .email-app {
-    /* background-color: #F3CECE; */
-    background-color: #F4C4C3;
     padding: 10px;
+    background-color: #F3CECE;
+}
+
+.email-app header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.email-app main {
+
 }

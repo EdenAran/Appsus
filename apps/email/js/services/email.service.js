@@ -47,7 +47,7 @@ function saveEmail(email) {
 function updateProperty(emailId, property) {
     const idx = gEmails.findIndex(email => email.id === emailId);
     gEmails[idx][property] = !gEmails[idx][property];
-    if (property !== 'isSelect') utilService.saveToStorage('emailsDb', gEmails);
+    if (property !== 'isSelect' && property !== 'isExpand') utilService.saveToStorage('emailsDb', gEmails);
     return Promise.resolve(gEmails[idx]);
 }
 
@@ -95,7 +95,7 @@ function _createEmail(subject, body) {
         isRead: Math.random() > 0.5,
         isStar: Math.random() > 0.5,
         isSelect: false,
-        isClick: false,
+        isExpand: false,
         sendAt: utilService.makeRandomDate()
     }
 }
