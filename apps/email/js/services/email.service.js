@@ -13,10 +13,15 @@ export const emailService = {
     getEmptyEmail
 };
 
-const gEmails = _createEmails();
+var gEmails = _createEmails();
+var gSents = [];
 
 function query() {
     return Promise.resolve(gEmails);
+}
+
+function fetSends() {
+    return Promise.resolve(gSents);
 }
 
 function removeEmail(emailId) {
@@ -37,10 +42,8 @@ function removeSelected() {
 }
 
 function saveEmail(email) {
-    const emailIdx = gEmails.findIndex(currEmail => currEmail.id === email.id);
-    if (emailIdx === -1) gEmails.unshift(email);
-    else gEmails.splice(emailIdx, 1, email);
-    utilService.saveToStorage('emailsDb', gEmails);
+    gSents.unshift(email);
+    utilService.saveToStorage('sentsDb', gSents);
     return Promise.resolve(email);
 }
 

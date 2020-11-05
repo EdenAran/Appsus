@@ -21,11 +21,11 @@ export default {
             emailService.saveEmail(this.newEmail)
                 .then(email => {
                     console.log('Email send successfully!');
-                    this.$router.push(`details/${email.id}`);
+                    // this.$router.push(`details/${email.id}`);
                 })
                 .catch(() => {
                     console.log('Failed to send email!');
-                    this.$router.push('/email/inbox');
+                    this.$router.push('/email/sent');
                 });
         },
         back() {
