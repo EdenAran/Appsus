@@ -1,7 +1,7 @@
-import textNote from './text-note.cmp.js'
-import imgNote from './img-note.cmp.js'
-import todosNote from './todos-note.cmp.js'
-import vidNote from './vid-note.cmp.js'
+import noteTxt from './note-txt.cmp.js'
+import noteImg from './note-img.cmp.js'
+import noteTodos from './note-todos.cmp.js'
+import noteVideo from './note-video.cmp.js'
 import noteControlls from './note-controlls.cmp.js'
 import { noteService } from '../services/note.service.js'
 
@@ -10,9 +10,9 @@ export default {
     props: ['note'],
     template: `
     <section class="note-preview" :style="noteStyle">
-        <h3>{{note.info.title}}</h3>
-
-        <template v-if="note.type === 'noteImg'">
+        <!-- <h3>{{note.info.title}}</h3> -->
+        <component :is="note.type" :info="note.info"/>
+        <!-- <template v-if="note.type === 'noteImg'">
             <img :src="note.info.url" alt="" >
             <i class="icon fas fa-image pointer"></i>
         </template>
@@ -34,7 +34,7 @@ export default {
                 </li>
                 <i class="icon fas fa-list-ul pointer"></i>
             </ul>
-        </template>
+        </template> -->
 
         <note-controlls @delete="deleteNote" @changeBgc="changeBgc" @edit="emitEdit"/>
 
@@ -64,14 +64,14 @@ export default {
             }
         },
         todosToDisplay() {
-            return this.note.info.todos.slice(0,5)
+            return this.note.info.todos.slice(0, 5)
         },
     },
     components: {
-        textNote,
-        imgNote,
-        todosNote,
-        vidNote,
+        noteTxt,
+        noteImg,
+        noteTodos,
+        noteVideo,
         noteControlls,
     }
 }
