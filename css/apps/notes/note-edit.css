@@ -22,7 +22,6 @@
     font-size: 1em;
     text-align: center;
     margin: 20px 0;
-    /* outline: 1px solid black; */
     background-color: transparent;
 }
 
@@ -38,6 +37,7 @@
 .note-edit textarea {
     padding: 10px;
     font-size: 1em;
+    background-color: transparent;
 }
 
 .note-edit iframe {
