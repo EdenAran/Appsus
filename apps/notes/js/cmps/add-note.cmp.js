@@ -77,6 +77,7 @@ export default {
         noteService.getBlankNoteInfo('noteTxt')
             .then(note => {
                 this.note = utilService.deepCopy(note)
+                
             })
     }
 }

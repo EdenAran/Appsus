@@ -1,5 +1,5 @@
 .note-header {
-    padding: 35px 60px;
+    padding: 10px 60px;
     background-color: #D1CED6;
     position: relative;
     font-size: 2rem;
@@ -8,7 +8,7 @@
 .note-header input {
     padding: 10px 30px 10px 15px;
     width: 400px;
-    font-size: 0.8em;
+    font-size: 0.6em;
 }
 
 .note-header .search{

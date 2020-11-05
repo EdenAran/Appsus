@@ -5,8 +5,8 @@ export default {
         <h1>
            <router-link to="/">Logo</router-link>
         </h1>
-        <i class="toggle-menu fas fa-bars" :class="toggleClass" @click="toggleMenu"></i>
         <nav class="main-nav flex" :class="menuClass">
+            <i class="toggle-menu fas fa-bars" :class="toggleClass" @click="toggleMenu"></i>
             <router-link to="/"  v-show="showMenu">Home</router-link>
             <router-link to="/about"  v-show="showMenu">About</router-link>
             <a class="app-nav-container pointer" @click="toggleShowApps"  v-show="showMenu">Apps

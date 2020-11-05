@@ -36,7 +36,7 @@ const routes = [
     },
     {
         path: '/note',
-        component: noteApp
+        component: noteApp,
     }
 ]
 
