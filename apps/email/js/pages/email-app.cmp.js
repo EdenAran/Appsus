@@ -8,7 +8,6 @@ export default {
         <section class="email-app">
             <button @click="isCompose = true">Compose</button>
             <email-filter @filtered="setFilter" />
-            
             <email-list v-if="!isCompose" :emails="emailsToShow" />
             <email-compose v-else @send="isCompose = false" @back="isCompose = false" />
         </section>

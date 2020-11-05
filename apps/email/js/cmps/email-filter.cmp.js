@@ -4,7 +4,7 @@ export default {
             <form @submit.prevent="emitFilter">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Search mail" v-model="filterBy.byTxt" />
-                <select v-model="filterBy.byRead">
+                <select @change="emitFilter" v-model="filterBy.byRead">
                     <option value="all">All</option>
                     <option value="read">Read</option>
                     <option value="unread">Unread</option>
@@ -21,7 +21,7 @@ export default {
     methods: {
         emitFilter() {
             this.$emit('filtered', JSON.parse(JSON.stringify(this.filterBy)));
-            this.filterBy = { byTxt: '', byRead: 'all' };
+            this.filterBy.byTxt = '';
         }
     }
 };

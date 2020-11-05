@@ -44,8 +44,8 @@ export default {
         sendAtToDisplay() {
             const d = new Date(this.email.sendAt);
             if (d.getFullYear() === new Date().getFullYear() && d.getMonth() === new Date().getMonth() && d.getDate() === new Date().getDate()) {
-                const hours = (d.getHours() < 10) ? `0${d.getHours()}` : `${d.getHours()}`;
-                const minutes = (d.getMinutes() < 10) ? `0${d.getMinutes()}` : `${d.getMinutes()}`;
+                const hours = (d.getHours() + '').padStart(2, 0);
+                const minutes = (d.getMinutes() + '').padStart(2, 0);
                 const ampm = (d.getHours() >= 12) ? "PM" : "AM";
                 return `${hours}:${minutes} ${ampm}`;
             } else {

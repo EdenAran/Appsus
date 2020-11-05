@@ -5,7 +5,7 @@ import { utilService } from '../../../../js/services/util-service.js';
 export const emailService = {
     query,
     removeEmail,
-    removeAll,
+    removeSelected,
     saveEmail,
     updateProperty,
     getNumOf,
@@ -26,13 +26,11 @@ function removeEmail(emailId) {
     return Promise.resolve();
 }
 
-function removeAll() {
-    const idxs = gEmails.reduce((acc, email, idx) => {
-        if (email.isSelect) acc.push(idx);
-        return acc;
-    }, []);
-    idxs.forEach(idx => {
-        if (idx !== -1) gEmails.splice(idx, 1)
+function removeSelected() {
+    const emails = gEmails.filter(email => email.isSelect);
+    emails.forEach(currEmail => {
+        const idx = gEmails.findIndex(email => currEmail.id === email.id);
+        if (idx !== -1) gEmails.splice(idx, 1);
     });
     utilService.saveToStorage('emailsDb', gEmails);
     return Promise.resolve();

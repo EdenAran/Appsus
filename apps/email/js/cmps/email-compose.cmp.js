@@ -26,7 +26,7 @@ export default {
                 })
                 .catch(() => {
                     console.log('Failed to send email!');
-                    this.$router.push('/email');
+                    // this.$router.push('/email');
                 });
         },
         back() {

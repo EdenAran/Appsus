@@ -11,7 +11,7 @@ export default {
             <ul class="clean-list">
                 <li v-for="email in emails" :key="email.id">
                     <email-preview v-if="!email.isClick" :email="email" @click="updateProperty(email.id, 'isClick')" />
-                    <email-details v-else :email="email" @click="updateProperty(email.id, 'isClick')" />
+                    <email-details v-else :email="email" @expand="updateProperty(email.id, 'isClick')" />
                 </li>
             </ul>
         </section>
