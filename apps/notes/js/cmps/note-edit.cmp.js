@@ -8,8 +8,8 @@ import { noteService } from '../services/note.service.js'
 export default {
     props: ['note'],
     template: `
-        <section class="note-edit" :style="noteStyle">
-            <form @submit.prevent="saveEdit">
+        <section ref="noteEdit" class="note-edit" :style="noteStyle">
+            <form  @submit.prevent="saveEdit">
                 <component :is="note.type" :info="note.info" :isEdit="true" @addTodo="addTodo" @deleteLine="deleteLine"/>
                 <button class="pointer" >Save and Close</button>
             </form>
@@ -46,5 +46,8 @@ export default {
         noteTodos,
         noteVideo,
         noteControlls,
-    }
+    },
+    mounted() {
+        this.$refs.noteEdit.scrollIntoView({behavior: "smooth", block: "end"});
+    },
 }

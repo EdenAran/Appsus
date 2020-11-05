@@ -9,13 +9,20 @@
     max-height: 400px;
     width:250px;
     text-align: center;
-    word-wrap: break-word;
+}
+
+.note-preview .note-txt{
+    max-height:350px;
     overflow: hidden;
 }
 
-.note-preview p{
+.note-preview pre{
+    margin: 0;
+    white-space: pre-line;
     height:100%;
-    overflow: hidden;
+    width:100%;
+    display: inline-block;
+    padding-bottom: 10px;
 }
 .note-preview:hover{
     box-shadow:  0 0 5px 0 black;

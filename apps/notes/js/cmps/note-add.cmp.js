@@ -1,12 +1,13 @@
-import { utilService } from '../../../../js/services/util-service.js';
+import { utilService } from '../../../../js/services/util.service.js';
 import { noteService } from '../services/note.service.js';
+import { eventBus } from '../../../../js/services/event-bus.service.js';
 
 
 export default {
     template: `
-        <section class="add-note " v-if="note">
+        <section class="note-add " v-if="note">
             <form class="flex a-center s-between" @submit.prevent="saveNote">
-                <input type="text" :placeholder="textToShow" v-model="noteInput" />
+                <input type="text" :placeholder="txtToShow" v-model="noteInput" />
                 <div class="options flex s-between">
                     <i class="fas fa-font pointer" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
                     <i class="fas fa-image pointer" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
@@ -40,6 +41,10 @@ export default {
                 console.log(this.note.info)
             }
             noteService.saveNote(this.note)
+                .then(() => {
+                    console.log('sending')
+                    eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully added', path:null });
+                })
             this.getBlankNote(this.note.type)
             this.noteInput = '';
         },
@@ -60,7 +65,7 @@ export default {
         }
     },
     computed: {
-        textToShow() {
+        txtToShow() {
             switch (this.note.type) {
                 case 'noteTxt':
                     return 'What\'s on your mind...'
@@ -77,7 +82,6 @@ export default {
         noteService.getBlankNote('noteTxt')
             .then(note => {
                 this.note = utilService.deepCopy(note)
-                
             })
     }
 }

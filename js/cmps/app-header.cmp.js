@@ -1,3 +1,6 @@
+import userMsg from './user-msg.cmp.js';
+
+
 export default {
     template: `
     
@@ -16,6 +19,7 @@ export default {
                 </div>
             </a>
         </nav>
+        <user-msg />
     </section>
     `,
     data() {
@@ -44,5 +48,8 @@ export default {
         menuClass() {
             return { shrink: !this.showMenu };
         }
+    },
+    components:{
+        userMsg
     }
 }

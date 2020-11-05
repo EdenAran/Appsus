@@ -9,7 +9,7 @@ export default {
             <i class="icon fab fa-youtube pointer"></i>
         </template>
         <template v-else>
-            <input class="title" type="text" v-model="info.title">
+            <input ref="title" class="title" type="text" v-model="info.title">
             <input type="text" v-model="info.url">
         </template>
         <iframe :src="videoUrlForDisplay"></iframe>    
@@ -24,7 +24,10 @@ export default {
             return `https://www.youtube.com/embed/${video_id}`
         }
     },
-    created() {
-
+    mounted() {
+        if (this.isEdit) setTimeout(()=>{
+            this.$refs.title.focus()
+            this.$refs.title.select()
+        },0);
     }
 }

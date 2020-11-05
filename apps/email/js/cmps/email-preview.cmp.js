@@ -12,7 +12,7 @@ export default {
             <section class="email-info flex">
                 <template class="email-content" :class="{flex: !isExpand, 'flex-col': isExpand}">
                     <div class="email-from"><h3>{{email.from}}</h3></div>
-                    <div class="email-text">
+                    <div class="email-txt">
                         <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
                     </div>
                 </template>

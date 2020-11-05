@@ -12,8 +12,12 @@
 }
 
 .note-edit button {
-    margin: 20px;
-    font-size: 1em
+    /* margin: 20px; */
+    width:200px;
+    font-size: 1em;
+    position: absolute;
+    bottom: 10px;
+    right:calc(50% - 100px);
 }
 
 .note-edit input {

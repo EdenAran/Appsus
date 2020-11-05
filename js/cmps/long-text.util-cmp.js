@@ -1,7 +1,7 @@
 export default {
     props: ['txt'],
     template: `
-        <section class="long-text">
+        <section class="long-txt">
             <p>{{txtToShow}}</p>
             <button v-if="this.txt.length > 100" @click="toggleDesc">{{btnTxt}}</button>
         </section>

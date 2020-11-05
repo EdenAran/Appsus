@@ -33,13 +33,29 @@ export default {
         },
         sendAsEmail() {
             const title = this.note.info.title;
-            const txt = this.note.info.txt;
+            var txt;
+            switch (this.note.type) {
+                case 'noteTxt':
+                    txt = this.note.info.txt;
+                    break;
+                case 'noteTodos':
+                    txt = this.note.info.todos.reduce((acc,todo) => {
+                        acc = todo.txt
+                        acc +='%0D%0A'
+                        console.log(acc)
+                        return acc;
+                    }, '');
+                    break;
+                case 'noteImg':
+                case 'noteVideo':
+                    txt = this.note.info.url;
+                    break;
+            }
             this.$router.push(`/email/compose/${title}/${txt}`);
         },
         emitEdit() {
             this.$emit('edit', this.note);
         }
-
     },
     computed: {
         noteStyle() {

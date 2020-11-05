@@ -44,19 +44,19 @@ i {
     font-weight: 600;
 }
 
-.email-text {
+.email-txt {
     width: 65%;
     font-size: .9em;
 }
 
-.email-text .email-subject {
+.email-txt .email-subject {
     color: #202124;
 }
 
 .unread .email-subject {
     font-weight: 500;
 }
-.email-text .email-body {
+.email-txt .email-body {
     color: #62666a;
 }
 

@@ -13,6 +13,7 @@ const options = {
         <main>
             <router-view></router-view>
         </main>
+
     </section>
     `,
     components: {

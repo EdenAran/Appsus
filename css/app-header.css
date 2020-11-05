@@ -5,7 +5,11 @@
     text-align: center;
     margin: 0;
     padding: 0 20px;
-    position: relative;
+    position: fixed;
+    top:0;
+    right:0;
+    width:100%;
+    z-index:3;
 }
 
 .main-nav{
@@ -67,7 +71,7 @@
 .toggle-menu{
     font-size: 2.5rem;
     position: absolute;
-    right: 50px;
+    right: 85px;
     top: 20px;
     transition: .4s;
     z-index: 2;

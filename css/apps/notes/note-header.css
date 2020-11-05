@@ -1,7 +1,10 @@
 .note-header {
     padding: 10px 60px;
     background-color: #D1CED6;
-    position: relative;
+    position: fixed;
+    top: 80px;
+    z-index: 2;
+    width:100%;
     font-size: 2rem;
 }
 

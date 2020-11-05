@@ -1,7 +1,7 @@
 import { noteService } from '../services/note.service.js';
 import noteHeader from '../cmps/note-header.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
-import addNote from '../cmps/add-note.cmp.js';
+import addNote from '../cmps/note-add.cmp.js';
 
 
 export default {
