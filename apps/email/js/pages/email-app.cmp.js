@@ -7,12 +7,14 @@ export default {
     template: `
         <section class="email-app">
             <header>
-                <button @click="isCompose = true">Compose</button>
+                <router-link to="/email/compose">Compose</router-link>
+                <!-- <button @click="isCompose = true">Compose</button> -->
                 <email-filter @filtered="setFilter" />
             </header>
             <main>
-                <email-list v-if="!isCompose" :emails="emailsToShow" />
-                <email-compose v-else @send="isCompose = false" @back="isCompose = false" />
+                <!-- <email-list v-if="!isCompose" :emails="emailsToShow" />
+                <email-compose v-else @send="isCompose = false" @back="isCompose = false" /> -->
+                <router-view></router-view>
             </main>
         </section>
     `,

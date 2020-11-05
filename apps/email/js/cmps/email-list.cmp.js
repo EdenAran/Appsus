@@ -7,6 +7,7 @@ export default {
     props: ['emails'],
     template: `
         <section class="email-list">
+            
             <email-status />
             <ul class="clean-list">
                 <li v-for="email in emails" :key="email.id">
@@ -19,7 +20,9 @@ export default {
     `,
     data() {
         return {
-            isExpand: false
+            emails: [],
+            isExpand: false,
+            directory: null
         };
     },
     methods: {
@@ -28,9 +31,32 @@ export default {
                 .then();
         },
     },
+    computed:{
+        emailsToShow() {
+            if (!this.filterBy) return this.emails;
+            const filterTxt = this.filterBy.byTxt.toLowerCase();
+            const readStatus = this.filterBy.byRead;
+            return this.emails.filter(email => {
+                return email.subject.toLowerCase().includes(filterTxt) &&
+                    (
+                        ((readStatus === 'all' || readStatus === 'read') && email.isRead) ||
+                        ((readStatus === 'all' || readStatus === 'unread') && !email.isRead)
+                    )
+            });
+        }
+    },
     components: {
         emailPreview,
         emailStatus,
         emailDetails
-    }
+    },
+    created() {
+        emailService.query()
+            .then(emails => {
+                console.log('emails:', emails)
+                this.emails = emails
+            });
+        // this.$route.params
+    },
+
 }

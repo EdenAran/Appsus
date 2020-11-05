@@ -8,6 +8,7 @@ export default {
                 <textarea v-model="newEmail.body" placeholder="Enter your email content..."></textarea>
                 <button>Send</button>
             </form>
+            
             <button @click="back">Back</button>
         </section>
     `,
