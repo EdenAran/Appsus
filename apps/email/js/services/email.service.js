@@ -5,9 +5,10 @@ import { utilService } from '../../../../js/services/util-service.js';
 export const emailService = {
     query,
     removeEmail,
+    removeAll,
     saveEmail,
     updateProperty,
-    getNumOfUnread,
+    getNumOf,
     getEmailById,
     getEmptyEmail
 };
@@ -25,6 +26,18 @@ function removeEmail(emailId) {
     return Promise.resolve();
 }
 
+function removeAll() {
+    const idxs = gEmails.reduce((acc, email, idx) => {
+        if (email.isSelect) acc.push(idx);
+        return acc;
+    }, []);
+    idxs.forEach(idx => {
+        if (idx !== -1) gEmails.splice(idx, 1)
+    });
+    utilService.saveToStorage('emailsDb', gEmails);
+    return Promise.resolve();
+}
+
 function saveEmail(email) {
     const emailIdx = gEmails.findIndex(currEmail => currEmail.id === email.id);
     if (emailIdx === -1) gEmails.unshift(email);
@@ -36,16 +49,19 @@ function saveEmail(email) {
 function updateProperty(emailId, property) {
     const idx = gEmails.findIndex(email => email.id === emailId);
     gEmails[idx][property] = !gEmails[idx][property];
-    utilService.saveToStorage('emailsDb', gEmails);
+    if (property !== 'isSelect') utilService.saveToStorage('emailsDb', gEmails);
     return Promise.resolve(gEmails[idx]);
 }
 
-function getNumOfUnread() {
-    const numOfUnread = gEmails.reduce((acc, email) => {
-        if (!email.isRead) acc++;
+function getNumOf(property) {
+    const numOf = gEmails.reduce((acc, email) => {
+        if (
+            (property === 'unread' && !email.isRead) ||
+            (property === 'select' && email.isSelect)
+        ) acc++;
         return acc;
     }, 0);
-    return Promise.resolve(numOfUnread);
+    return Promise.resolve(numOf);
 }
 
 function getEmailById(emailId) {
@@ -80,6 +96,8 @@ function _createEmail(subject, body) {
         body,
         isRead: Math.random() > 0.5,
         isStar: Math.random() > 0.5,
+        isSelect: false,
+        isClick: false,
         sendAt: utilService.makeRandomDate()
     }
 }

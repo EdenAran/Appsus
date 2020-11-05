@@ -5,23 +5,37 @@ export default {
     template: `
         <section class="email-status">
             <h3 v-if="numOfUnread">inbox ({{numOfUnread}})</h3>
+            <h3 v-if="numOfSelect">
+                <i class="fas fa-trash" @click="removeAll"></i>
+            </h3>
         </section>
     `,
     data() {
         return {
-            numOfUnread: null
+            numOfUnread: 0,
+            numOfSelect: 0
         };
     },
     methods: {
-        loadNumOfUnread() {
-            emailService.getNumOfUnread()
+        loadNumOf() {
+            emailService.getNumOf('unread')
                 .then(num => this.numOfUnread = num);
+            emailService.getNumOf('select')
+                .then(num => this.numOfSelect = num);
+        },
+        removeAll() {
+            emailService.removeAll()
+                .then(() => {
+                    eventBus.$on('selectChanged', () => this.loadNumOf());
+                    console.log('All selected emails have been successfully deleted!');
+                });
         }
     },
     mounted() {
-        eventBus.$on('unreadChanged', () => this.loadNumOfUnread());
+        eventBus.$on('unreadChanged', () => this.loadNumOf());
+        eventBus.$on('selectChanged', () => this.loadNumOf());
     },
     created() {
-        this.loadNumOfUnread();
+        this.loadNumOf();
     }
 };

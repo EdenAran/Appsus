@@ -6,17 +6,18 @@ import emailList from '../cmps/email-list.cmp.js';
 export default {
     template: `
         <section class="email-app">
-            <email-compose />
+            <button @click="isCompose = true">Compose</button>
             <email-filter @filtered="setFilter" />
-
-            <!-- <router-view /> -->
-            <email-list v-if="emails.length" :emails="emailsToShow" />
+            
+            <email-list v-if="!isCompose" :emails="emailsToShow" />
+            <email-compose v-else @send="isCompose = false" @back="isCompose = false" />
         </section>
     `,
     data() {
         return {
             emails: [],
-            filterBy: null
+            filterBy: null,
+            isCompose: false
         };
     },
     computed: {

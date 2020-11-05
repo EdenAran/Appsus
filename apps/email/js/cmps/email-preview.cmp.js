@@ -5,9 +5,9 @@ import longText from '../../../../js/cmps/long-text.util-cmp.js';
 export default {
     props: ['email'],
     template: `
-        <section class="email-preview flex s-between" :class="{ unread: !email.isRead }" @click="showDetails">
+        <section class="email-preview flex s-between" :class="{ unread: !email.isRead }">
             <div class="marks">
-                <i :class="isSelectIcon" @click="toggleSelectIcon"></i>
+                <i :class="isSelectIcon" @click="updateProperty('isSelect')"></i>
                 <i :class="isStarIcon" @click="updateProperty('isStar')"></i>
             </div>
             <table>
@@ -20,26 +20,22 @@ export default {
                 </tr>
             </table>
             <div class="actions">
-                <i class="fas fa-expand"></i>
+                <i class="fas fa-expand" @click="emitClick"></i>
                 <i class="fas fa-trash" @click="removeEmail"></i>
                 <i :class="isReadIcon" @click="updateProperty('isRead')"></i>
+                <i class="fas fa-sticky-note"></i>
             </div>
         </section>
     `,
-    data() {
-        return {
-            isSelect: false
-        };
-    },
     computed: {
         isReadIcon() {
             return this.email.isRead ? 'fas fa-envelope-open' : 'fas fa-envelope';
         },
         isStarIcon() {
-            return this.email.isStar ? 'star fas fa-star' : 'far fa-star';
+            return this.email.isStar ? 'fas fa-star' : 'far fa-star';
         },
         isSelectIcon() {
-            return this.isSelect ? 'fas fa-check-square' : 'far fa-square';
+            return this.email.isSelect ? 'fas fa-check-square' : 'far fa-square';
         },
         bodyToDisplay() {
             if (this.email.body.length > 55) return `${this.email.body.substr(0, 55)}...`;
@@ -59,22 +55,24 @@ export default {
         }
     },
     methods: {
-        toggleSelectIcon() {
-            this.isSelect = !this.isSelect;
-        },
-        showDetails() {
+        emitClick() {
             // this.$router.push(`/email/${this.email.id}`);
+            this.$emit('click');
         },
         updateProperty(property) {
             emailService.updateProperty(this.email.id, property)
                 .then(email => {
                     console.log(`The "${email.id}" email update was successful`);
                     if (property === 'isRead') eventBus.$emit('unreadChanged');
+                    if (property === 'isSelect') eventBus.$emit('selectChanged');
                 });
         },
         removeEmail() {
             emailService.removeEmail(this.email.id)
-                .then(() => console.log('Email deleted successfully'));
+                .then(() => {
+                    eventBus.$emit('unreadChanged', 'selectChanged');
+                    console.log('Email deleted successfully');
+                });
         }
     },
     components: {

@@ -27,13 +27,9 @@ table {
     color: #39393a;
 }
 
-/* ? */
-.star {
-    color: #ffe58e;
-}
-
 .unread .email-from h3 {
     font-weight: 600;
+    font-size: .95em;
 }
 
 .email-text {
