@@ -7,10 +7,10 @@ export default {
         <ul>
             <template v-if="!isEdit">
                 <h3>{{info.title}}</h3>
-                <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" @click="markDoneTodo(idx)">
+                <li v-for="(todo, idx) in this.info.todos.slice(0,5)" v-if="!isTodoDone(idx)" @click="markDoneTodo(idx)">
                 {{todo.txt}}
                 </li>
-                <li class="done" v-for="(todo, idx) in this.info.todos" v-if="isTodoDone(idx)" @click="toggleIsDone(idx)">
+                <li class="done" v-for="(todo, idx) in this.info.todos.slice(0,5)" v-if="isTodoDone(idx)" @click="toggleIsDone(idx)">
                     {{todo.txt}}
                 </li>
                 <i class="icon fas fa-list-ul pointer"></i>
