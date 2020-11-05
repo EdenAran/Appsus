@@ -1,13 +1,14 @@
 import { emailService } from '../services/email.service.js';
+import emailFilter from '../cmps/email-filter.cmp.js';
 import emailPreview from './email-preview.cmp.js';
 import emailStatus from './email-status.cmp.js';
 import emailDetails from './email-details.cmp.js';
 
 export default {
-    props: ['emails'],
+    // props: ['emails'],
     template: `
         <section class="email-list">
-            
+            <email-filter @filtered="setFilter" />
             <email-status />
             <ul class="clean-list">
                 <li v-for="email in emails" :key="email.id">
@@ -22,6 +23,7 @@ export default {
         return {
             emails: [],
             isExpand: false,
+            filterBy: null,
             directory: null
         };
     },
@@ -30,8 +32,11 @@ export default {
             emailService.updateProperty(emailId, property)
                 .then();
         },
+        setFilter(filterBy) {
+            this.filterBy = filterBy;
+        }
     },
-    computed:{
+    computed: {
         emailsToShow() {
             if (!this.filterBy) return this.emails;
             const filterTxt = this.filterBy.byTxt.toLowerCase();
@@ -45,18 +50,18 @@ export default {
             });
         }
     },
-    components: {
-        emailPreview,
-        emailStatus,
-        emailDetails
-    },
     created() {
         emailService.query()
             .then(emails => {
-                console.log('emails:', emails)
-                this.emails = emails
+                console.log('emails:', emails);
+                this.emails = emails;
             });
-        // this.$route.params
+        this.directory = this.$route.params.id;
     },
-
+    components: {
+        emailFilter,
+        emailPreview,
+        emailStatus,
+        emailDetails
+    }
 }

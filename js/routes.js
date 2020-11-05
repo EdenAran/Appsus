@@ -25,9 +25,13 @@ const routes = [
                 component: emailCompose
             },
             {
+                path: 'details/:emailId',
+                component: emailDetails
+            },
+            {
                 path: ':directory',
                 component: emailList
-            },
+            }            
         ]
     },
     {
