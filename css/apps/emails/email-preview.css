@@ -3,7 +3,11 @@ i {
 }
 
 .email-preview {
-    padding: 10px 20px;
+    padding: 20px;
+}
+
+.email-preview:last-of-type {
+    border-bottom: 1px solid #bebec4;
 }
 
 .marks, .actions {
@@ -60,6 +64,10 @@ i {
     width: 8%;
     font-size: .7em;
     color: rgb(143, 139, 126);
+}
+
+.expand .email-send-at {
+    
 }
 
 .unread .email-send-at h3 {

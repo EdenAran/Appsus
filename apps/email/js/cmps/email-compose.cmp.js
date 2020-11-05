@@ -21,8 +21,7 @@ export default {
             emailService.saveEmail(this.newEmail)
                 .then(email => {
                     console.log('Email send successfully!');
-                    // this.$router.push(`/email/${email.id}`);
-                    this.$emit('send');
+                    this.$router.push(`details/${email.id}`);
                 })
                 .catch(() => {
                     console.log('Failed to send email!');

@@ -1,6 +1,5 @@
 import { emailService } from '../services/email.service.js';
 import { eventBus } from '../../../../js/services/event-bus.service.js';
-import longText from '../../../../js/cmps/long-text.util-cmp.js';
 
 export default {
     props: ['email', 'isExpand'],
@@ -10,11 +9,13 @@ export default {
                 <i :class="isSelectIcon" @click="updateProperty('isSelect')"></i>
                 <i :class="isStarIcon" @click="updateProperty('isStar')"></i>
             </div>
-            <section class="email-info" :class="{flex: !isExpand, expand: isExpand}">
-                <div class="email-from"><h3>{{email.from}}</h3></div>
-                <div class="email-text">
-                    <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
-                </div>
+            <section class="email-info flex">
+                <template class="email-content" :class="{flex: !isExpand, 'flex-col': isExpand}">
+                    <div class="email-from"><h3>{{email.from}}</h3></div>
+                    <div class="email-text">
+                        <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
+                    </div>
+                </template>
                 <div class="email-send-at"><h3>{{sendAtToDisplay}}</h3></div>
             </section>
             <div class="actions">
@@ -37,6 +38,7 @@ export default {
         },
         bodyToDisplay() {
             if (!this.isExpand && this.email.body.length > 55) return `${this.email.body.substr(0, 55)}...`;
+            else if (this.isExpand && this.email.body.length > 250) return `${this.email.body.substr(0, 250)}...`;
             return this.email.body;
         },
         sendAtToDisplay() {
@@ -71,8 +73,5 @@ export default {
                     console.log('Email deleted successfully');
                 });
         }
-    },
-    components: {
-        longText
     }
 };
