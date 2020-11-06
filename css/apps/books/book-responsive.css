@@ -1,0 +1,21 @@
+@media (max-width:840px) {
+    .search-options {
+        width: 250px;
+        top: 35px;
+        left: calc(50% - 125px);
+    }
+
+    .book-detail{
+        margin: 100px 0;
+        width:100%;
+    }
+
+    .book-detail .img-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .book-detail img{
+        width:100%;
+        object-fit: contain;
+    }
+}

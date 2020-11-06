@@ -152,7 +152,6 @@
 .review-preview h3 {
     display: flex;
     align-items: center;
-    /* margin-inline-end: 20px; */
 }
 
 .review-preview .review-info {

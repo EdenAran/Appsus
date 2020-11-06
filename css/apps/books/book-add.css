@@ -1,10 +1,12 @@
 .book-add{
     margin-bottom: 20px;
     position: relative;
+    margin: 10px;
 }
 
 .book-add input{
-    width: 400px;
+    width:100%;
+    max-width: 400px;
     padding: 5px;
 }
 
@@ -14,6 +16,7 @@
 }
 
 .search-options{
+    margin: 10px;
     padding: 0;
     border: 1px solid grey;
     position: absolute;

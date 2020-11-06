@@ -20,7 +20,6 @@
 }
 
 .book-list li:hover{
-    /* background-color: #d1d1d1; */
     box-shadow: 0 0 4px 0  rgba(0, 0, 0, 0.6), inset 0 0 4px 0  rgba(0, 0, 0, 0.6)
     
 }
@@ -45,11 +44,6 @@
 .book-preview img{
     width:80%;
     object-fit: contain;
-}
-
-.book-list li:hover .book-preview h3 {
-    /* background-color: #c2c0c0; */
-
 }
 
 .book-preview h5 {
