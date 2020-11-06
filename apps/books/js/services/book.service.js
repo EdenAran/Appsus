@@ -1,4 +1,4 @@
-import { utilService } from './util.service.js'
+import { utilService } from '../../../../js/services/util.service.js'
 
 export const bookService = {
     query,
@@ -46,7 +46,7 @@ function addReview(review, bookId) {
 }
 
 function saveBooks() {
-    utilService.storeToStorage('books', gBooks)
+    utilService.saveToStorage('books', gBooks)
 }
 
 function getBooksFromGoogle(searchTerm) {
@@ -69,7 +69,6 @@ function addGoogleBook(book) {
     newBook.language = book.volumeInfo.language;
     gBooks.unshift(newBook)
     saveBooks();
-    console.log(gBooks)
 }
 
 function checkIfBookExists(bookId) {

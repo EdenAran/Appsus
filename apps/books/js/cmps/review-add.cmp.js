@@ -60,7 +60,6 @@ export default {
             this.review.rating = num;
         },
         starClass(idx){
-            console.log(idx <= this.review.rating)
             return {'fas fa-star checked' : idx <= this.review.rating, 'far fa-star' : idx > this.review.rating}
         }
         

@@ -30,7 +30,6 @@ export default {
 				return;
 			}
 			bookService.getBooksFromGoogle(this.searchTerm).then((books) => {
-				console.log(books.items);
 				this.options = books.items;
 			});
 		},

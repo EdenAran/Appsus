@@ -1,12 +1,12 @@
 import reviewAdd from '../cmps/review-add.cmp.js';
 import reviewPreview from '../cmps/review-preview.cmp.js';
 import { bookService } from '../services/book.service.js';
-import { eventBus } from '../services/event-bus.service.js'
+import { eventBus } from '../../../../js/services/event-bus.service.js'
 
 
 export default {
     template: `
-    <section class="book-detail" v-if="book">
+    <section class="book-detail flex flex-col al-center" v-if="book">
         <h2 class="title">{{book.title}}</h2>
         <span class="nav-btn prev" @click="changeBook(-1)"><i class="fas fa-chevron-left"></i></span>
         <span class="nav-btn next" @click="changeBook(1)"><i class="fas fa-chevron-right"></i></span>
@@ -35,8 +35,8 @@ export default {
         </div>
         <button @click="toggleDesc">{{showBtnTxt}}</button>
         <div class="desc-container">
-            <p class="desc" v-if="hideText">{{textForPreview}}</p>
-            <p v-else> {{book.description}}</p>
+            <p class="desc" v-if="hideText">{{shortTextForPreview}}</p>
+            <p v-else> {{textForPreview}}}</p>
         </div>
         <review-add :bookId="book.id" v-if="addingReview" @added="addReview" @canceled="closeReview" @delete="deleteReview(id)"/>
         <button @click="addingReview = true">Add Review</button>
@@ -58,23 +58,28 @@ export default {
     computed: {
         bookLength() {
             const pages = this.book.pageCount;
-            return (pages < 100) ? 'Light Reading' : (pages > 200 && pages < 500) ? 'Medium Reading' : 'Long reading'
+            return (pages < 100) ? 'Light Reading' : (pages > 200 && pages < 500) ? 'Medium Reading' : 'Long reading';
         },
         bookAge() {
             const age = (new Date()).getFullYear() - this.book.publishedDate;
             return (age < 1) ? 'New!' : (age > 10) ? 'Veteran Book' : '';
         },
         previewPrice() {
-            return { expensive: this.book.listPrice.amount > 150, cheap: this.book.listPrice.amount < 20 }
+            return { expensive: this.book.listPrice.amount > 150, cheap: this.book.listPrice.amount < 20 };
         },
         isOnSale() {
             return this.book.listPrice.isOnSale;
         },
-        textForPreview() {
-            return this.book.description.slice(0, 80) + '...'
+        shortTextForPreview() {
+            if(!this.book.description) return 'No description available';
+            return this.book.description.slice(0, 80) + '...';
+        },
+        textForPreview(){
+            if(!this.book.description) return 'No description available';
+            return this.book.description;
         },
         showBtnTxt() {
-            return (this.hideText) ? 'Show More' : 'Show Less'
+            return (this.hideText) ? 'Show More' : 'Show Less';
         },
         currIcon() {
             switch (this.book.listPrice.currencyCode) {
@@ -85,7 +90,7 @@ export default {
                 case 'USD':
                     return '$';
                 default:
-                    return book.listPrice.currencyCode
+                    return book.listPrice.currencyCode;
             }
         }
     },

@@ -21,7 +21,6 @@ export default{
             this.$emit('delete', id)
         },
         starClass(idx){
-            console.log(idx <= this.review.rating)
             return {'fas fa-star checked' : idx <= this.review.rating, 'far fa-star' : idx > this.review.rating}
         }
     },

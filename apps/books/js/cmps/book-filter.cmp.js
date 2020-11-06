@@ -5,11 +5,7 @@ export default {
     template: `
     <section class="book-filter">
         <h3>filter By:</h3>
-        <form @submit.prevent="emitFilter">
-            <label>
-                Title:
-                <input type="text" v-model="filterBy.byName" placeholder="Enter Title">
-            </label>
+        <form @submit.prevent="emitFilter" class="flex flex-col">
             <label>
                 min price
                 <input type="number" v-model.number="filterBy.fromPrice">

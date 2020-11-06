@@ -42,6 +42,7 @@ export default {
         '$route.params'(emailInfo) {
             this.newEmail.subject = emailInfo.emailTitle;
             this.newEmail.body = emailInfo.emailTxt;
+            this.newEmail.to = emailInfo.sendTo;
         }
     }
 };

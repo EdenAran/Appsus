@@ -5,26 +5,12 @@
 @import './user-msg.css';
 
 /* notes */
-
-@import './apps/notes/note-header.css';
-@import './apps/notes/note-app.css';
-@import './apps/notes/note-add.css';
-@import './apps/notes/note-list.css';
-@import './apps/notes/note-preview.css';
-@import './apps/notes/note-img.css';
-@import './apps/notes/note-todos.css';
-@import './apps/notes/note-controlls.css';
-@import './apps/notes/note-edit.css';
+@import './apps/notes/main.css';
 /* email */
-@import './apps/emails/email-app.css';
-@import './apps/emails/email-header.css';
-@import './apps/emails/email-list-titles.css';
-@import './apps/emails/email-preview.css';
-@import './apps/emails/email-list.css';
-@import './apps/emails/email-filter.css';
-@import './apps/emails/email-select.css';
-@import './apps/emails/email-compose.css';
-@import './apps/emails/email-details.css';
+@import './apps/emails/main.css';
+/* books */
+@import './apps/books/main.css';
+
 /* responsiveness */
 @import './app-responsive.css';
 @import './apps/notes/note-responsive.css';

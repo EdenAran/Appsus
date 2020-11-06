@@ -9,8 +9,9 @@ export default {
             <div class="info-container">
                 <h3>Subject: <input type="text" v-model="email.subject"></h3>
                 <textarea v-model="email.body"></textarea>            
+                <i class="rep-btn fas fa-reply" title="Reply" @click="reply"></i>
             </div>
-            <div class="bigger">
+            <div class="bigger flex s-around al-center">
                 <i class="fas fa-trash" @click="remove"></i>
                 <i class="fas fa-compress" @click="compress"></i>
             </div>
@@ -37,6 +38,9 @@ export default {
         },
         compress() {
             this.$router.go(-1);
+        },
+        reply(){
+            this.$router.push(`/email/compose/${this.email.subject}/${this.email.body}/${this.email.from}`);
         }
     },
     created() {

@@ -31,7 +31,6 @@ export default {
             this.directory = this.$route.params.directory;
             emailService.query(this.directory)
                 .then(emails => {
-                    // console.log('emails:', emails);
                     this.emails = emails;
                 });
             this.filter = emailService.getFilter();
@@ -44,7 +43,6 @@ export default {
             if (this.sort.sortBy === sortBy) this.sort.isDesc = !this.sort.isDesc;
             else this.sort.isDesc = false;
             this.sort.sortBy = sortBy;
-            console.log('this.sort:', this.sort);
         }
     },
     computed: {

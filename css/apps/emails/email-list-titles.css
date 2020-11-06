@@ -1,10 +1,7 @@
 .email-list-titles {
     padding: 10px 20px;
     border-top: 5px solid #F4F4F6;
-}
-
-.marks, .actions {
-    /* padding: 0 20px; */
+    height: 45px;
 }
 
 .marks i, .actions i {

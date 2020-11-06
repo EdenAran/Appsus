@@ -19,14 +19,24 @@ export default {
                 </template>
                 <div class="email-send-at"><h3>{{sendAtToDisplay}}</h3></div>
             </section>
-            <div class="actions">
-                <i class="fas fa-expand" v-if="!isDetails" @click.stop="expand"></i>
-                <i class="fas fa-trash" v-if="!isDetails" @click.stop="removeEmail"></i>
-                <i :class="isReadIcon" @click.stop="updateProperty('isRead')"></i>
-                <i class="fas fa-sticky-note" @click.stop="sendToNote"></i>
+            <div class="actions flex s-around">
+                <div>
+                    <i class="fas fa-expand" v-if="!isDetails" @click.stop="expand" @touch="expand"></i>
+                    <i class="fas fa-trash" v-if="!isDetails" @click.stop="removeEmail" @touch="removeEmail"></i>
+                </div>
+                <div>
+                    <i :class="isReadIcon" @click.stop="updateProperty('isRead')"></i>
+                    <i class="fas fa-sticky-note" @click.stop="sendToNote"></i>
+                </div>
             </div>
         </section>
     `,
+    data() {
+        return {
+            maxCharSubj: 30,
+            maxCharBody: 55,
+        }
+    },
     computed: {
         isReadIcon() {
             return this.email.isRead ? 'fas fa-envelope-open' : 'fas fa-envelope';
@@ -38,14 +48,14 @@ export default {
             return this.email.isSelect ? 'fas fa-check-square' : 'far fa-square';
         },
         subjectToDisplay() {
-            if (!this.isExpand && this.email.subject.length > 30) return `${this.email.subject.substr(0, 30)}...`;
+            if (!this.isExpand && this.email.subject.length > this.maxCharSubj) return `${this.email.subject.substr(0, this.maxCharSubj)}...`;
             else if (this.isExpand && this.email.subject.length > 100) return `${this.email.subject.substr(0, 100)}...`;
             return this.email.subject;
         },
         bodyToDisplay() {
             const length = this.subjectToDisplay.length;
 
-            if (!this.isExpand && this.email.body.length > 55 - length) return `${this.email.body.substr(0, 55 - length)}...`;
+            if (!this.isExpand && this.email.body.length > this.maxCharBody - length) return `${this.email.body.substr(0, this.maxCharBody - length)}...`;
             else if (this.isExpand && this.email.body.length > 250 - length) return `${this.email.body.substr(0, 250 - length)}...`;
             return this.email.body;
         },
@@ -88,6 +98,22 @@ export default {
             const title = this.email.subject;
             const txt = this.email.body;
             this.$router.push(`/note/${title}/${txt}`);
+        },
+        handleResize() {
+            if (window.innerWidth <= 840) {
+                this.maxCharBody = 25;
+                this.maxCharSubj = 10;
+            } else {
+                this.maxCharBody = 55;
+                this.maxCharSubj = 30;
+            }
         }
+    },
+    created() {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize);
     }
 };
