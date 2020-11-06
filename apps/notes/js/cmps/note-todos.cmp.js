@@ -7,16 +7,16 @@ export default {
             <ul>
                 <template v-if="!isEdit">
                     <h3>{{info.title}}</h3>
-                    <li v-for="(todo, idx) in this.info.todos.slice(0,5)" v-if="!isTodoDone(idx)" :key="todo.id">
+                    <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" :key="todo.id">
                     {{todo.txt}}
                     </li>
-                    <li class="done" v-for="(todo, idx) in this.info.todos.slice(0,5)" v-if="isTodoDone(idx)" :key="todo.id">
+                    <li class="done" v-for="(todo, idx) in this.info.todos" v-if="isTodoDone(idx)" :key="todo.id">
                         {{todo.txt}}
                     </li>
                     <i class="icon fas fa-list-ul pointer"></i>
                 </template>
                 <template v-else>
-                    <input class="title" type="text" v-model="info.title">
+                    <input ref="title" class="title" type="text" v-model="info.title">
                     <i class="far fa-plus-square" @click="emitAddTodo"></i>
                     <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" :key="todo.id">
                         <i class="fas fa-trash" @click="emitDeleteLine(idx)"></i>
@@ -62,8 +62,14 @@ export default {
         emitAddTodo() {
             this.$emit('addTodo')
         },
-        emitDeleteLine(idx){
+        emitDeleteLine(idx) {
             this.$emit('deleteLine', idx)
         }
+    },
+    mounted() {
+        if (this.isEdit) setTimeout(() => {
+            this.$refs.title.focus()
+            this.$refs.title.select()
+        }, 0);
     }
 }

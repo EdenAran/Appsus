@@ -1,7 +1,7 @@
 import { noteService } from '../services/note.service.js';
 import noteHeader from '../cmps/note-header.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
-import addNote from '../cmps/add-note.cmp.js';
+import addNote from '../cmps/note-add.cmp.js';
 
 
 export default {
@@ -23,6 +23,18 @@ export default {
             filterBy: ''
         }
     },
+    watch: {
+        '$route.params'(noteInfo) {
+            const title = noteInfo.title;
+            const txt = noteInfo.txt;
+            noteService.getBlankNote('noteTxt')
+                .then(note => {
+                    note.info.title = title;
+                    note.info.txt = txt;
+                    noteService.saveNote(note)
+                })
+        }
+    },
     computed: {
         notesToShow() {
             if (!this.filterBy) return this.notes;
@@ -32,7 +44,7 @@ export default {
     methods: {
         updateFilter(searchTerm) {
             this.filterBy = searchTerm.toLowerCase();
-        }
+        },
     },
     created() {
         noteService.query()

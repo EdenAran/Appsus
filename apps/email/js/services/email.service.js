@@ -1,6 +1,6 @@
 'use strict';
 
-import { utilService } from '../../../../js/services/util-service.js';
+import { utilService } from '../../../../js/services/util.service.js';
 
 export const emailService = {
     query,

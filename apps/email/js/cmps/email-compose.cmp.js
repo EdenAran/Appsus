@@ -1,4 +1,5 @@
 import { emailService } from '../services/email.service.js';
+import {eventBus} from '../../../../js/services/event-bus.service.js'
 
 export default {
     template: `
@@ -21,7 +22,9 @@ export default {
         sendEmail() {
             emailService.saveEmail(this.newEmail)
                 .then(email => {
+                    eventBus.$emit('show-msg', { type: 'success', txt: 'eMail was successfully sent', path:null });
                     console.log('Email send successfully!');
+
                     // this.$router.push(`details/${email.id}`);
                 })
                 .catch(() => {

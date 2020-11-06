@@ -21,7 +21,7 @@ const routes = [
         component: emailApp,
         children: [
             {
-                path: 'compose',
+                path: 'compose/:emailTitle?/:emailTxt?',
                 component: emailCompose
             },
             {
@@ -35,7 +35,7 @@ const routes = [
         ]
     },
     {
-        path: '/note',
+        path: '/note/:title?/:txt?',
         component: noteApp,
     }
 ]

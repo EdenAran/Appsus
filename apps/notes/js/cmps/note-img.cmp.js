@@ -9,10 +9,16 @@ export default {
                 <i v-if="!isEdit" class="icon fas fa-image pointer"></i>
             </template>
             <template v-else>
-                <input class="title" type="text" v-model="info.title">
+                <input ref="title" class="title" type="text" v-model="info.title">
                 <input type="text" v-model="info.url">
             </template>
             <img :src="info.url" alt="">       
         </section>
-    `
+    `,
+    mounted() {
+        if (this.isEdit) setTimeout(()=>{
+            this.$refs.title.focus()
+            this.$refs.title.select()
+        },0);
+    }
 }

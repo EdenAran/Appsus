@@ -13,7 +13,7 @@ export default {
                 <template class="email-content" :class="{flex: !isExpand, 'flex-col': isExpand}">
                     <div v-if="email.from" class="email-from"><h3>{{email.from}}</h3></div>
                     <div v-else class="email-from"><h3>{{email.to}}</h3></div>
-                    <div class="email-text">
+                    <div class="email-txt">
                         <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
                     </div>
                 </template>
@@ -23,7 +23,7 @@ export default {
                 <i class="fas fa-expand" @click.stop="expand"></i>
                 <i class="fas fa-trash" @click.stop="removeEmail"></i>
                 <i :class="isReadIcon" @click.stop="updateProperty('isRead')"></i>
-                <i class="fas fa-sticky-note"></i>
+                <i class="fas fa-sticky-note" @click.stop="sendToNote"></i>
             </div>
         </section>
     `,
@@ -73,6 +73,11 @@ export default {
                     eventBus.$emit('unreadChanged', 'selectChanged', this.directory);
                     console.log('Email deleted successfully');
                 });
+        },
+        sendToNote(){
+            const title = this.email.subject;
+            const txt = this.email.body;
+            this.$router.push(`/note/${title}/${txt}`);
         }
     }
 };

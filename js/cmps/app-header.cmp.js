@@ -1,3 +1,6 @@
+import userMsg from './user-msg.cmp.js';
+
+
 export default {
     template: `
     
@@ -11,11 +14,12 @@ export default {
             <router-link to="/about"  v-show="showMenu">About</router-link>
             <a class="app-nav-container pointer" @click="toggleShowApps"  v-show="showMenu">Apps
                 <div class="app-nav" v-show="showApps" >
-                    <router-link @click.native.stop="closeMenus" to="/note" ><i class="far fa-sticky-note"></i></router-link>
+                    <router-link @click.native.stop="closeMenus" to="/note/:title?:txt?" ><i class="far fa-sticky-note"></i></router-link>
                     <router-link @click.native.stop="closeMenus" to="/email/inbox" ><i class="far fa-envelope"></i></router-link>
                 </div>
             </a>
         </nav>
+        <user-msg />
     </section>
     `,
     data() {
@@ -44,5 +48,8 @@ export default {
         menuClass() {
             return { shrink: !this.showMenu };
         }
+    },
+    components:{
+        userMsg
     }
 }

@@ -16,7 +16,7 @@ export default {
             </i>
             <i class="fas fa-edit" @click="emitEdit"></i>
             <i class="fas fa-trash-alt" @click="emitDelete"></i>
-            <i class="far fa-envelope"></i>
+            <i class="far fa-envelope" @click="emitSend"></i>
         </section>
     `,
     data() {
@@ -36,6 +36,9 @@ export default {
         },
         emitPinned(){
             this.$emit('pinned')
+        },
+        emitSend(){
+            this.$emit('send')
         },
         toggleBgcSelect() {
             this.showBgc = !this.showBgc;

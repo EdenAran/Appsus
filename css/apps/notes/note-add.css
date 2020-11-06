@@ -1,4 +1,4 @@
-.add-note {
+.note-add {
     font-size: 1.4rem;
     max-width: 700px;
     background-color: #fff;
@@ -7,19 +7,19 @@
     box-shadow: 0 0 1px 0 black;
 }
 
-.add-note input {
+.note-add input {
     font-size: 0.8em;
     width: 65%;
 }
 
-.add-note .options {
+.note-add .options {
     width: 25%;
 }
 
-.add-note i {
+.note-add i {
     opacity: 0.5;
 }
 
-.add-note i.active {
+.note-add i.active {
     opacity: 1;
 }

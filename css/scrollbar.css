@@ -1,0 +1,20 @@
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+   }
+   ::-webkit-scrollbar-thumb {
+    background: #c2c2c2;
+    border-radius: 5px;
+    box-shadow: inset 7px 7px 12px #e8e8e8;
+   }
+   ::-webkit-scrollbar-thumb:hover{
+    background: radial-gradient(circle, #e8e8e8 14%,#cfcfcf 60%);
+   }
+   ::-webkit-scrollbar-track{
+    background: transparent;
+    border-radius: 10px;
+    /* height:60vh; */
+   }
+
+

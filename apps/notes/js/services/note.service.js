@@ -1,7 +1,7 @@
-import { utilService } from '../../../../js/services/util-service.js'
+import { utilService } from '../../../../js/services/util.service.js';
 
 export const noteService = {
-    getBlankNoteInfo,
+    getBlankNote,
     saveNote,
     query,
     deleteNote,
@@ -58,7 +58,7 @@ var gBlankNote = [
 ]
 var gNotes = _createNotes();
 
-function getBlankNoteInfo(noteType) {
+function getBlankNote(noteType) {
     const note = gBlankNote.find(note => note.type === noteType);
     note.id = utilService.makeId();
     return Promise.resolve(note);
