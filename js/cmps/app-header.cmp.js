@@ -16,6 +16,7 @@ export default {
                 <div class="app-nav" v-show="showApps" >
                     <router-link @click.native.stop="closeMenus" to="/note/:title?:txt?" ><i class="far fa-sticky-note"></i></router-link>
                     <router-link @click.native.stop="closeMenus" to="/email/inbox" ><i class="far fa-envelope"></i></router-link>
+                    <router-link @click.native.stop="closeMenus" to="/book" ><i class="fas fa-book"></i></router-link>
                 </div>
             </a>
         </nav>
