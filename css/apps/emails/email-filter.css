@@ -2,14 +2,84 @@
     position: fixed;
     top: 145px;
     left: 0;
-    background-color: #B6B2BE;
-    width: fit-content;
-    height: 350px;
-    padding: 10px;
+    width: 200px;
+    height: 100%;
+    padding: 10px 5px;
     font-size: 1.3rem;
-    text-align: center;
+    /* text-align: center; */
+}
+
+.email-filter i{
+    margin-inline-end: 15px;
 }
 
 .email-filter a{
-margin: 20px;
+    text-decoration: none;
+    color:inherit;
+    padding: 10px;
+    margin: 5px 5px 5px 0;
+    border-radius: 0 20px 20px 0;
+}
+
+.email-filter a:hover{
+    background-color: rgba(217, 215, 221, 0.6);
+}
+
+.email-filter hr{
+    width:100%;
+}
+
+.email-filter .comp-btn{
+    font-size: 1.2em;
+    padding: 10px;
+    color: #3a3a3a;
+    background-color: #fefefe;
+    border-radius: 35px;
+    box-shadow: 0 0 2px 0 black, inset 0 0 2px 0 black;
+}
+
+.email-filter .comp-btn:hover{
+    background-color: #fefefe;
+    box-shadow: 0 0 4px 0 black, inset 0 0 3px 0 black;
+}
+
+.email-filter .filter-by{
+    margin-top: 10px;
+    height: 40%;
+}
+
+.filter-by{
+    padding-inline-start: 10px;
+}
+
+.filter-by h4{
+    font-size: 1.5em;
+}
+
+.filter-by section{
+    margin: 20px 0;
+}
+
+.opt-btn{
+    position: relative;
+}
+
+.opt-btn span{
+    font-size: 1em;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.starred .statusRead{
+    position: relative;
+}
+
+.filter-opt{
+    position: absolute;
+    right: 20px;
+    top: 25%;
+}
+
+.filter-opt .option{
+    margin: 10px;
+    font-size: 1.3em;
 }
