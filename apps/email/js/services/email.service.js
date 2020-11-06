@@ -11,6 +11,7 @@ export const emailService = {
     updatePropertySelected,
     getNumOf,
     getEmailById,
+    findDirectory,
     getBlankEmail,
     setFilter,
     getFilter
@@ -112,8 +113,18 @@ function getNumOf(property, directory) {
 }
 
 function getEmailById(emailId) {
-    const idx = gEmails.find(email => email.id === emailId);
-    return Promise.resolve();
+    const res = findDirectory(emailId);
+    if (res.directory === 'inbox') return Promise.resolve(gEmails[res.idx]);
+    if (res.directory === 'sent') return Promise.resolve(gSents[res.idx]);
+    return Promise.reject('Email not found');
+}
+
+function findDirectory(emailId) {
+    let idx = gEmails.findIndex(email => email.id === emailId);
+    if (idx !== -1) return { directory: 'inbox', idx };
+    idx = gSents.findIndex(email => email.id === emailId);
+    if (idx !== -1) return { directory: 'sent', idx };
+    return { directory: '', idx: -1 };
 }
 
 function setFilter(key, val) {
@@ -181,7 +192,7 @@ function _createInboxEmail(subject, body) {
 function _createSentEmail(subject, body) {
     return {
         id: utilService.makeId(),
-        to: utilService.getName(),
+        to: '',
         subject,
         body,
         isRead: Math.random() > 0.5,

@@ -4,4 +4,26 @@
     height: calc(100vh - 200px);
     margin: 0 auto;
     padding-top: 10px;
+    position: relative;
+}
+
+.info-container {
+    height: 70%;
+    width: 70%;
+    background-color: #F4F4F6;
+    margin: 20px auto;
+    padding: 20px;
+    overflow: scroll;
+}
+
+.info-container h3 {
+    font-size: 1.5em;
+}
+
+.bigger {
+    color: rgb(143, 139, 126);
+    font-size: 1.5em;
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
 }

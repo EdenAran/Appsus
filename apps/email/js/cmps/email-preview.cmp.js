@@ -2,26 +2,26 @@ import { emailService } from '../services/email.service.js';
 import { eventBus } from '../../../../js/services/event-bus.service.js';
 
 export default {
-    props: ['email', 'directory', 'isExpand'],
+    props: ['email', 'directory', 'isExpand', 'isDetails'],
     template: `
         <section class="email-preview flex s-between" :class="{ unread: !email.isRead }">
             <div class="marks">
-                <i :class="isSelectIcon" @click.stop="updateProperty('isSelect')"></i>
+                <i :class="isSelectIcon" v-if="!isDetails" @click.stop="updateProperty('isSelect')"></i>
                 <i :class="isStarIcon" @click.stop="updateProperty('isStar')"></i>
             </div>
             <section class="email-info flex">
                 <template class="email-content" :class="{flex: !isExpand, 'flex-col': isExpand}">
                     <div v-if="email.from" class="email-from"><h3>{{email.from}}</h3></div>
                     <div v-else class="email-from"><h3>{{email.to}}</h3></div>
-                    <div class="email-txt">
+                    <div class="email-txt" v-if="!isDetails">
                         <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
                     </div>
                 </template>
                 <div class="email-send-at"><h3>{{sendAtToDisplay}}</h3></div>
             </section>
             <div class="actions">
-                <i class="fas fa-expand" @click.stop="expand"></i>
-                <i class="fas fa-trash" @click.stop="removeEmail"></i>
+                <i class="fas fa-expand" v-if="!isDetails" @click.stop="expand"></i>
+                <i class="fas fa-trash" v-if="!isDetails" @click.stop="removeEmail"></i>
                 <i :class="isReadIcon" @click.stop="updateProperty('isRead')"></i>
                 <i class="fas fa-sticky-note" @click.stop="sendToNote"></i>
             </div>
@@ -74,7 +74,7 @@ export default {
                     console.log('Email deleted successfully');
                 });
         },
-        sendToNote(){
+        sendToNote() {
             const title = this.email.subject;
             const txt = this.email.body;
             this.$router.push(`/note/${title}/${txt}`);

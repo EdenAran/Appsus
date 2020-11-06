@@ -10,7 +10,7 @@ export default {
             <ul class="clean-list">
                 <li v-for="email in emailsToShow" :key="email.id" class="pointer">
                     <email-preview v-if="!email.isExpand" :email="email" :directory="directory" :isExpand="false" @click.native="updateProperty(email.id, 'isExpand')" />
-                    <email-preview v-else :email="email" :directory="directory" :isExpand="true" @click.native="updateProperty(email.id, 'isExpand')" />
+                    <email-preview v-else :email="email" :directory="directory" :isExpand="true" :isDetails="false" @click.native="updateProperty(email.id, 'isExpand')" />
                 </li>
             </ul>
         </section>
@@ -28,7 +28,7 @@ export default {
             this.directory = this.$route.params.directory;
             emailService.query(this.directory)
                 .then(emails => {
-                    console.log('emails:', emails);
+                    // console.log('emails:', emails);
                     this.emails = emails;
                 });
             this.filter = emailService.getFilter();
