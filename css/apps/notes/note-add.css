@@ -5,6 +5,7 @@
     padding: 15px;
     margin: 20px auto;
     box-shadow: 0 0 1px 0 black;
+    position: relative;
 }
 
 .note-add input {
@@ -22,4 +23,12 @@
 
 .note-add i.active {
     opacity: 1;
+}
+
+.note-add .add-btn{
+    opacity: 0.8;
+    font-size: 1.6em;
+    position: absolute;
+    right: -40px;
+    top: 8px;
 }

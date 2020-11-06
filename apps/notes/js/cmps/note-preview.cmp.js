@@ -4,6 +4,7 @@ import noteTodos from './note-todos.cmp.js'
 import noteVideo from './note-video.cmp.js'
 import noteControlls from './note-controlls.cmp.js'
 import { noteService } from '../services/note.service.js'
+import { eventBus } from '../../../../js/services/event-bus.service.js';
 
 
 export default {
@@ -25,8 +26,14 @@ export default {
             noteService.saveNote(this.note)
         },
         deleteNote() {
-            noteService.deleteNote(this.note.id);
-        },
+            noteService.deleteNote(this.note.id)
+            .then(() => {
+                eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully delited', path: null })
+            })
+            .catch(err => {
+                eventBus.$emit('show-msg', { type: 'fail', txt: 'Unable to delete note:\n' + err, path: null })
+            })
+    },
         togglePinNote() {
             this.note.isPinned = !this.note.isPinned;
             noteService.saveNote(this.note)
@@ -39,16 +46,17 @@ export default {
                     txt = this.note.info.txt;
                     break;
                 case 'noteTodos':
-                    txt = this.note.info.todos.reduce((acc,todo) => {
-                        acc = todo.txt
-                        acc +='%0D%0A'
+                    txt = this.note.info.todos.reduce((acc, todo) => {
+                        acc += todo.txt;
+                        acc += (todo.isDone) ? ' DONE' + '%0D%0A' : '%0D%0A';
                         console.log(acc)
                         return acc;
                     }, '');
                     break;
                 case 'noteImg':
                 case 'noteVideo':
-                    txt = this.note.info.url;
+                    txt = this.note.info.url.replace(/\//g, '%2F').replace(/,/g, '%2C');
+                    txt = 'The url is: %0D%0A' + txt;
                     break;
             }
             this.$router.push(`/email/compose/${title}/${txt}`);

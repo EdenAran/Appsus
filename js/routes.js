@@ -31,11 +31,7 @@ const routes = [
             {
                 path: ':directory',
                 component: emailList
-            },        
-            // {
-            //     path: ':directory/emailId',
-            //     component: emailList
-            // }          
+            }         
         ]
     },
     {

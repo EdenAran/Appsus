@@ -1,0 +1,14 @@
+@media (max-width:840px) {
+    /* header */
+    .main-nav{
+        width:100%;
+    }
+    .toggle-menu{
+        right: 20px;
+    }
+    .app-nav{
+        left: calc(50% - 110px);
+        top: 50px;
+        flex-direction: row;
+    }
+}

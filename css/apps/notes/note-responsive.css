@@ -1,0 +1,49 @@
+@media (max-width:840px) {
+
+/* add */
+    .note-add {
+        max-width: 350px;
+    }
+
+    .note-add input {
+        width: 85%;
+    }
+
+    .note-add .add-btn {
+        right: 10px;
+        top: 13px;
+        font-size: 1.3em;
+    }
+
+    .note-add .show-options {
+        display: block;
+        position: relative;
+        right: 35px;
+    }
+
+    .note-add .options {
+        position: absolute;
+        right: 35px;
+        top: 55px;
+        z-index: 10;
+    }
+
+    .options i {
+        margin: 0 5px;
+    }
+
+    .note-add .show-options:hover + .options{
+        display: flex;
+    }
+/* header */
+    .note-header{
+        padding: 10px 15px;
+    }
+
+    .note-header input{
+        width:100%;
+        max-width:350px;
+        margin-inline-start: 5px;
+    }
+
+}

@@ -4,6 +4,8 @@ import noteTodos from './note-todos.cmp.js'
 import noteVideo from './note-video.cmp.js'
 import noteControlls from './note-controlls.cmp.js'
 import { noteService } from '../services/note.service.js'
+import { eventBus } from '../../../../js/services/event-bus.service.js';
+
 
 export default {
     props: ['note'],
@@ -18,7 +20,13 @@ export default {
     methods: {
         saveEdit() {
             noteService.saveNote(this.note)
-            this.emitClose();
+                .then(() => {
+                    this.emitClose();
+                    eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully edited', path: null })
+                })
+                .catch(err => {
+                    eventBus.$emit('show-msg', { type: 'fail', txt: 'Unable to save note:\n' + err, path: null })
+                })
         },
         emitClose() {
             this.$emit('close')
@@ -26,7 +34,7 @@ export default {
         addTodo() {
             this.note.info.todos.unshift({ txt: '', isDone: false, id: utilService.makeId() });
         },
-        deleteLine(idx){
+        deleteLine(idx) {
             this.note.info.todos.splice(idx, 1)
         }
     },
@@ -48,6 +56,6 @@ export default {
         noteControlls,
     },
     mounted() {
-        this.$refs.noteEdit.scrollIntoView({behavior: "smooth", block: "end"});
+        this.$refs.noteEdit.scrollIntoView({ behavior: "smooth", block: "end" });
     },
 }
