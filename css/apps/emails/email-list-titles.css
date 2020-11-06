@@ -1,10 +1,10 @@
 .email-list-titles {
-    padding: 20px;
-    border-bottom: 5px solid #F4F4F6;
+    padding: 10px 20px;
+    border-top: 5px solid #F4F4F6;
 }
 
 .marks, .actions {
-    padding: 0 20px;
+    /* padding: 0 20px; */
 }
 
 .marks i, .actions i {
@@ -33,7 +33,7 @@
     color: #39393a;
 }
 
-.email-from h3, .email-send-at h3 {
+.email-from h3, .email-send-at h3, .email-txt h3 {
     cursor: pointer;
 }
 
