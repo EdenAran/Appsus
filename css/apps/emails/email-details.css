@@ -1,6 +1,6 @@
 .email-details {
     background-color: rgb(209, 206, 214, .6);
-    max-width: 1000px;
+    /* max-width: 1000px; */
     height: calc(100vh - 200px);
     margin: 0 20px 0 220px;
     padding-top: 10px;
