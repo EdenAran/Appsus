@@ -30,7 +30,8 @@
 .email-compose textarea {
     height: 60%;
     border: none;
-    padding: 5px;
+    padding: 10px 20px;
+    margin: 10px;
 }
 
 .email-compose button {
