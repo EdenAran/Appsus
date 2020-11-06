@@ -35,6 +35,9 @@ export default {
                 })
         },
         saveNote() {
+            if(!this.noteInfo){
+                eventBus.$emit('show-msg', { type: 'fail', txt: 'You need to write something in the note...', path: null });
+            }
             const inputField = this.saveInputTo();
             this.note.info[inputField] = this.noteInput;
             if (this.note.type === 'noteTodos') {
