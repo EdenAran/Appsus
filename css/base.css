@@ -3,7 +3,9 @@
 @import './helpers.css';
 @import './app-header.css';
 @import './user-msg.css';
+
 /* notes */
+
 @import './apps/notes/note-header.css';
 @import './apps/notes/note-app.css';
 @import './apps/notes/note-add.css';
@@ -22,8 +24,11 @@
 @import './apps/emails/email-select.css';
 @import './apps/emails/email-compose.css';
 @import './apps/emails/email-details.css';
+/* responsiveness */
+@import './app-responsive.css';
+@import './apps/notes/note-responsive.css';
 
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -32,18 +37,23 @@ html {
     color: #313131
 }
 
-body{
+body {
     margin: 0;
     background-color: #F4F4F6;
 }
 
 
-main{
+main {
     margin-top: 80px;
 }
 
-h1,h2,h3,h4,h5,h6{
-    margin:0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
     font-weight: 400;
 }
 

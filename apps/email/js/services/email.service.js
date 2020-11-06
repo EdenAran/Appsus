@@ -181,7 +181,7 @@ function _createInboxEmail(subject, body) {
 function _createSentEmail(subject, body) {
     return {
         id: utilService.makeId(),
-        to: utilService.getName(),
+        to: '',
         subject,
         body,
         isRead: Math.random() > 0.5,

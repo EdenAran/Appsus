@@ -8,19 +8,23 @@ export default {
         <section class="note-add " v-if="note">
             <form class="flex a-center s-between" @submit.prevent="saveNote">
                 <input type="text" :placeholder="txtToShow" v-model="noteInput" />
-                <div class="options flex s-between">
-                    <i class="fas fa-font pointer" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
-                    <i class="fas fa-image pointer" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
-                    <i class="fab fa-youtube pointer" @click="getBlankNote('noteVideo')" :class="inputClass('noteVideo')"></i>
-                    <i class="fas fa-list-ul pointer" @click="getBlankNote('noteTodos')" :class="inputClass('noteTodos')"></i>
-                </div>
+                <i class="show-options fas fa-ellipsis-v" v-show="isSmallScreen" @click="toggleOptions"></i>
+                    <div class="options flex s-between" v-show="!isSmallScreen || isShowOptions">
+                        <i class="fas fa-font pointer" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
+                        <i class="fas fa-image pointer" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
+                        <i class="fab fa-youtube pointer" @click="getBlankNote('noteVideo')" :class="inputClass('noteVideo')"></i>
+                        <i class="fas fa-list-ul pointer" @click="getBlankNote('noteTodos')" :class="inputClass('noteTodos')"></i>
+                    </div>   
+                <i class="add-btn far fa-plus-square" @click="saveNote"></i>
             </form>
         </section>
     `,
     data() {
         return {
             note: null,
-            noteInput: ''
+            noteInput: '',
+            isSmallScreen: false,
+            isShowOptions: false
         }
     },
     methods: {
@@ -43,7 +47,7 @@ export default {
             noteService.saveNote(this.note)
                 .then(() => {
                     console.log('sending')
-                    eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully added', path:null });
+                    eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully added', path: null });
                 })
             this.getBlankNote(this.note.type)
             this.noteInput = '';
@@ -62,6 +66,13 @@ export default {
         },
         inputClass(type) {
             return { active: this.note.type === type }
+        },
+        handleResize() {
+            if (window.innerWidth <= 840) this.isSmallScreen = true;
+            else this.isSmallScreen = false
+        },
+        toggleOptions(){
+            this.isShowOptions = !this.isShowOptions
         }
     },
     computed: {
@@ -83,5 +94,10 @@ export default {
             .then(note => {
                 this.note = utilService.deepCopy(note)
             })
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize);
     }
 }

@@ -49,8 +49,6 @@ export default {
     created() {
         noteService.query()
             .then(notes => this.notes = notes)
-        // const noteData = this.$route.params;
-        // console.log(noteData)  //add support for income mail
     },
     components: {
         noteHeader,

@@ -1,8 +1,8 @@
 .user-msg{
     z-index:10;
     position: fixed;
-    top: 83vh;
-    right:10px;
+    top: 10px;
+    left:10px;
     background-color: #fefefe;
     padding: 30px;
     font-size:1.3rem;
