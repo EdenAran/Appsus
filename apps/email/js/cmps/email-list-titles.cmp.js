@@ -10,7 +10,7 @@ export default {
                     <div v-if="directory === 'inbox'" class="email-from"><h3 @click="emitSort('from')">From</h3></div>
                     <div v-else class="email-from"><h3 @click="emitSort('from')">To</h3></div>
                     <div class="email-txt">
-                        <h3><span class="email-subject"></span>  <span class="email-body"></span></h3>
+                        <h3 @click="emitSort('subject')"><span class="email-subject"></span> Subject <span class="email-body"></span></h3>
                     </div>
                 </template>
                 <div class="email-send-at"><h3 @click="emitSort('sendAt')">At</h3></div>
