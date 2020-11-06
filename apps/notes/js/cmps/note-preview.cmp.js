@@ -28,7 +28,7 @@ export default {
         deleteNote() {
             noteService.deleteNote(this.note.id)
             .then(() => {
-                eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully delited', path: null })
+                eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully deleted', path: null })
             })
             .catch(err => {
                 eventBus.$emit('show-msg', { type: 'fail', txt: 'Unable to delete note:\n' + err, path: null })
@@ -49,7 +49,6 @@ export default {
                     txt = this.note.info.todos.reduce((acc, todo) => {
                         acc += todo.txt;
                         acc += (todo.isDone) ? ' DONE' + '%0D%0A' : '%0D%0A';
-                        console.log(acc)
                         return acc;
                     }, '');
                     break;
