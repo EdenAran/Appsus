@@ -7,8 +7,8 @@ export default {
         <section v-if="email" class="email-details">
             <email-preview v-if="email" :email="email" :directory="directory" :isExpand="false" :isDetails="true" />
             <div class="info-container">
-                <h3>Subject: {{email.subject}}</h3>
-                <p>{{email.body}}</p>
+                <h3>Subject: <input type="text" v-model="email.subject"></h3>
+                <textarea v-model="email.body"></textarea>            
             </div>
             <div class="bigger">
                 <i class="fas fa-trash" @click="remove"></i>
