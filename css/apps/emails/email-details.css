@@ -2,14 +2,14 @@
     background-color: rgb(209, 206, 214, .6);
     max-width: 1000px;
     height: calc(100vh - 200px);
-    margin: 0 auto;
+    margin: 0 20px 0 200px;
     padding-top: 10px;
     position: relative;
 }
 
 .info-container {
-    height: 70%;
-    width: 70%;
+    height: 75%;
+    width: 90%;
     background-color: #F4F4F6;
     margin: 20px auto;
     padding: 20px;
@@ -17,7 +17,13 @@
 }
 
 .info-container h3 {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+}
+.info-container input{
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: transparent;
 }
 
 .bigger {
@@ -26,4 +32,12 @@
     position: absolute;
     right: 30px;
     bottom: 20px;
+}
+
+.info-container textarea{
+    padding: 10px 20px;
+    font-size: 1.3em;
+    width:100%;
+    height:80%;
+    background-color: transparent;
 }

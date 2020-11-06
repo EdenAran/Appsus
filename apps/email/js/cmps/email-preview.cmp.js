@@ -10,11 +10,11 @@ export default {
                 <i :class="isStarIcon" @click.stop="updateProperty('isStar')"></i>
             </div>
             <section class="email-info flex">
-                <template class="email-content" :class="{flex: !isExpand, 'flex-col': isExpand}">
+                <template class="email-content" >
                     <div v-if="email.from" class="email-from"><h3>{{email.from}}</h3></div>
                     <div v-else class="email-from"><h3>{{email.to}}</h3></div>
-                    <div class="email-txt" v-if="!isDetails">
-                        <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
+                    <div :class="expandClass" class="email-txt" v-if="!isDetails">
+                        <h3><span class="email-subject">{{subjectToDisplay}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
                     </div>
                 </template>
                 <div class="email-send-at"><h3>{{sendAtToDisplay}}</h3></div>
@@ -37,9 +37,16 @@ export default {
         isSelectIcon() {
             return this.email.isSelect ? 'fas fa-check-square' : 'far fa-square';
         },
+        subjectToDisplay() {
+            if (!this.isExpand && this.email.subject.length > 30) return `${this.email.subject.substr(0, 30)}...`;
+            else if (this.isExpand && this.email.subject.length > 100) return `${this.email.subject.substr(0, 100)}...`;
+            return this.email.subject;
+        },
         bodyToDisplay() {
-            if (!this.isExpand && this.email.body.length > 55) return `${this.email.body.substr(0, 55)}...`;
-            else if (this.isExpand && this.email.body.length > 250) return `${this.email.body.substr(0, 250)}...`;
+            const length = this.subjectToDisplay.length;
+
+            if (!this.isExpand && this.email.body.length > 55 - length) return `${this.email.body.substr(0, 55 - length)}...`;
+            else if (this.isExpand && this.email.body.length > 250 - length) return `${this.email.body.substr(0, 250 - length)}...`;
             return this.email.body;
         },
         sendAtToDisplay() {
@@ -53,6 +60,9 @@ export default {
                 const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
                 return `${month[d.getMonth()]} ${d.getDate()}`;
             }
+        },
+        expandClass() {
+            return { flex: !this.isExpand, 'flex-col': this.isExpand }
         }
     },
     methods: {
