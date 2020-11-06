@@ -5,7 +5,7 @@ export default {
     template: `
         <section class="email-filter flex-col">
 
-            <router-link to="/email/compose"><i class="fas fa-plus"></i>Compose</router-link>
+            <router-link to="/email/compose"><i class="compose fas fa-plus"></i>Compose</router-link>
 
             <router-link to="/email/inbox"><i class="fas fa-inbox"></i>Inbox<span v-if="numOfInboxUnread"> ({{numOfInboxUnread}})</span></router-link>
 
