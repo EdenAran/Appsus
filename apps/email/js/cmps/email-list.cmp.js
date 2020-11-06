@@ -67,9 +67,9 @@ export default {
             let sortEmails = filterEmails;
             if (this.sort.sortBy) {
                 sortEmails = filterEmails.sort((a, b) => {
-                    var x = (typeof a[this.sort.sortBy] === 'string') ? a[this.sort.sortBy].toLowerCase() : a[this.sort.sortBy];
-                    var y = (typeof b[this.sort.sortBy] === 'string') ? b[this.sort.sortBy].toLowerCase() : b[this.sort.sortBy];
-                    var mult = (this.sort.isDesc) ? -1 : 1;
+                    const x = (typeof a[this.sort.sortBy] === 'string') ? a[this.sort.sortBy].toLowerCase() : a[this.sort.sortBy];
+                    const y = (typeof b[this.sort.sortBy] === 'string') ? b[this.sort.sortBy].toLowerCase() : b[this.sort.sortBy];
+                    const mult = (this.sort.isDesc) ? -1 : 1;
                     return (x < y) ? (-1 * mult) : (x > y) ? mult : 0;
                 });
             }
