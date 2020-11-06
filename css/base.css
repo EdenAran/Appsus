@@ -18,6 +18,7 @@
 /* email */
 @import './apps/emails/email-app.css';
 @import './apps/emails/email-header.css';
+@import './apps/emails/email-list-titles.css';
 @import './apps/emails/email-preview.css';
 @import './apps/emails/email-list.css';
 @import './apps/emails/email-filter.css';

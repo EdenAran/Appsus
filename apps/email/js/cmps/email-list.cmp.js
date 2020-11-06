@@ -1,11 +1,13 @@
 import { emailService } from '../services/email.service.js';
 import { eventBus } from '../../../../js/services/event-bus.service.js';
 import emailPreview from './email-preview.cmp.js';
+import emailListTitles from './email-list-titles.cmp.js';
 import emailStatus from './email-select.cmp.js';
 
 export default {
     template: `
         <section class="email-list">
+            <email-list-titles @sorted="setSort" />
             <email-status :directory="directory" />
             <ul class="clean-list">
                 <li v-for="email in emailsToShow" :key="email.id" class="pointer">
@@ -20,7 +22,8 @@ export default {
             emails: [],
             isExpand: false,
             filter: null,
-            directory: null
+            directory: null,
+            sort: { sortBy: '', isDesc: false } // from / sendAt
         };
     },
     methods: {
@@ -36,6 +39,12 @@ export default {
         updateProperty(emailId, property) {
             emailService.updateProperty(emailId, property, this.directory)
                 .then();
+        },
+        setSort(sortBy) {
+            if (this.sort.sortBy === sortBy) this.isDesc = !this.isDesc;
+            else this.isDesc = false;
+            this.sort.sortBy = sortBy;
+            console.log('this.sort:', this.sort);
         }
     },
     computed: {
@@ -69,6 +78,7 @@ export default {
         }
     },
     components: {
+        emailListTitles,
         emailPreview,
         emailStatus
     }

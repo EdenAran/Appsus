@@ -1,6 +1,7 @@
 .email-status {
     margin: 0 40px;
     margin-bottom: 10px;
+    padding-top: 10px;
 }
 
 .email-status > i {

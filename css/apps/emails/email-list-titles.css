@@ -1,0 +1,61 @@
+.email-list-titles {
+    padding: 20px;
+    border-bottom: 5px solid #F4F4F6;
+}
+
+.marks, .actions {
+    padding: 0 20px;
+}
+
+.marks i, .actions i {
+    margin: 0 5px;
+}
+
+.actions i {
+    color: rgb(143, 139, 126);
+}
+
+.email-info {
+    width: 700px;
+}
+
+.expand {
+    display: flex;
+    flex-direction: column;
+}
+
+.expand > div {
+    padding: 10px;
+}
+
+.email-from, .marks i {
+    width: 27%;
+    color: #39393a;
+}
+
+.email-from h3, .email-send-at h3 {
+    cursor: pointer;
+}
+
+.email-txt {
+    width: 65%;
+    font-size: .9em;
+}
+
+.email-txt .email-subject {
+    color: #202124;
+}
+
+.email-txt .email-body {
+    color: #62666a;
+}
+
+.email-list-titles .email-send-at {
+    width: 8%;
+    font-size: inherit;
+    color: #39393a;
+}
+
+.opacity-none {
+    opacity: 0;
+}
