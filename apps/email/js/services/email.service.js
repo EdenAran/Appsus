@@ -112,7 +112,8 @@ function getNumOf(property, directory) {
 }
 
 function getEmailById(emailId) {
-    return Promise.resolve(gEmails.find(email => email.id === emailId));
+    const idx = gEmails.find(email => email.id === emailId);
+    return Promise.resolve();
 }
 
 function setFilter(key, val) {

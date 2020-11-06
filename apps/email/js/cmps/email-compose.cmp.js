@@ -4,11 +4,12 @@ import {eventBus} from '../../../../js/services/event-bus.service.js'
 export default {
     template: `
         <section class="email-compose">
-            <form v-if="newEmail" @submit.prevent="sendEmail">
+            <form v-if="newEmail" class=" flex-col" @submit.prevent="sendEmail">
+                <h3 class="flex al-center">New Message</h3>
                 <input type="text" placeholder="To" v-model="newEmail.to" />
                 <input type="text" placeholder="Subject" v-model="newEmail.subject" />
                 <textarea v-model="newEmail.body"></textarea>
-                <button>Send</button>
+                <button class="pointer">Send</button>
             </form>            
             <i class="fas fa-trash" @click="back"></i>
         </section>
@@ -24,8 +25,8 @@ export default {
                 .then(email => {
                     eventBus.$emit('show-msg', { type: 'success', txt: 'eMail was successfully sent', path:null });
                     console.log('Email send successfully!');
-
-                    // this.$router.push(`details/${email.id}`);
+                    // this.$router.push(`/details/${email.id}`);
+                    this.$router.push('/email/sent');
                 })
                 .catch(() => {
                     console.log('Failed to send email!');
