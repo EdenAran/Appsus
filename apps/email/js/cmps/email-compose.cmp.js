@@ -4,11 +4,12 @@ export default {
     template: `
         <section class="email-compose">
             <form v-if="newEmail" @submit.prevent="sendEmail">
-                <input type="text" placeholder="Email Subject" v-model="newEmail.subject" />
-                <textarea v-model="newEmail.body" placeholder="Enter your email content..."></textarea>
+                <input type="text" placeholder="To" v-model="newEmail.to" />
+                <input type="text" placeholder="Subject" v-model="newEmail.subject" />
+                <textarea v-model="newEmail.body"></textarea>
                 <button>Send</button>
             </form>            
-            <button @click="back">Back</button>
+            <i class="fas fa-trash" @click="back"></i>
         </section>
     `,
     data() {
@@ -33,6 +34,6 @@ export default {
         }
     },
     created() {
-        this.newEmail = emailService.getEmptyEmail();
+        this.newEmail = emailService.getBlankEmail();
     }
 };

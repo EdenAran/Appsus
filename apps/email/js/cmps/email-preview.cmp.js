@@ -2,16 +2,17 @@ import { emailService } from '../services/email.service.js';
 import { eventBus } from '../../../../js/services/event-bus.service.js';
 
 export default {
-    props: ['email', 'isExpand'],
+    props: ['email', 'directory', 'isExpand'],
     template: `
         <section class="email-preview flex s-between" :class="{ unread: !email.isRead }">
             <div class="marks">
-                <i :class="isSelectIcon" @click="updateProperty('isSelect')"></i>
-                <i :class="isStarIcon" @click="updateProperty('isStar')"></i>
+                <i :class="isSelectIcon" @click.stop="updateProperty('isSelect')"></i>
+                <i :class="isStarIcon" @click.stop="updateProperty('isStar')"></i>
             </div>
             <section class="email-info flex">
                 <template class="email-content" :class="{flex: !isExpand, 'flex-col': isExpand}">
-                    <div class="email-from"><h3>{{email.from}}</h3></div>
+                    <div v-if="email.from" class="email-from"><h3>{{email.from}}</h3></div>
+                    <div v-else class="email-from"><h3>{{email.to}}</h3></div>
                     <div class="email-text">
                         <h3><span class="email-subject">{{email.subject}}</span> - <span class="email-body">{{bodyToDisplay}}</span></h3>
                     </div>
@@ -20,8 +21,8 @@ export default {
             </section>
             <div class="actions">
                 <i class="fas fa-expand" @click.stop="expand"></i>
-                <i class="fas fa-trash" @click="removeEmail"></i>
-                <i :class="isReadIcon" @click="updateProperty('isRead')"></i>
+                <i class="fas fa-trash" @click.stop="removeEmail"></i>
+                <i :class="isReadIcon" @click.stop="updateProperty('isRead')"></i>
                 <i class="fas fa-sticky-note"></i>
             </div>
         </section>
@@ -59,17 +60,17 @@ export default {
             this.$router.push(`details/${this.email.id}`);
         },
         updateProperty(property) {
-            emailService.updateProperty(this.email.id, property)
+            emailService.updateProperty(this.email.id, property, this.directory)
                 .then(email => {
                     console.log(`The "${email.id}" email update was successful`);
-                    if (property === 'isRead') eventBus.$emit('unreadChanged');
-                    if (property === 'isSelect') eventBus.$emit('selectChanged');
+                    if (property === 'isRead') eventBus.$emit('unreadChanged', this.directory);
+                    if (property === 'isSelect') eventBus.$emit('selectChanged', this.directory);
                 });
         },
         removeEmail() {
-            emailService.removeEmail(this.email.id)
+            emailService.removeEmail(this.email.id, this.directory)
                 .then(() => {
-                    eventBus.$emit('unreadChanged', 'selectChanged');
+                    eventBus.$emit('unreadChanged', 'selectChanged', this.directory);
                     console.log('Email deleted successfully');
                 });
         }

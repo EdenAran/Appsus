@@ -24,7 +24,8 @@ export default {
             emailService.removeEmail(this.email.id)
                 .then(() => {
                     eventBus.$emit('unreadChanged', 'selectChanged');
-                    console.log('Deleted');
+                    console.log('Email deleted successfully');
+                    this.$router.push('/email/inbox');
                 });
         },
         compress() {

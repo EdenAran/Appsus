@@ -1,0 +1,30 @@
+.email-header {
+    padding: 10px 60px;
+    height: 65px;
+    background-color: #D1CED6;
+    position: relative;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.email-header input {
+    padding: 10px 30px 10px 15px;
+    width: 400px;
+    font-size: 0.6em;
+}
+
+.email-header .search {
+    position: relative;
+}
+
+.email-header .search i {
+    position: absolute;
+    right: 2px;
+    top: 12px;
+    font-size: 0.8em;
+    opacity: 0.4;
+}
+
+.email-header .search i:hover {
+    opacity: 0.6;
+}

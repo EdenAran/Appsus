@@ -1,5 +1,9 @@
 .email-filter {
-    max-width: 1000px;
-    height: 50px;
-    margin: 0 auto;
+    position: fixed;
+    top: 145px;
+    left: 0;
+    background-color: #B6B2BE;
+    width: fit-content;
+    height: 350px;
+    padding: 10px;
 }

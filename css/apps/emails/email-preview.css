@@ -10,6 +10,10 @@ i {
     border-bottom: 1px solid #bebec4;
 }
 
+.email-preview:last-of-type:hover {
+    border-bottom: 1px solid #7f7f83ab;
+}
+
 .marks, .actions {
     padding: 0 20px;
 }

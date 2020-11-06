@@ -8,54 +8,100 @@ export const emailService = {
     removeSelected,
     saveEmail,
     updateProperty,
+    updatePropertySelected,
     getNumOf,
     getEmailById,
-    getEmptyEmail
+    getBlankEmail,
+    setFilter,
+    getFilter
 };
 
-var gEmails = _createEmails();
-var gSents = [];
+var gEmails = _createInboxEmails();
+var gSents = _createSentEmails();
+var gFilter = {
+    searchTerm: '',
+    statusRead: 'all',
+    starred: 'all'
+};
 
-function query() {
-    return Promise.resolve(gEmails);
+function query(directory) {
+    if (directory === 'inbox') return Promise.resolve(gEmails);
+    else if (directory === 'sent') return Promise.resolve(gSents);
 }
 
-function fetSends() {
-    return Promise.resolve(gSents);
-}
-
-function removeEmail(emailId) {
-    const idx = gEmails.findIndex(email => email.id === emailId);
-    if (idx !== -1) gEmails.splice(idx, 1);
-    utilService.saveToStorage('emailsDb', gEmails);
+function removeEmail(emailId, directory) {
+    let emails;
+    let storageKey;
+    if (directory === 'inbox') {
+        emails = gEmails;
+        storageKey = 'inboxDb';
+    }
+    else if (directory === 'sent') {
+        emails = gSents;
+        storageKey = 'sentsDb';
+    }
+    const idx = emails.findIndex(email => email.id === emailId);
+    if (idx !== -1) emails.splice(idx, 1);
+    utilService.saveToStorage(storageKey, emails);
     return Promise.resolve();
 }
 
-function removeSelected() {
-    const emails = gEmails.filter(email => email.isSelect);
-    emails.forEach(currEmail => {
-        const idx = gEmails.findIndex(email => currEmail.id === email.id);
-        if (idx !== -1) gEmails.splice(idx, 1);
+function removeSelected(directory) {
+    let emails;
+    let storageKey;
+    if (directory === 'inbox') {
+        emails = gEmails;
+        storageKey = 'inboxDb';
+    }
+    else if (directory === 'sent') {
+        emails = gSents;
+        storageKey = 'sentsDb';
+    }
+    const filterEmails = emails.filter(email => email.isSelect);
+    filterEmails.forEach(currEmail => {
+        const idx = emails.findIndex(email => currEmail.id === email.id);
+        if (idx !== -1) emails.splice(idx, 1);
     });
-    utilService.saveToStorage('emailsDb', gEmails);
+    utilService.saveToStorage(storageKey, emails);
     return Promise.resolve();
 }
 
 function saveEmail(email) {
-    gSents.unshift(email);
+    if (email) gSents.unshift(email);
     utilService.saveToStorage('sentsDb', gSents);
     return Promise.resolve(email);
 }
 
-function updateProperty(emailId, property) {
-    const idx = gEmails.findIndex(email => email.id === emailId);
-    gEmails[idx][property] = !gEmails[idx][property];
-    if (property !== 'isSelect' && property !== 'isExpand') utilService.saveToStorage('emailsDb', gEmails);
-    return Promise.resolve(gEmails[idx]);
+function updatePropertySelected(property, directory) {
+    const emails = (directory === 'inbox') ? gEmails : gSents;
+    const emailsToUpdate = emails.filter(email => email.isSelect);
+    emailsToUpdate.forEach(email => {
+        email.isSelect = false;
+        updateProperty(email.id, property, directory);
+    });
+    return Promise.resolve();
 }
 
-function getNumOf(property) {
-    const numOf = gEmails.reduce((acc, email) => {
+function updateProperty(emailId, property, directory) {
+    let emails;
+    let storageKey;
+    if (directory === 'inbox') {
+        emails = gEmails;
+        storageKey = 'inboxDb';
+    }
+    else if (directory === 'sent') {
+        emails = gSents;
+        storageKey = 'sentsDb';
+    }
+    const idx = emails.findIndex(email => email.id === emailId);
+    emails[idx][property] = !emails[idx][property];
+    if (property !== 'isSelect' && property !== 'isExpand') utilService.saveToStorage(storageKey, emails);
+    return Promise.resolve(emails[idx]);
+}
+
+function getNumOf(property, directory) {
+    const emails = (directory === 'inbox') ? gEmails : gSents;
+    const numOf = emails.reduce((acc, email) => {
         if (
             (property === 'unread' && !email.isRead) ||
             (property === 'select' && email.isSelect)
@@ -69,32 +115,55 @@ function getEmailById(emailId) {
     return Promise.resolve(gEmails.find(email => email.id === emailId));
 }
 
-function getEmptyEmail() {
-    return _createEmail('', '');
+function setFilter(key, val) {
+    gFilter[key] = val;
 }
 
-function _createEmails() {
-    let emails = utilService.loadFromStorage('emailsDb');
+function getFilter() {
+    return gFilter;
+}
+
+function getBlankEmail() {
+    return _createSentEmail('', '');
+}
+
+function _createInboxEmails() {
+    let emails = utilService.loadFromStorage('inboxDb');
     if (!emails || !emails.length) {
         emails = [];
-        emails.push(_createEmail('aaa', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('bbb', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('ccc', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('ddd', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('eee', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('fff', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('ggg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('hhh', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('iii', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('jjj', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createEmail('kkk', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails[2].sendAt = 1604527472959;
-        utilService.saveToStorage('emailsDb', emails);
+        emails.push(_createInboxEmail('aaa', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('bbb', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('ccc', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('ddd', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('eee', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('fff', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('ggg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('hhh', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('iii', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('jjj', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createInboxEmail('kkk', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails[2].sendAt = 1604621303560;
+        utilService.saveToStorage('inboxDb', emails);
     }
     return emails;
 }
 
-function _createEmail(subject, body) {
+function _createSentEmails() {
+    let emails = utilService.loadFromStorage('sentsDb');
+    if (!emails || !emails.length) {
+        emails = [];
+        emails.push(_createSentEmail('aaa', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createSentEmail('bbb', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createSentEmail('ccc', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createSentEmail('ddd', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails.push(_createSentEmail('kkk', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
+        emails[2].sendAt = 1604527472959;
+        utilService.saveToStorage('sentsDb', emails);
+    }
+    return emails;
+}
+
+function _createInboxEmail(subject, body) {
     return {
         id: utilService.makeId(),
         from: utilService.getName(),
@@ -105,5 +174,19 @@ function _createEmail(subject, body) {
         isSelect: false,
         isExpand: false,
         sendAt: utilService.makeRandomDate()
+    }
+}
+
+function _createSentEmail(subject, body) {
+    return {
+        id: utilService.makeId(),
+        to: utilService.getName(),
+        subject,
+        body,
+        isRead: Math.random() > 0.5,
+        isStar: Math.random() > 0.5,
+        isSelect: false,
+        isExpand: false,
+        sendAt: Date.now()
     }
 }
