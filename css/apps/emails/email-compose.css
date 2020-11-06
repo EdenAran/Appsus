@@ -1,8 +1,7 @@
 .email-compose {
     background-color: #fff;
-    max-width: 600px;
     height: calc(100vh - 200px);
-    margin: 0 20px 0 200px;
+    margin: 0 20px 0 220px;
     position: relative;
 }
 
@@ -14,12 +13,12 @@
     height: 10%;
     background-color: #404040;
     color: white;
-    padding-inline-start: 5%;
+    padding: 0 5%;
 }
 
 .email-compose input {
     height: 10%;
-    margin-inline-start: 5%;
+    margin: 0 5%;
     color: #4b4b4b;
     border-bottom: 1px solid #d6d6d6;
 }
