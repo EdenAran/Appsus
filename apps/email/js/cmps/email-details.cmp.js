@@ -24,12 +24,8 @@ export default {
     },
     methods: {
         loadEmail() {
-            console.log('this.$route.params.emailId:', this.$route.params.emailId);
             emailService.getEmailById(this.$route.params.emailId)
-                .then(email => {
-                    this.email = email;
-                    console.log('email:', email);
-                });
+                .then(email => this.email = email);
         },
         remove() {
             emailService.removeEmail(this.email.id, this.directory)
