@@ -8,7 +8,7 @@ export default {
             <section class="email-info flex">
                 <template class="email-content" >
                     <div v-if="directory === 'inbox'" class="email-from"><h3 @click="emitSort('from')">From</h3></div>
-                    <div v-else class="email-from"><h3 @click="emitSort('from')">To</h3></div>
+                    <div v-else class="email-from"><h3 @click="emitSort('to')">To</h3></div>
                     <div class="email-txt">
                         <h3 @click="emitSort('subject')"><span class="email-subject"></span> Subject <span class="email-body"></span></h3>
                     </div>
@@ -35,5 +35,10 @@ export default {
     },
     created() {
             this.directory = this.$route.params.directory;
+    },
+    watch: {
+        '$route.params.directory'() {
+            this.directory = this.$route.params.directory;
+        }
     }
 };

@@ -10,6 +10,7 @@ export const emailService = {
     updateProperty,
     updatePropertySelected,
     getNumOf,
+    selectAll,
     getEmailById,
     findDirectory,
     getBlankEmail,
@@ -110,6 +111,20 @@ function getNumOf(property, directory) {
         return acc;
     }, 0);
     return Promise.resolve(numOf);
+}
+
+function selectAll(directory) {
+    if (directory === 'inbox') {
+        const isAllSelected = gEmails.every(email => email.isSelect);
+        if (isAllSelected) gEmails.forEach(email => email.isSelect = false);
+        else gEmails.forEach(email => email.isSelect = true);
+        return Promise.resolve();
+    } else if (directory === 'sent') {
+        const isAllSelected = gSents.every(email => email.isSelect);
+        if (isAllSelected) gSents.forEach(email => email.isSelect = false);
+        else gSents.forEach(email => email.isSelect = true);
+        return Promise.resolve();
+    } else return Promise.reject();
 }
 
 function getEmailById(emailId) {

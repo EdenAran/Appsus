@@ -5,7 +5,7 @@ export default {
     props: ['directory'],
     template: `
         <section class="email-status flex">
-            <i :class="isSelectIcon"></i>
+            <i :class="isSelectIcon" @click="selectAll"></i>
             <h3 v-if="numOfSelect">
                 ({{numOfSelect}})
                 <i class="fas fa-trash" @click="removeSelected"></i>
@@ -16,6 +16,7 @@ export default {
     `,
     data() {
         return {
+            directoryForChange: '',
             numOfSelect: 0
         };
     },
@@ -25,19 +26,23 @@ export default {
         }
     },
     methods: {
+        selectAll() {
+            emailService.selectAll(this.directoryForChange)
+                .then(this.loadNumOf());
+        },
         loadNumOf() {
-            emailService.getNumOf('select', this.directory)
+            emailService.getNumOf('select', this.directoryForChange)
                 .then(num => this.numOfSelect = num);
         },
         removeSelected() {
-            emailService.removeSelected(this.directory)
+            emailService.removeSelected(this.directoryForChange)
                 .then(() => {
                     this.loadNumOf();
                     console.log('All selected emails have been successfully deleted!');
                 });
         },
         updatePropertySelected(property) {
-            emailService.updatePropertySelected(property, this.directory)
+            emailService.updatePropertySelected(property, this.directoryForChange)
                 .then(() => {
                     this.loadNumOf();
                     console.log('All selected emails have been successfully updated!');
@@ -48,6 +53,13 @@ export default {
         eventBus.$on('selectChanged', () => this.loadNumOf());
     },
     created() {
+        this.directoryForChange = this.$route.params.directory;
         this.loadNumOf();
+    },
+    watch: {
+        '$route.params.directory'() {
+            this.directoryForChange = this.$route.params.directory;
+            this.loadNumOf();
+        }
     }
 };

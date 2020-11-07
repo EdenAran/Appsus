@@ -36,7 +36,8 @@ export default {
                 });
         },
         compress() {
-            this.$router.go(-1);
+            if (this.directory === 'inbox') this.$router.push('/email/inbox');
+            else this.$router.push('/email/sent');
         }
     },
     created() {

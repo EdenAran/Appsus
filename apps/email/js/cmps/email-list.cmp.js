@@ -23,7 +23,7 @@ export default {
             isExpand: false,
             filter: null,
             directory: null,
-            sort: { sortBy: '', isDesc: false } // from / sendAt / subject
+            sort: { sortBy: '', isDesc: false }
         };
     },
     methods: {
@@ -44,7 +44,6 @@ export default {
             if (this.sort.sortBy === sortBy) this.sort.isDesc = !this.sort.isDesc;
             else this.sort.isDesc = false;
             this.sort.sortBy = sortBy;
-            console.log('this.sort:', this.sort);
         }
     },
     computed: {
