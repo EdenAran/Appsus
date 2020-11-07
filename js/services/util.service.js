@@ -48,6 +48,7 @@ function getRandomIntInclusive(min, max) {
 }
 
 function saveToStorage(key, val) {
+    val.forEach(val => {if(val.type ==='noteMap') val.info.map = null})
     localStorage.setItem(key, JSON.stringify(val));
 }
 

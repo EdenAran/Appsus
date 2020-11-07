@@ -13,9 +13,9 @@ export default {
         </h1>
         <nav class="main-nav flex" :class="menuClass">
             <i class="toggle-menu fas fa-bars" :class="toggleClass" @click="toggleMenu"></i>
-            <router-link to="/"  v-show="showMenu">Home</router-link>
-            <router-link to="/about"  v-show="showMenu">About</router-link>
-            <a class="app-nav-container pointer" @click="toggleShowApps"  v-show="showMenu">Apps
+            <router-link :class="optionClass" to="/"  v-show="showMenu">Home</router-link>
+            <router-link :class="optionClass" to="/about"  v-show="showMenu">About</router-link>
+            <a :class="optionClass" class="app-nav-container pointer" @click="toggleShowApps"  v-show="showMenu">Apps
                 <div class="app-nav" v-show="showApps" >
                     <router-link @click.native.stop="closeMenus" to="/note/:title?:txt?" ><i class="far fa-sticky-note"></i></router-link>
                     <router-link @click.native.stop="closeMenus" to="/email/inbox" ><i class="far fa-envelope"></i></router-link>
@@ -38,7 +38,7 @@ export default {
         },
         toggleMenu() {
             this.showMenu = !this.showMenu;
-            if(this.showApps) this.showApps = false;
+            if (this.showApps) this.showApps = false;
         },
         closeMenus() {
             this.showApps = false;
@@ -47,13 +47,16 @@ export default {
     },
     computed: {
         toggleClass() {
-            return { open: this.showMenu };
+            return { rotate: this.showMenu };
         },
         menuClass() {
             return { shrink: !this.showMenu };
+        },
+        optionClass() {
+            return { c:!this.showMenu}
         }
     },
-    components:{
+    components: {
         userMsg
     }
 }

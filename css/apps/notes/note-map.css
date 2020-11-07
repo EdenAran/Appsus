@@ -1,0 +1,16 @@
+
+.note-map{
+    position: relative;
+}
+
+.note-map .map-edit{
+    width: 100%;
+    margin-top: 25px;
+}
+
+.note-map .map-btn{
+    position: absolute;
+    width:80px;
+    top: 140px;
+    left: calc(50% - 40px);
+}

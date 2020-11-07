@@ -46,13 +46,7 @@ export default {
         },
         updatePropertySelected(property) {
             emailService.updatePropertySelected(property, this.directoryForChange)
-                // .then(() => {
-                //     this.loadNumOf();
-                //     eventBus.$emit('show-msg', { type: 'success', txt: `All selected emails have been successfully updated!`, path: null });
-                // })
-                // .catch(err =>
-                //     eventBus.$emit('show-msg', { type: 'fail', txt: `Email update has failed: ${err}`, path: null })
-                // );
+            this.numOfSelect = 0;
         }
     },
     mounted() {

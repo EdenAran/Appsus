@@ -4,9 +4,8 @@ export default {
     props: ['info', 'isEdit'],
     template: `
         <section class="note-todos">
-            <!-- <ul> -->
+            <ul>
                 <template v-if="!isEdit">
-                    <ul>
                         <h3>{{info.title}}</h3>
                         <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" :key="todo.id">
                         {{todo.txt}}
@@ -15,13 +14,10 @@ export default {
                             {{todo.txt}}
                         </li>
                         <i class="icon fas fa-list-ul pointer"></i>
-                    </ul>
                 </template>
                 <template v-else>
-                    
                     <input ref="title" class="title" type="text" v-model="info.title">
                     <i class="far fa-plus-square" @click="emitAddTodo"></i>
-                    <ul>
                         <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" :key="todo.id">
                             <i class="fas fa-trash" @click="emitDeleteLine(idx)"></i>
                             <i class="far fa-check-square" @click="markDoneTodo(idx)"></i>
@@ -34,9 +30,8 @@ export default {
                             <input type="text" v-model="todo.txt">
                             <span class="doneAt">{{doneDateToDisplay(idx)}}</span>
                         </li>
-                    </ul>
                 </template>    
-            <!-- </ul> -->
+            </ul>
         </section>
     `,
     methods: {

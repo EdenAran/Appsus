@@ -1,7 +1,6 @@
 .note-img img{
     border-radius: 5px;
     width:100%;
-    height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     margin-bottom: 5px;
 }

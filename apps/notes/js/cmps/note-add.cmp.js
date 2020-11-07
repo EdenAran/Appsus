@@ -10,10 +10,12 @@ export default {
                 <input type="text" :placeholder="txtToShow" v-model="noteInput" />
                 <i class="show-options fas fa-ellipsis-v" v-show="isSmallScreen" @click="toggleOptions"></i>
                     <div class="options flex s-between" v-show="!isSmallScreen || isShowOptions">
-                        <i class="fas fa-font pointer" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
-                        <i class="fas fa-image pointer" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
-                        <i class="fab fa-youtube pointer" @click="getBlankNote('noteVideo')" :class="inputClass('noteVideo')"></i>
-                        <i class="fas fa-list-ul pointer" @click="getBlankNote('noteTodos')" :class="inputClass('noteTodos')"></i>
+                        <i class="fas fa-font" @click="getBlankNote('noteTxt')" :class="inputClass('noteTxt')"></i>
+                        <i class="fas fa-image" @click="getBlankNote('noteImg')" :class="inputClass('noteImg')"></i>
+                        <i class="fab fa-youtube" @click="getBlankNote('noteVideo')" :class="inputClass('noteVideo')"></i>
+                        <i class="fas fa-list-ul" @click="getBlankNote('noteTodos')" :class="inputClass('noteTodos')"></i>
+                        <i class="fas fa-music" @click="getBlankNote('noteAudio')" :class="inputClass('noteAudio')"></i>
+                        <i class="fas fa-map-marked-alt" @click="getBlankNote('noteMap')" :class="inputClass('noteMap')"></i>
                     </div>   
                 <i class="add-btn far fa-plus-square" @click="saveNote"></i>
             </form>
@@ -56,13 +58,17 @@ export default {
         saveInputTo() {
             switch (this.note.type) {
                 case 'noteTxt':
-                    return 'txt'
+                    return 'txt';
                 case 'noteImg':
-                    return 'url'
+                    return 'url';
                 case 'noteTodos':
-                    return 'input'
+                    return 'input';
                 case 'noteVideo':
-                    return 'url'
+                    return 'url';
+                case 'noteAudio':
+                    return 'src';
+                case 'noteMap':
+                    return 'address'
             }
         },
         inputClass(type) {
@@ -87,6 +93,10 @@ export default {
                     return 'Enter comma seperated list...'
                 case 'noteVideo':
                     return 'Enter video URL...'
+                case 'noteAudio':
+                    return 'Enter Audio Source...'
+                case 'noteMap':
+                    return 'Enter an address...'
             }
         }
     },

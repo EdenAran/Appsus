@@ -2,6 +2,8 @@ import noteTxt from './note-txt.cmp.js'
 import noteImg from './note-img.cmp.js'
 import noteTodos from './note-todos.cmp.js'
 import noteVideo from './note-video.cmp.js'
+import noteAudio from './note-audio.cmp.js'
+import noteMap from './note-map.cmp.js'
 import noteControlls from './note-controlls.cmp.js'
 import { noteService } from '../services/note.service.js'
 import { eventBus } from '../../../../js/services/event-bus.service.js';
@@ -14,12 +16,13 @@ export default {
         <section ref="noteEdit" class="note-edit" :style="noteStyle">
             <form  @submit.prevent="saveEdit">
                 <component :is="note.type" :info="note.info" :isEdit="true" @addTodo="addTodo" @deleteLine="deleteLine"/>
-                <button class="pointer" >Save and Close</button>
+                <button class="pointer save-btn" >Save and Close</button>
             </form>
         </section>
     `,
     methods: {
         saveEdit() {
+            if(this.note.type ==='noteMap') this.note.info.map = null;
             noteService.saveNote(this.note)
                 .then(() => {
                     this.emitClose();
@@ -54,6 +57,8 @@ export default {
         noteImg,
         noteTodos,
         noteVideo,
+        noteAudio,
+        noteMap,
         noteControlls,
     },
     mounted() {
