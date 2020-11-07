@@ -4,6 +4,7 @@ import { eventBus } from '../../../../js/services/event-bus.service.js';
 export default {
 	template: `
     <section class="book-add">
+		<img src="../../../assets/img/push-pin.png" />
     <h3>Add a book</h3>
     <input type="text" v-model:value="searchTerm" @input="booksFromSearch">
     <ul v-if="options" class="search-options">

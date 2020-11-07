@@ -2,6 +2,7 @@
 @import './scrollbar.css';
 @import './helpers.css';
 @import './app-header.css';
+@import './app-home.css';
 @import './user-msg.css';
 
 /* notes */
@@ -20,13 +21,13 @@
 }
 
 html {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: ChelseaMarket;
     color: #313131
 }
 
 body {
     margin: 0;
-    background-color: #F4F4F6;
+    background-color: #f7f8f8;
 }
 
 

@@ -1,36 +1,35 @@
-
-.main-header{
+.main-header {
     height: 80px;
-    background-color: #ADA8B6;
+    background-color: #00dfc0;
     text-align: center;
     margin: 0;
     padding: 0 20px;
     position: fixed;
-    top:0;
-    right:0;
-    width:100%;
-    z-index:10;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
 }
 
-.main-nav{
+.main-nav {
     flex-direction: column;
     position: fixed;
     /* z-index: 15; */
     right: 0;
     top: 0;
     width: 200px;
-    background-color: #ADA8B6;
+    background-color: #00dfc0;
     height: 100vh;
     transition: height .4s;
     padding: 80px 0 0;
 }
 
-.main-nav.shrink{
+.main-nav.shrink {
     position: absolute;
 }
 
 
-.main-nav a{
+.main-nav a {
     color: inherit;
     font-size: 2em;
     padding: 20px;
@@ -38,11 +37,11 @@
     text-decoration: none;
 }
 
-.app-nav-container{
+.app-nav-container {
     position: relative;
 }
 
-.app-nav{
+.app-nav {
     cursor: auto;
     display: flex;
     flex-direction: column;
@@ -52,23 +51,23 @@
 }
 
 
-.app-nav a{
+.app-nav a {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1em;
-    width:70px;
-    height:70px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background-color: rgba(222, 215, 233, 0.8);
     opacity: 0.8;
 }
 
-.app-nav a:hover{
+.app-nav a:hover {
     opacity: 1;
 }
 
-.toggle-menu{
+.toggle-menu {
     font-size: 2.5rem;
     position: absolute;
     right: 85px;
@@ -76,8 +75,20 @@
     transition: .4s;
     z-index: 2;
     cursor: pointer;
+    color: #f7f8f8;
 }
 
-.toggle-menu.open{
+.toggle-menu.open {
     transform: rotate(270deg);
 }
+
+.main-header .logo a {
+    color: #f7f8f8;
+    text-decoration: none;
+    font-family: FrederickatheGreat;
+    font-size: 1.5em;
+}
+
+/* .main-header .logo a i {
+    font-size: .8em;
+} */

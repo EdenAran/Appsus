@@ -8,6 +8,7 @@ export default {
     template: `
         <section class="note-app">
             <header>
+        		<img src="../../../assets/img/push-pin.png" />
                 <note-header @search="updateFilter"/>
             </header>
             <main>

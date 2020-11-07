@@ -1,0 +1,60 @@
+.home-page {
+    background: url('./../assets/img/Untitled-1.png') no-repeat;
+    background-position: left 10% top 20px;
+    background-size: contain;
+    height: calc(100vh - 80px);
+    font-family: FrederickatheGreat;
+    color: #385A64;
+    font-size: 3em;
+}
+
+.home-page .title {
+    position: absolute;
+    right: 10px;
+    top: 150px;
+}
+
+@media (max-width:1170px) {
+    .home-page .title h2 {
+        display: inline-block;
+        font-size: .7em;
+    }
+
+    .home-page .title {
+        top: calc(100vh - 80px);
+    }
+}
+
+@media (max-width:560px) {
+    .home-page .title h2 {
+        font-size: 1.05em;
+    }
+
+    .home-page .title {
+        top: calc(100vh - 130px);
+        width: 100vw;
+        text-align: center;
+    }
+}
+
+@media (max-width:445px) {
+    .home-page .title h2 {
+        font-size: .9em;
+    }
+
+    .home-page .title {
+        top: calc(100vh - 130px);
+    }
+}
+
+/* @media (max-width:360px) {
+    .home-page .title {
+        top: calc(100vh - 250px);
+    }
+} */
+
+@media (max-width:360px) {
+    .home-page .title {
+        top: calc(100vh - 200px);
+    }
+}

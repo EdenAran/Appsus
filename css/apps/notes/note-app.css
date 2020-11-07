@@ -2,3 +2,10 @@
     background-color: #F4F4F6;
     padding-top: 20px;
 }
+
+.note-app img {
+    width: 20px;
+    position: absolute;
+    left: 20px;
+    top: 170px;
+}

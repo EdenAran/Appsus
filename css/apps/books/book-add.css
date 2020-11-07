@@ -4,6 +4,12 @@
     margin: 10px;
 }
 
+.book-add img {
+    width: 20px;
+    position: absolute;
+    left: 20px;
+}
+
 .book-add input{
     width:100%;
     max-width: 400px;

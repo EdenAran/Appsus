@@ -1,0 +1,24 @@
+@font-face {
+    font-family: BubblegumSans;
+    src: url(../assets/fonts/BubblegumSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: CabinSketch-Bold;
+    src: url(../assets/fonts/CabinSketch-Bold.ttf);
+}
+
+@font-face {
+    font-family: CabinSketch-Regular;
+    src: url(../assets/fonts/CabinSketch-Regular.ttf);
+}
+
+@font-face {
+    font-family: ChelseaMarket;
+    src: url(../assets/fonts/ChelseaMarket-Regular.ttf);
+}
+
+@font-face {
+    font-family: FrederickatheGreat;
+    src: url(../assets/fonts/FrederickatheGreat-Regular.ttf);
+}
