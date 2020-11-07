@@ -13,3 +13,7 @@
 .email-status > i {
     font-size: 1.5em;
 }
+
+.email-status i {
+    cursor: pointer;
+}
