@@ -73,7 +73,7 @@
     position: absolute;
     right: 85px;
     top: 20px;
-    transition: .4s;
+    transition: transform .4s;
     z-index: 2;
     cursor: pointer;
 }

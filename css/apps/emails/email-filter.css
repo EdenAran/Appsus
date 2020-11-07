@@ -53,6 +53,7 @@
 .email-filter .filter-by {
     margin-top: 10px;
     height: 40%;
+    position: relative;
 }
 
 .filter-by > * {
@@ -101,7 +102,7 @@
 .filter-opt {
     position: absolute;
     right: 20px;
-    top: 27%;
+    top: 40%;
 }
 
 .filter-opt .option {

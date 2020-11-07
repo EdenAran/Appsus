@@ -2,7 +2,7 @@ import { eventBus } from '../services/event-bus.service.js'
 
 export default {
     template: `
-        <section :class="['user-msg', msgClass]" v-if="msg">
+        <section class="msgClass" v-if="msg">
             <h2>{{titleToShow}}</h2>
             <p>{{txtToShow}}</p>
             <i class="close-btn far fa-times-circle" @click="closeMsg"></i>
@@ -11,7 +11,7 @@ export default {
     data() {
         return {
             msg: null,
-            timer:''
+            timer: ''
         }
     },
     computed: {
@@ -19,20 +19,19 @@ export default {
             switch (this.msg.type) {
                 case 'success':
                     return 'Great Success'
+                case 'fail':
+                    return 'We Failed...'
             }
         },
         txtToShow() {
             return this.msg.txt
-        },
-        msgClass() {
-            return { success: this.msg.type === 'success' }
         }
     },
-    methods:{
-        clearTimer(){
+    methods: {
+        clearTimer() {
             clearTimeout(this.timer)
         },
-        closeMsg(){
+        closeMsg() {
             this.clearTimer();
             this.msg = null;
         }

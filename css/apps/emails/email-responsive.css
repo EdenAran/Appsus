@@ -39,6 +39,7 @@
     }
 
     .filter-btn {
+        transition: transform .4s;
         position: absolute;
         top: 0.8vh;
         left: 1vw;

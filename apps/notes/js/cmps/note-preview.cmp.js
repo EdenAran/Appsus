@@ -2,6 +2,8 @@ import noteTxt from './note-txt.cmp.js'
 import noteImg from './note-img.cmp.js'
 import noteTodos from './note-todos.cmp.js'
 import noteVideo from './note-video.cmp.js'
+import noteAudio from './note-audio.cmp.js'
+import noteMap from './note-map.cmp.js'
 import noteControlls from './note-controlls.cmp.js'
 import { noteService } from '../services/note.service.js'
 import { eventBus } from '../../../../js/services/event-bus.service.js';
@@ -11,7 +13,7 @@ export default {
     props: ['note'],
     template: `
         <section class="note-preview" :style="noteStyle">
-            <i class="pinIcon fas fa-thumbtack" v-if="note.isPinned" @click="togglePinNote"></i>
+            <i class="pinIcon fas fa-thumbtack" v-if="note.isPinned"></i>
             <component :is="note.type" :info="note.info" :isEdit="false" />
             <note-controlls @delete="deleteNote" @changeBgc="changeBgc" @edit="emitEdit" @pinned="togglePinNote" @send="sendAsEmail"/>
         </section>
@@ -26,6 +28,7 @@ export default {
             noteService.saveNote(this.note)
         },
         deleteNote() {
+            if(this.note.type ==='noteMap') this.note.info.map = null;
             noteService.deleteNote(this.note.id)
             .then(() => {
                 eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully deleted', path: null })
@@ -36,6 +39,7 @@ export default {
     },
         togglePinNote() {
             this.note.isPinned = !this.note.isPinned;
+            if(this.note.type ==='noteMap') this.note.info.map = null;
             noteService.saveNote(this.note)
         },
         sendAsEmail() {
@@ -79,6 +83,8 @@ export default {
         noteImg,
         noteTodos,
         noteVideo,
+        noteAudio,
+        noteMap,
         noteControlls,
     }
 }

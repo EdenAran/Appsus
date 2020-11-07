@@ -1,18 +1,17 @@
 .note-edit {
     position: absolute;
     width: 500px;
-    height: 500px;
+    max-height: 700px;
     background-color: #ffffff;
     top: calc(50% - 300px);
-    padding: 25px;
+    padding: 25px 25px 40px;
     text-align: center;
     font-size: 1.5rem;
     box-shadow: 0 0 5px 0 black, inset 0 0 2px 0 black;
     border-radius: 5px;
 }
 
-.note-edit button {
-    /* margin: 20px; */
+.note-edit .save-btn {
     width:200px;
     font-size: 1em;
     position: absolute;
@@ -25,7 +24,7 @@
     padding: 10px;
     font-size: 1em;
     text-align: center;
-    margin: 20px 0;
+    margin: 10px 0;
     background-color: transparent;
 }
 

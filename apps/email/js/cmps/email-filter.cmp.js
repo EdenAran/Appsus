@@ -6,7 +6,7 @@ export default {
         <section class="email-filter flex-col">
 
             <router-link class="comp-btn flex just-center al-center" to="/email/compose"><i class="fas fa-plus"></i> <span>Compose</span></router-link>
-            <span class="filter-btn"><i class="fas fa-ellipsis-v" v-show="isSmallScreen" @click="toggleFilter"></i></span>
+            <span class="filter-btn" :class="btnClass" @click="toggleFilter"><i class="fas fa-ellipsis-v" v-show="isSmallScreen"></i></span>
             <div class="filter-container" v-if="!isSmallScreen || isShowFilter">
                 <hr>
                 <router-link class="flex" :class="dirClass('inbox')" to="/email/inbox"><i class="fas fa-inbox"></i><span>Inbox<span v-if="numOfInboxUnread"> 
@@ -81,6 +81,7 @@ export default {
             else this.isSmallScreen = false
         },
         toggleFilter() {
+            console.log('s')
             this.isShowFilter = !this.isShowFilter;
         },
         dirClass(dir) {
@@ -96,6 +97,11 @@ export default {
                 'fas fa-envelope-open': filter === 'read' && currFilter.statusRead === 'read',
                 'fas fa-mail-bulk': filter === 'read' && currFilter.statusRead === 'all'
             }
+        }
+    },
+    computed:{
+        btnClass(){
+            return {rotate: this.isShowFilter};
         }
     },
     mounted() {
@@ -114,6 +120,7 @@ export default {
             .then(num => this.numOfSentUnread = num);
         window.addEventListener('resize', this.handleResize);
         this.handleResize();
+        this.directory = this.$route.params.directory;
     },
     destroyed() {
         window.removeEventListener('resize', this.handleResize);
