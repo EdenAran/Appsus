@@ -8,9 +8,13 @@ import emailHeader from '../cmps/email-header.js';
 export default {
     template: `
         <section class="email-app">
-            <email-header @search="setFilter" />
-            <email-filter @filtered="setFilter" />
-            <router-view></router-view>
+            <header>
+                <email-header @search="setFilter" />
+            </header>
+            <main>
+                <email-filter @filtered="setFilter" />
+                <router-view></router-view>
+            </main>
         </section>
     `,
     methods: {

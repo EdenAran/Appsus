@@ -1,0 +1,16 @@
+@import 'book-list.css';
+@import 'book-detail.css';
+@import 'review-add.css';
+@import 'book-add.css';
+@import 'book-filter.css';
+@import 'book-header.css';
+@import 'book-responsive.css';
+
+.book-app{
+    text-align: center;
+    padding-top: 80px;
+}
+
+.book-app h1{
+    font-size: 3rem;
+}

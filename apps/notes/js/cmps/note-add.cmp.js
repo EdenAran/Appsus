@@ -45,7 +45,6 @@ export default {
                 for (let i = 0; i < todos.length; i++) {
                     this.note.info.todos.push({ txt: todos[i], isDone: false, id: utilService.makeId })
                 }
-                console.log(this.note.info)
             }
             noteService.saveNote(this.note)
                 .then(() => {

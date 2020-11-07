@@ -1,6 +1,5 @@
 .email-details {
     background-color: rgb(209, 206, 214, .6);
-    /* max-width: 1000px; */
     height: calc(100vh - 200px);
     margin: 0 20px 0 220px;
     padding-top: 10px;
@@ -14,6 +13,7 @@
     margin: 20px auto;
     padding: 20px;
     overflow: scroll;
+    position: relative;
 }
 
 .info-container h3 {
@@ -30,8 +30,13 @@
     color: rgb(143, 139, 126);
     font-size: 1.5em;
     position: absolute;
+    width:100px;
     right: 30px;
     bottom: 20px;
+}
+
+.bigger i{
+    cursor: pointer;
 }
 
 .info-container textarea{
@@ -41,3 +46,12 @@
     height:80%;
     background-color: transparent;
 }
+
+.rep-btn{
+    font-size: 2em;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+}
+

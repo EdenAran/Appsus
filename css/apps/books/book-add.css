@@ -1,0 +1,47 @@
+.book-add{
+    margin-bottom: 20px;
+    position: relative;
+    margin: 10px;
+}
+
+.book-add input{
+    width:100%;
+    max-width: 400px;
+    padding: 5px;
+}
+
+.book-add .seperator:not(:last-child){
+    border-bottom: 1px solid grey;
+    /* margin: 10px 0; */
+}
+
+.search-options{
+    margin: 10px;
+    padding: 0;
+    border: 1px solid grey;
+    position: absolute;
+    list-style: none;
+    width:400px;
+    top: 35px;
+    left: calc(50% - 200px);
+    background-color: white;
+}
+
+.search-options li:not([class]){
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-options li:hover{
+    background-color: rgb(230, 230, 230);
+
+}
+
+.search-options button{
+    border-radius: 50%;
+    outline: none;
+    font-size: 1em;
+    cursor: pointer;
+}

@@ -31,7 +31,6 @@ export default {
             this.directory = this.$route.params.directory;
             emailService.query(this.directory)
                 .then(emails => {
-                    // console.log('emails:', emails);
                     this.emails = emails;
                 });
             this.filter = emailService.getFilter();

@@ -1,4 +1,4 @@
-i {
+.email-preview i {
     cursor: pointer;
 }
 
@@ -22,12 +22,26 @@ i {
     margin: 0 5px;
 }
 
-.actions i {
+.actions{
+    align-items: center;
+    font-size: 1.3em;
+    width:20%;
     color: rgb(143, 139, 126);
 }
 
+.actions div{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
+
 .email-info {
-    width: 700px;
+    width: 500px;
+    justify-content: space-around;
+}
+
+.email-info h3{
+    width:fit-content;
 }
 
 .expand {
@@ -52,6 +66,7 @@ i {
     width: 65%;
     font-size: .9em;
     word-break: break-word;
+    padding-inline-end: 10px;
 }
 
 .email-txt .email-subject {
@@ -66,7 +81,9 @@ i {
 }
 
 .email-send-at {
-    width: 8%;
+    display: flex;
+    align-items: center;
+    width: 10%;
     font-size: .7em;
     color: rgb(143, 139, 126);
 }
@@ -74,3 +91,4 @@ i {
 .unread .email-send-at h3 {
     color: #39393a;
 }
+
