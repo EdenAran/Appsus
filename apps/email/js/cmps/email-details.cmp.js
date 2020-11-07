@@ -40,7 +40,7 @@ export default {
             this.$router.go(-1);
         },
         reply(){
-            this.$router.push(`/email/compose/${this.email.subject}/${this.email.body}/${this.email.from}`);
+            this.$router.push(`/email/compose/Re: ${this.email.subject}/${this.email.body}/${this.email.from}`);
         }
     },
     created() {
