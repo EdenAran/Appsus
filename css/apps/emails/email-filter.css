@@ -9,27 +9,28 @@
     /* text-align: center; */
 }
 
-.email-filter i{
+.email-filter i {
     margin-inline-end: 15px;
+    cursor: pointer;
 }
 
-.email-filter a{
+.email-filter a {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
     padding: 10px;
     margin: 5px 5px 5px 0;
     border-radius: 0 20px 20px 0;
 }
 
-.email-filter a:hover{
+.email-filter a:hover {
     background-color: rgba(217, 215, 221, 0.6);
 }
 
-.email-filter hr{
-    width:100%;
+.email-filter hr {
+    width: 100%;
 }
 
-.email-filter .comp-btn{
+.email-filter .comp-btn {
     font-size: 1.2em;
     padding: 10px;
     color: #3a3a3a;
@@ -38,48 +39,54 @@
     box-shadow: 0 0 2px 0 black, inset 0 0 2px 0 black;
 }
 
-.email-filter .comp-btn:hover{
+.email-filter .comp-btn:hover {
     background-color: #fefefe;
     box-shadow: 0 0 4px 0 black, inset 0 0 3px 0 black;
 }
 
-.email-filter .filter-by{
+.email-filter .filter-by {
     margin-top: 10px;
     height: 40%;
 }
 
-.filter-by{
+.filter-by {
     padding-inline-start: 10px;
 }
 
-.filter-by h4{
+.filter-by h4 {
     font-size: 1.5em;
 }
 
-.filter-by section{
+.filter-by section {
     margin: 20px 0;
 }
 
-.opt-btn{
+.opt-btn {
     position: relative;
 }
 
-.opt-btn span{
+.opt-btn span {
     font-size: 1em;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.starred .statusRead{
-    position: relative;
+.starred, .statusRead {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
 }
 
-.filter-opt{
+.starred:hover, .statusRead:hover {
+    background-color: rgba(217, 215, 221, 0.6);
+}
+
+.filter-opt {
     position: absolute;
     right: 20px;
     top: 25%;
 }
 
-.filter-opt .option{
+.filter-opt .option {
     margin: 10px;
     font-size: 1.3em;
 }

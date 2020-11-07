@@ -22,9 +22,9 @@ export default {
     methods: {
         sendEmail() {
             emailService.saveEmail(this.newEmail)
-                .then(email => {
+                .then(() => {
                     eventBus.$emit('show-msg', { type: 'success', txt: 'Email was successfully sent!', path: null });
-                    this.$router.push(`details/${email.id}`);
+                    this.$router.push('/email/sent');
                 })
                 .catch(() => {
                     eventBus.$emit('show-msg', { type: 'fail', txt: 'Failed to send email!', path: null });
