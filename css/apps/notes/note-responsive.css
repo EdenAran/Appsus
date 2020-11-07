@@ -1,5 +1,6 @@
 @media (max-width:840px) {
-/* add */
+
+    /* add */
     .note-add {
         max-width: 350px;
     }
@@ -31,17 +32,28 @@
         margin: 0 5px;
     }
 
-    .note-add .show-options:hover + .options{
+    .note-add .show-options:hover+.options {
         display: flex;
     }
-/* header */
-    .note-header{
+
+    .note-edit{
+        max-width:350px;
+        top: 50%;
+        height: 450px;
+    }
+
+    .note-todos ul{
+        max-height:265px;
+    }
+
+    /* header */
+    .note-header {
         padding: 10px 15px;
     }
 
-    .note-header input{
-        width:100%;
-        max-width:350px;
+    .note-header input {
+        width: 100%;
+        max-width: 350px;
         margin-inline-start: 5px;
     }
 

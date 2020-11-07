@@ -26,6 +26,12 @@
     background-color: rgba(217, 215, 221, 0.6);
 }
 
+.email-filter .selected{
+    background-color: rgba(217, 215, 221, 0.6);
+    font-weight: 600;
+}
+
+
 .email-filter hr {
     width: 100%;
 }
@@ -49,16 +55,28 @@
     height: 40%;
 }
 
-.filter-by {
-    padding-inline-start: 10px;
+.filter-by > * {
+    padding: 10px;
 }
 
 .filter-by h4 {
     font-size: 1.5em;
+    position: relative;
+}
+.filter-by-icon {
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    font-size: 0.6em;
+    display: flex;
+}
+
+.filter-by-icon i{
+    cursor: default;
 }
 
 .filter-by section {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .opt-btn {
@@ -83,7 +101,7 @@
 .filter-opt {
     position: absolute;
     right: 20px;
-    top: 25%;
+    top: 27%;
 }
 
 .filter-opt .option {

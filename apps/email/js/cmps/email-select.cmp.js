@@ -38,15 +38,21 @@ export default {
             emailService.removeSelected(this.directoryForChange)
                 .then(() => {
                     this.loadNumOf();
-                    console.log('All selected emails have been successfully deleted!');
-                });
+                    eventBus.$emit('show-msg', { type: 'success', txt: `All selected emails have been successfully deleted!`, path: null });
+                })
+                .catch(err =>
+                    eventBus.$emit('show-msg', { type: 'fail', txt: `Email delete has failed: ${err}`, path: null })
+                );
         },
         updatePropertySelected(property) {
             emailService.updatePropertySelected(property, this.directoryForChange)
-                .then(() => {
-                    this.loadNumOf();
-                    console.log('All selected emails have been successfully updated!');
-                });
+                // .then(() => {
+                //     this.loadNumOf();
+                //     eventBus.$emit('show-msg', { type: 'success', txt: `All selected emails have been successfully updated!`, path: null });
+                // })
+                // .catch(err =>
+                //     eventBus.$emit('show-msg', { type: 'fail', txt: `Email update has failed: ${err}`, path: null })
+                // );
         }
     },
     mounted() {

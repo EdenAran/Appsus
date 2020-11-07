@@ -9,11 +9,15 @@ export default {
             <span class="filter-btn"><i class="fas fa-ellipsis-v" v-show="isSmallScreen" @click="toggleFilter"></i></span>
             <div class="filter-container" v-if="!isSmallScreen || isShowFilter">
                 <hr>
-                <router-link class="flex" to="/email/inbox"><i class="fas fa-inbox"></i><span>Inbox<span v-if="numOfInboxUnread"> ({{numOfInboxUnread}})</span></span></router-link>
-                <router-link class="flex" to="/email/sent"><i class="fas fa-paper-plane"></i><span>Sent<span v-if="numOfSentUnread"> ({{numOfSentUnread}})</span></span></router-link>
+                <router-link class="flex" :class="dirClass('inbox')" to="/email/inbox"><i class="fas fa-inbox"></i><span>Inbox<span v-if="numOfInboxUnread"> 
+                    ({{numOfInboxUnread}})
+                </span></span></router-link>
+                <router-link class="flex" :class="dirClass('sent')" to="/email/sent"><i class="fas fa-paper-plane"></i><span>Sent<span v-if="numOfSentUnread"> 
+                    ({{numOfSentUnread}})
+                </span></span></router-link>
                 <hr>
                 <div class="filter-by">
-                    <h4>Filter by:</h4>
+                    <h4>Filter by:<span class="filter-by-icon"><i :class="filterClass('star')"></i><i :class="filterClass('read')"></i></span></h4>
                     <section class="statusRead">
                         <div class="filter-opt flex flex-col" v-if="isFilter.read">
                             <i title="All" class="option fas fa-mail-bulk" @click="emitFilter('statusRead', 'all')"></i>
@@ -44,7 +48,8 @@ export default {
                 read: false
             },
             isSmallScreen: false,
-            isShowFilter: false
+            isShowFilter: false,
+            directory: ''
         };
     },
     methods: {
@@ -77,6 +82,20 @@ export default {
         },
         toggleFilter() {
             this.isShowFilter = !this.isShowFilter;
+        },
+        dirClass(dir) {
+            return { selected: this.directory === dir }
+        },
+        filterClass(filter) {
+            const currFilter = emailService.getFilter();
+            return {
+                'fas fa-star': filter === 'star' && currFilter.starred === 'favorite',
+                'far fa-star': filter === 'star' && currFilter.starred === 'unfavorite',
+                'fas fa-star-half-alt': filter === 'star' && currFilter.starred === 'all',
+                'fas fa-envelope': filter === 'read' && currFilter.statusRead === 'unread',
+                'fas fa-envelope-open': filter === 'read' && currFilter.statusRead === 'read',
+                'fas fa-mail-bulk': filter === 'read' && currFilter.statusRead === 'all'
+            }
         }
     },
     mounted() {
@@ -85,7 +104,8 @@ export default {
     watch: {
         '$route.params.directory'() {
             this.loadNumOf();
-        }
+            this.directory = this.$route.params.directory;
+        },
     },
     created() {
         emailService.getNumOf('unread', 'inbox')

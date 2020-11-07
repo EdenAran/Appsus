@@ -4,34 +4,39 @@ export default {
     props: ['info', 'isEdit'],
     template: `
         <section class="note-todos">
-            <ul>
+            <!-- <ul> -->
                 <template v-if="!isEdit">
-                    <h3>{{info.title}}</h3>
-                    <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" :key="todo.id">
-                    {{todo.txt}}
-                    </li>
-                    <li class="done" v-for="(todo, idx) in this.info.todos" v-if="isTodoDone(idx)" :key="todo.id">
+                    <ul>
+                        <h3>{{info.title}}</h3>
+                        <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" :key="todo.id">
                         {{todo.txt}}
-                    </li>
-                    <i class="icon fas fa-list-ul pointer"></i>
+                        </li>
+                        <li class="done" v-for="(todo, idx) in this.info.todos" v-if="isTodoDone(idx)" :key="todo.id">
+                            {{todo.txt}}
+                        </li>
+                        <i class="icon fas fa-list-ul pointer"></i>
+                    </ul>
                 </template>
                 <template v-else>
+                    
                     <input ref="title" class="title" type="text" v-model="info.title">
                     <i class="far fa-plus-square" @click="emitAddTodo"></i>
-                    <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" :key="todo.id">
-                        <i class="fas fa-trash" @click="emitDeleteLine(idx)"></i>
-                        <i class="far fa-check-square" @click="markDoneTodo(idx)"></i>
-                        <input type="text" v-model="todo.txt">
-                    </li>
-                    <hr>
-                    <li class="done" v-for="(todo, idx) in this.info.todos" v-if="isTodoDone(idx)" :key="todo.id">
-                        <i class="fas fa-trash" @click="emitDeleteLine(idx)"></i>
-                        <i class="fas fa-check-square" @click="toggleIsDone(idx)"></i>
-                        <input type="text" v-model="todo.txt">
-                        <span class="doneAt">{{doneDateToDisplay(idx)}}</span>
-                    </li>
+                    <ul>
+                        <li v-for="(todo, idx) in this.info.todos" v-if="!isTodoDone(idx)" :key="todo.id">
+                            <i class="fas fa-trash" @click="emitDeleteLine(idx)"></i>
+                            <i class="far fa-check-square" @click="markDoneTodo(idx)"></i>
+                            <input type="text" v-model="todo.txt">
+                        </li>
+                        <hr>
+                        <li class="done" v-for="(todo, idx) in this.info.todos" v-if="isTodoDone(idx)" :key="todo.id">
+                            <i class="fas fa-trash" @click="emitDeleteLine(idx)"></i>
+                            <i class="fas fa-check-square" @click="toggleIsDone(idx)"></i>
+                            <input type="text" v-model="todo.txt">
+                            <span class="doneAt">{{doneDateToDisplay(idx)}}</span>
+                        </li>
+                    </ul>
                 </template>    
-            </ul>
+            <!-- </ul> -->
         </section>
     `,
     methods: {

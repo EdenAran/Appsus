@@ -5,6 +5,7 @@ import noteVideo from './note-video.cmp.js'
 import noteControlls from './note-controlls.cmp.js'
 import { noteService } from '../services/note.service.js'
 import { eventBus } from '../../../../js/services/event-bus.service.js';
+import {utilService} from '../../../../js/services/util.service.js'
 
 
 export default {

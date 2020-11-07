@@ -32,9 +32,12 @@ export default {
             emailService.removeEmail(this.email.id, this.directory)
                 .then(() => {
                     eventBus.$emit('unreadChanged', 'selectChanged');
-                    console.log('Email deleted successfully');
+                    eventBus.$emit('show-msg', { type: 'success', txt: 'Email was successfully deleted!', path: null });
                     this.$router.push('/email/inbox');
-                });
+                })
+                .catch((err) =>
+                    eventBus.$emit('show-msg', { type: 'fail', txt: 'Couldn\'t delete the Email:', err, path: null })
+                );
         },
         compress() {
             if (this.directory === 'inbox') this.$router.push('/email/inbox');

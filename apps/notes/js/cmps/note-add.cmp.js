@@ -48,7 +48,6 @@ export default {
             }
             noteService.saveNote(this.note)
                 .then(() => {
-                    console.log('sending')
                     eventBus.$emit('show-msg', { type: 'success', txt: 'Note was successfully added', path: null });
                 })
             this.getBlankNote(this.note.type)

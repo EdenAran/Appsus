@@ -82,17 +82,19 @@ export default {
         updateProperty(property) {
             emailService.updateProperty(this.email.id, property, this.directory)
                 .then(email => {
-                    console.log(`The "${email.id}" email update was successful`);
                     if (property === 'isRead') eventBus.$emit('unreadChanged', this.directory);
                     if (property === 'isSelect') eventBus.$emit('selectChanged', this.directory);
-                });
+                })
         },
         removeEmail() {
             emailService.removeEmail(this.email.id, this.directory)
                 .then(() => {
                     eventBus.$emit('unreadChanged', 'selectChanged', this.directory);
-                    console.log('Email deleted successfully');
-                });
+                    eventBus.$emit('show-msg', { type: 'success', txt: `Email was successfully deleted!`, path: null });
+                })
+                .catch(err => 
+                    eventBus.$emit('show-msg', { type: 'fail', txt: `Email delete has failed: ${err}`, path: null })
+                );
         },
         sendToNote() {
             const title = this.email.subject;
