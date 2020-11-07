@@ -1,5 +1,3 @@
-
-
 export default {
     template: `
     <section class="note-header flex al-center s-between">

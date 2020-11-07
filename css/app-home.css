@@ -47,12 +47,6 @@
     }
 }
 
-/* @media (max-width:360px) {
-    .home-page .title {
-        top: calc(100vh - 250px);
-    }
-} */
-
 @media (max-width:360px) {
     .home-page .title {
         top: calc(100vh - 200px);

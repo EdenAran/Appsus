@@ -6,7 +6,6 @@
     height: 100%;
     padding: 10px 5px;
     font-size: 1.3rem;
-    /* text-align: center; */
 }
 
 .email-filter i {
@@ -23,11 +22,11 @@
 }
 
 .email-filter a:hover {
-    background-color: rgba(217, 215, 221, 0.6);
+    background-color:rgba(180, 247, 240, .5);
 }
 
 .email-filter .selected{
-    background-color: rgba(217, 215, 221, 0.6);
+    background-color:rgba(180, 247, 240, .5);
     font-weight: 600;
 }
 
@@ -96,7 +95,7 @@
 }
 
 .starred:hover, .statusRead:hover {
-    background-color: rgba(217, 215, 221, 0.6);
+    background-color:rgba(180, 247, 240, .5);
 }
 
 .filter-opt {

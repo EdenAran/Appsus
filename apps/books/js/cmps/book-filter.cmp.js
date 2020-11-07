@@ -1,6 +1,3 @@
-
-
-
 export default {
     template: `
     <section class="book-filter">

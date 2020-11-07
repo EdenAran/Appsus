@@ -1,7 +1,6 @@
 import { bookService } from "../services/book.service.js";
 import { eventBus } from '../../../../js/services/event-bus.service.js'
 
-
 export default {
     props: ['bookId'],
     template: `

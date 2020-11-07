@@ -6,10 +6,7 @@ export default {
     
     <section class="main-header flex s-between al-center">
         <h1 class="logo">
-           <router-link to="/">
-                <!-- <i class="fas fa-thumbtack"></i> -->
-                Apsus
-           </router-link>
+           <router-link to="/">Apsus</router-link>
         </h1>
         <nav class="main-nav flex" :class="menuClass">
             <i class="toggle-menu fas fa-bars" :class="toggleClass" @click="toggleMenu"></i>

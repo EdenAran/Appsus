@@ -18,7 +18,6 @@
 
 .book-add .seperator:not(:last-child){
     border-bottom: 1px solid grey;
-    /* margin: 10px 0; */
 }
 
 .search-options{
