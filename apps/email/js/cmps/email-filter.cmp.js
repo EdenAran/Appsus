@@ -7,7 +7,7 @@ export default {
 
             <router-link class="comp-btn flex just-center al-center" to="/email/compose"><i class="fas fa-plus"></i> <span>Compose</span></router-link>
             <span class="filter-btn"><i class="fas fa-ellipsis-v" v-show="isSmallScreen" @click="toggleFilter"></i></span>
-            <div class="filter-container" v-show="!isSmallScreen || isShowFilter">
+            <div class="filter-container" v-if="!isSmallScreen || isShowFilter">
                 <hr>
                 <router-link class="flex" to="/email/inbox"><i class="fas fa-inbox"></i><span>Inbox<span v-if="numOfInboxUnread"> ({{numOfInboxUnread}})</span></span></router-link>
                 <router-link class="flex" to="/email/sent"><i class="fas fa-paper-plane"></i><span>Sent<span v-if="numOfSentUnread"> ({{numOfSentUnread}})</span></span></router-link>

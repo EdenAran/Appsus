@@ -28,3 +28,13 @@
 .email-header .search i:hover {
     opacity: 0.6;
 }
+
+.email-app main {
+    padding-top: 100px;
+}
+
+.email-header {
+    position: fixed;
+    width: 100%;
+    padding: 10px 15px;
+}
