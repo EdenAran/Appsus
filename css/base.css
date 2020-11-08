@@ -3,6 +3,7 @@
 @import './helpers.css';
 @import './app-header.css';
 @import './app-home.css';
+@import './app-about.css';
 @import './user-msg.css';
 
 /* notes */
@@ -44,6 +45,10 @@ h5,
 h6 {
     margin: 0;
     font-weight: 400;
+}
+
+p {
+    margin: 0;
 }
 
 input {

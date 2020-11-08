@@ -158,18 +158,15 @@ function _createInboxEmails() {
     let emails = utilService.loadFromStorage('inboxDb');
     if (!emails || !emails.length) {
         emails = [];
-        emails.push(_createInboxEmail('aaa', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('bbb', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('ccc', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('ddd', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('eee', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('fff', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('ggg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('hhh', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('iii', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('jjj', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createInboxEmail('kkk', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails[2].sendAt = 1604621303560;
+        emails.push(_createInboxEmail('Ariella from the Lottery', 'You won the last lottery for 8,000,000', 'Congratulations! We are happy and excited to inform you that you won the last lottery in the amount of 8,000,000 NIS !! Payment by immediate check or bank transfer *, only after confirmation of winning by the control department upon submission of the form for the correctness of the participation card and verification of the winning.'));
+        emails.push(_createInboxEmail('Harvard University', 'We are happy to inform you that you have been accepted into our ranks', 'Surprise, surprise! You have indeed been accepted and you are welcome to coordinate registration details with our nice secretary: Lori'));
+        emails.push(_createInboxEmail('Assaf Margalit', 'You are champions !!', 'Having submitted such an impressive sprint, I am happy to inform you that you are invited to a job interview for Mister Bit'));
+        emails.push(_createInboxEmail('Yaron Biton', 'I invite you to enter my YouTube channel', 'I regularly upload educational children\'s stories, which are told with great pleasure!'));
+        emails.push(_createInboxEmail('PayPal', 'Unusual activity has been detected in your PayPal account', 'Important - Unusual activity has been detected in your PayPal account'));
+        emails.push(_createInboxEmail('GA-DE Online', 'A benefit of once in November!', '40% discount on all our mascaras - for weekends only!'));
+        emails.push(_createInboxEmail('HOT', 'Details of your monthly account', 'This message (including any attachments) is intended only for the use of the individual or entity to which it is addressed and may contain materials protected by copyright or information that is non-public, proprietary, privileged, confidential, and exempt from disclosure under applicable law or agreement. If you are not the intended recipient, you are hereby notified that any use, dissemination, distribution, or copying of this communication is strictly prohibited. If you have received this communication by error, notify the sender immediately and delete this message immediately. Thank you.'));
+        emails[2].sendAt = 1604794677771;
+        emails[3].sendAt = 1604794677771;
         utilService.saveToStorage('inboxDb', emails);
     }
     return emails;
@@ -179,21 +176,21 @@ function _createSentEmails() {
     let emails = utilService.loadFromStorage('sentsDb');
     if (!emails || !emails.length) {
         emails = [];
-        emails.push(_createSentEmail('aaa', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createSentEmail('bbb', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createSentEmail('ccc', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createSentEmail('ddd', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails.push(_createSentEmail('kkk', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima at nihil dolores, error eum sequi ad quasi consequuntur atque vitae nam corrupti, exercitationem repudiandae tempora perferendis excepturi nisi illum necessitatibus!'));
-        emails[2].sendAt = 1604527472959;
+        emails.push(_createSentEmail('All of the family', 'Grandma\'s birthday - final date', 'This coming Thursday, at 6 p.m. pay attention! Everyone (including you, Michal) shows up at the appointed time with Dad and Mom. See you at celebrations!'));
+        emails.push(_createSentEmail('Daniel', 'I found an old on-key disk, and you must see what was in it !!', 'There are things that will not be forgotten, and will always float one day ............ Next time you will learn what not to take pictures !!'));
+        emails.push(_createSentEmail('Ortal the band', 'Audition for Big Brother', 'Attached is the video you requested to make. I would of course be very happy to be accepted, I am a fascinating person and I will be a very profitable tenant for you.'));
+        emails[0].sendAt = 1604794677771;
+        emails[1].sendAt = new Date(2020, 3, 26);
+        emails[2].sendAt = new Date(2020, 1, 14);
         utilService.saveToStorage('sentsDb', emails);
     }
     return emails;
 }
 
-function _createInboxEmail(subject, body) {
+function _createInboxEmail(from = utilService.getName(), subject, body) {
     return {
         id: utilService.makeId(),
-        from: utilService.getName(),
+        from,
         subject,
         body,
         isRead: Math.random() > 0.5,
@@ -204,10 +201,10 @@ function _createInboxEmail(subject, body) {
     }
 }
 
-function _createSentEmail(subject, body) {
+function _createSentEmail(to = '', subject, body) {
     return {
         id: utilService.makeId(),
-        to: '',
+        to,
         subject,
         body,
         isRead: Math.random() > 0.5,

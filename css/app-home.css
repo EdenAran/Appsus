@@ -10,7 +10,7 @@
 
 .home-page .title {
     position: absolute;
-    right: 10px;
+    right: 100px;
     top: 150px;
 }
 
@@ -32,6 +32,7 @@
 
     .home-page .title {
         top: calc(100vh - 130px);
+        right: 10px;
         width: 100vw;
         text-align: center;
     }
