@@ -1,3 +1,10 @@
+@media (max-width:1000px) {
+    .marks {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
 @media (max-width:840px) {
 
     /* header */
@@ -87,7 +94,6 @@
 
     .marks {
         padding: 0;
-
     }
 
     .actions{
