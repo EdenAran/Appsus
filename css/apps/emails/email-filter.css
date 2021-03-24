@@ -60,7 +60,7 @@
 }
 
 .filter-by h4 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     position: relative;
 }
 .filter-by-icon {
@@ -100,11 +100,11 @@
 
 .filter-opt {
     position: absolute;
-    right: 20px;
+    right: -8px;
     top: 40%;
 }
 
 .filter-opt .option {
     margin: 10px;
-    font-size: 1.3em;
+    font-size: 1.1em;
 }

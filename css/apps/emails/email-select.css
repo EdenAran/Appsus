@@ -1,7 +1,8 @@
 .email-status {
-    margin: 0 40px;
+    margin: 0 25px;
     margin-bottom: 10px;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .email-status h3{

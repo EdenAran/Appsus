@@ -34,7 +34,7 @@ export default {
     data() {
         return {
             maxCharSubj: 30,
-            maxCharBody: 55,
+            maxCharBody: 70,
         }
     },
     computed: {
@@ -108,7 +108,7 @@ export default {
                 this.maxCharBody = 25;
                 this.maxCharSubj = 10;
             } else {
-                this.maxCharBody = 55;
+                this.maxCharBody = 70;
                 this.maxCharSubj = 30;
             }
         }
