@@ -62,13 +62,15 @@ export default {
         sendAtToDisplay() {
             const d = new Date(this.email.sendAt);
             if (d.getFullYear() === new Date().getFullYear() && d.getMonth() === new Date().getMonth() && d.getDate() === new Date().getDate()) {
-                const hours = (`${d.getHours()}`).padStart(2, 0);
-                const minutes = (`${d.getMinutes()}`).padStart(2, 0);
-                const ampm = (d.getHours() >= 12) ? 'PM' : 'AM';
-                return `${hours}:${minutes} ${ampm}`;
+                let hours = d.getHours();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours <= 12 ? hours : hours - 12;
+                const hoursStr = (`${hours}`).padStart(2, '0');
+                const minutesStr = (`${d.getMinutes()}`).padStart(2, '0');
+                return `${hoursStr}:${minutesStr} ${ampm}`;
             } else {
                 const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-                return `${month[d.getMonth()]} ${d.getDate()}`;
+                return `${month[d.getMonth() + 1]} ${d.getDate()}`;
             }
         },
         expandClass() {
@@ -92,7 +94,7 @@ export default {
                     eventBus.$emit('unreadChanged', 'selectChanged', this.directory);
                     eventBus.$emit('show-msg', { type: 'success', txt: `Email was successfully deleted!`, path: null });
                 })
-                .catch(err => 
+                .catch(err =>
                     eventBus.$emit('show-msg', { type: 'fail', txt: `Email delete has failed: ${err}`, path: null })
                 );
         },
